@@ -54,6 +54,78 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         // Dispose of any resources that can be recreated.
     }
     
+    func initMenu() {
+        struct Static {
+            static var onceToken : dispatch_once_t = 0
+        }
+        dispatch_once(&Static.onceToken) {
+            self.populateMenu(false, tags: nil)
+        }
+    }
+    
+    func requestGeo() {
+        locationManager.startUpdatingLocation()
+    }
+    
+    // authorization status
+    func locationManager(manager: CLLocationManager!,
+        didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+            var isUserAnswered = false
+            
+            switch status {
+            case CLAuthorizationStatus.Restricted:
+                isUserAnswered = true
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isLocationEnable")
+            case CLAuthorizationStatus.Denied:
+                isUserAnswered = true
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isLocationEnable")
+            case CLAuthorizationStatus.NotDetermined:
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isLocationEnable")
+            default:
+                isUserAnswered = true
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLocationEnable")
+            }
+            if isUserAnswered {
+                locationManager.startUpdatingLocation()
+                self.initMenu()
+                if !self.isInitiated {
+                    self.isInitiated = true
+                }
+            }
+            
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)->Void in
+            if (error != nil) {
+                println("Reverse geocoder failed with error" + error.localizedDescription)
+                return
+            }
+            
+            if placemarks.count > 0 {
+                let pm = placemarks[0] as! CLPlacemark
+                self.updateLocationInfo(pm)
+            } else {
+                println("Problem with the data received from geocoder")
+            }
+        })
+    }
+    
+    func updateLocationInfo(placemark: CLPlacemark){
+        if placemark.location != nil {
+            //stop updating location to save battery life
+            self.locationManager.stopUpdatingLocation()
+            let coordinate:CLLocationCoordinate2D = placemark.location.coordinate
+            locationService.setLocation(placemark.location)
+            locationService.setLocality(placemark.locality)
+        }
+    }
+    
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        println("Error while updating location" + error.localizedDescription)
+    }
+    
     func populateMenu(isReset:Bool, tags: String?) -> Void {
         if self.isPopulating {
             return
@@ -140,11 +212,11 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                         for (index: String, itemJSON: JSON) in myJSON["items"] {
                             if let storeName:String = itemJSON["name"].rawString() {
                                 if let storeLocationStr = itemJSON["geolocation"].rawString()  {
-                                    let longitudeDbl = itemJSON["geolocation"]["lon"].double!
-                                    let latitudeDbl  = itemJSON["geolocation"]["lat"].double!
+                                    let longitudeDbl = 35.66 //itemJSON["geolocation"]["lon"].double!
+                                    let latitudeDbl  = 139.733//itemJSON["geolocation"]["lat"].double!
                                     let storeLocation = CLLocation(latitude: latitudeDbl, longitude: longitudeDbl)
                                     let storeDistance = self.locationService.getDistanceFrom(storeLocation)
-                                    let storeAddress  = itemJSON["address"].string!
+                                    let storeAddress  = "Roppongi"//itemJSON["address"].string!
                                     
                                     for (index: String, menuJSON: JSON) in itemJSON["menus"] {
                                         var imgURLString:String = menuJSON["images"][0].string!
@@ -213,6 +285,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)){
+            println(menu.imgURL)
             cell.setImageByURL(menu.imgURL)
         }
         

@@ -13,7 +13,7 @@ import SwiftyJSON
 class MenuSVAPI {
     
     let apiBaseURL:String   = "http://snakebite.herokuapp.com"
-    let apiEndPoint:String  = "/restaurants"
+    let apiEndPoint:String  = "/menus"
     
     init(){
         
