@@ -37,6 +37,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         self.populateLength     = 3
         
         self.menuTableView.delegate = self
+        self.menuTableView.dataSource = self
         
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -210,6 +211,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                         
                         let myJSON = JSON(json)
                         for (index: String, itemJSON: JSON) in myJSON["items"] {
+                            
+                            
                             if let storeName:String = itemJSON["name"].rawString() {
                                 if let storeLocationStr = itemJSON["geolocation"].rawString()  {
                                     let longitudeDbl = 35.66 //itemJSON["geolocation"]["lon"].double!
@@ -244,6 +247,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                                     }
                                 }
                             }
+                            
                         }
                         if isReset {
                             dispatch_async(dispatch_get_main_queue()) {
@@ -269,12 +273,50 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         
     }
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if !isInitiated {
+            return
+        }
+        if scrollView.contentOffset.y + view.frame.size.height > scrollView.contentSize.height * 0.8 {
+            if let searchTag = const.getConst("search", key: "tag") {
+                self.populateMenu(false, tags: searchTag)
+            } else {
+                self.populateMenu(false, tags: nil)
+            }
+        }
+    }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let cell:MenuCell = tableView.dequeueReusableCellWithIdentifier("menuCell", forIndexPath: indexPath) as! MenuCell
+        if menuArray.count <= 0 {
+            return cell
+        }
+        let menu = menuArray.objectAtIndex(indexPath.row) as! Menu
+        
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)){
+            println(menu.imgURL)
+            cell.setImageByURL(menu.imgURL)
+        }
+        
+        let storeDistance = self.locationService.getDistanceFrom(CLLocation(latitude: menu.latitude, longitude: menu.longitude))
+        
+        cell.setMenuCell(menu.menuName, storeName: menu.storeName, distanceVal: storeDistance, pointVal: menu.pointVal, price: menu.price, address: menu.address)
+        
+        return cell
+        
+    }
+    /*
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuArray.count
+    }*/
+/*
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        println("#############################")
         let cell:MenuCell = tableView.dequeueReusableCellWithIdentifier("menuCell", forIndexPath: indexPath) as! MenuCell
         
         if menuArray.count <= 0 {
@@ -296,6 +338,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         return cell
     }
 
-
+*/
 }
 
