@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class ImageCache: NSObject {
-    // Default is Tokyo
+
     private var imgCache = NSCache()
     
     override init() {
