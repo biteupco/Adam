@@ -19,6 +19,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     @IBOutlet weak var menuTableView: UITableView!
     
     var menuArray : NSMutableArray = []
+    var restuarantList:NSMutableDictionary = NSMutableDictionary()
     
     var const:Const         = Const.sharedInstance
     var locationService:LocationService = LocationService.sharedInstance
@@ -127,6 +128,28 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         println("Error while updating location" + error.localizedDescription)
     }
     
+    func loadRestuarantInfo(restaurantList:[String], resetFlag:Bool) {
+        var restaurantSVAPI:RestaurantSVAPI = RestaurantSVAPI()
+        for restaurantID in restaurantList {
+            restaurantSVAPI.getRestaurantByID(restaurantID,
+                limit: 1,
+                successCallback: {(somejson)-> Void in
+                    if let json: AnyObject = somejson{
+                        let myJSON = JSON(json)
+                        var restuarant = Restaurant()
+                        restuarant.initByJSON(myJSON)
+                        self.restuarantList.setValue(restuarant, forKey: restuarant.getID())
+                    }
+                    self.isPopulating = false
+            
+                }, errorCallback: {()->Void in
+                    println("Error")
+                    self.isPopulating = false
+            })
+        }
+        
+    }
+    
     func populateMenu(isReset:Bool, tags: String?) -> Void {
         if self.isPopulating {
             return
@@ -137,52 +160,26 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         }
         
         isPopulating = true
-        var svapi:MenuSVAPI = MenuSVAPI()
+        var menuSVAPI:MenuSVAPI = MenuSVAPI()
         if let searchTag = tags {
-            svapi.getMenuByTags(searchTag,
+            menuSVAPI.getMenuByTags(searchTag,
                 start: self.currentLoadedIndex,
                 limit: self.populateLength,
                 successCallback: {(somejson) -> Void in
                     if let json: AnyObject = somejson{
+                        var resIDList = [String]()
+                        
                         self.currentLoadedIndex += self.populateLength
                         let myJSON = JSON(json)
+   
                         for (index: String, itemJSON: JSON) in myJSON["items"] {
-                            if let storeName:String = itemJSON["name"].rawString() {
-                                if let storeLocationStr = itemJSON["geolocation"].rawString()  {
-                                    let longitudeDbl = itemJSON["geolocation"]["lon"].double!
-                                    let latitudeDbl  = itemJSON["geolocation"]["lat"].double!
-                                    let storeLocation = CLLocation(latitude: latitudeDbl, longitude: longitudeDbl)
-                                    let storeDistance = self.locationService.getDistanceFrom(storeLocation)
-                                    let storeAddress  = itemJSON["address"].string!
-                                    
-                                    for (index: String, menuJSON: JSON) in itemJSON["menus"] {
-                                        var imgURLString:String = menuJSON["images"][0].string!
-                                        
-                                        imgURLString = imgURLString.stringByReplacingOccurrencesOfString("\"", withString: "", options:  NSStringCompareOptions.LiteralSearch, range: nil)
-                                        
-                                        if let menuName = menuJSON["name"].rawString() {
-                                            if let imgURL = NSURL(string: imgURLString) {
-                                                if let pointVal = menuJSON["rating"].int {
-                                                    if let price    = menuJSON["price"].float {
-                                                        var menu:Menu = Menu(menuName: menuName,
-                                                            storeName: storeName,
-                                                            imgURL: imgURL,
-                                                            distanceVal: storeDistance,
-                                                            pointVal: pointVal,
-                                                            price: price,
-                                                            address: storeAddress,
-                                                            latitude: latitudeDbl,
-                                                            longitude: longitudeDbl)
-                                                        self.menuArray.addObject(menu)
-                                                        
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                            var menu:Menu = Menu()
+                            menu.initByJSON(myJSON)
+                            resIDList.append(menu.getStoreID())
+                            self.menuArray.addObject(menu)
                         }
+                        self.loadRestuarantInfo(resIDList, resetFlag: isReset)
+                        /*
                         if isReset {
                             dispatch_async(dispatch_get_main_queue()) {
                                 self.menuTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Bottom)
@@ -191,18 +188,17 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                             dispatch_async(dispatch_get_main_queue()) {
                                 self.menuTableView.reloadData()
                             }
-                            
-                            //self.menuTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
-                        }
-                        self.isPopulating = false
+                        }*/
+                        //self.isPopulating = false
                         //activityView.stopAnimating()
                     }
                 },
                 errorCallback: {()->Void in
                     println("Error")
+                    self.isPopulating = false
             })
         } else {
-            svapi.getMenu(self.currentLoadedIndex,
+            menuSVAPI.getMenu(self.currentLoadedIndex,
                 limit: self.populateLength,
                 successCallback: {(somejson) -> Void in
                     if let json: AnyObject = somejson{

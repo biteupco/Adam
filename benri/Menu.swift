@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 class Menu {
     var menuName: String   = "name"
@@ -17,11 +18,20 @@ class Menu {
     var imgIsSet:Bool      = false
     
     var distanceVal:Double  = 1.0
-    var pointVal:Int       = 1
-    var price:Float        = 800
-    var address:String     = "roppongi"
+    var pointVal:Int        = 1
+    var price:Float         = 800
+    var address:String      = "roppongi"
     var latitude:Double     = 0.0
     var longitude:Double    = 0.0
+    var currency:String     = "JPY"
+    var currencySign:String = "¥"
+    var tags:NSMutableArray = []
+    var menuID:String       = "1234ID"
+    var storeID:String      = "1234ID"
+    
+    init() {
+    
+    }
     
     init(menuName: String, storeName: String, imgURL: NSURL, distanceVal: Double, pointVal: Int, price: Float, address: String, latitude:Double, longitude:Double) {
         self.menuName       = menuName
@@ -33,6 +43,53 @@ class Menu {
         self.address        = address
         self.latitude       = latitude
         self.longitude      = longitude
+    }
+    
+    func initByJSON(itemJSON:JSON) {
+        /**** Menu ID ****/
+        if let menuID:String = itemJSON["_id"]["$oid"].rawString() {
+            self.menuID = menuID
+        }
+        
+        /**** Menu Name ****/
+        if let menuName:String = itemJSON["name"].rawString() {
+            self.menuName = menuName
+        }
+        
+        /**** Price ****/
+        if let price:Float = itemJSON["price"].float {
+            self.price = price
+        }
+        
+        /**** currency ****/
+        if let currency:String = itemJSON["currency"].string {
+            self.currency = currency
+        }
+        
+        /**** Image URL ****/
+        if let imgURLString:String = itemJSON["images"][0].string {
+            var imgURLSafe = imgURLString.stringByReplacingOccurrencesOfString("\"", withString: "", options:  NSStringCompareOptions.LiteralSearch, range: nil)
+            if let imgURL = NSURL(string: imgURLSafe) {
+                self.imgURL = imgURL
+            }
+        }
+        
+        /**** Tags ****/
+        for (index:String, tagsJSON: JSON) in itemJSON["tags"] {
+            if let tag = tagsJSON.string {
+                self.tags.addObject(tag)
+            }
+        }
+        
+        /**** Yum ****/
+        if let pointVal:Int = itemJSON["yums"].int {
+            self.pointVal = pointVal
+        }
+        
+        /**** Restuarant ID ****/
+        if let storeID:String = itemJSON["restaurant"]["$id"]["$oid"].string {
+            self.storeID = storeID
+        }
     }
     
     func setMenuName(menuName:String) {
@@ -114,5 +171,13 @@ class Menu {
     
     func getMenuImage() -> UIImage {
         return self.imgUI
+    }
+    
+    func setStoreID(storeID:String) {
+        self.storeID = storeID
+    }
+    
+    func getStoreID()->String {
+        return self.storeID
     }
 }
