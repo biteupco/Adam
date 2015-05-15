@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21AF14871B05FA0B00108190 /* RestaurantServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AF14861B05FA0B00108190 /* RestaurantServerAPI.swift */; };
 		9656AD9F1AECC62800933A8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656AD9E1AECC62800933A8E /* AppDelegate.swift */; };
 		9656ADA11AECC62800933A8E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656ADA01AECC62800933A8E /* FirstViewController.swift */; };
 		9656ADA31AECC62800933A8E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656ADA21AECC62800933A8E /* SecondViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21AF14861B05FA0B00108190 /* RestaurantServerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantServerAPI.swift; sourceTree = "<group>"; };
 		5BD10A0AA37B5DD5EB928422 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9656AD991AECC62800933A8E /* benri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = benri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9656AD9D1AECC62800933A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				96DA5A1C1AF28AD20003E506 /* MenuServerAPI.swift */,
+				21AF14861B05FA0B00108190 /* RestaurantServerAPI.swift */,
 				96DA5A1E1AF28AE90003E506 /* TagServerAPI.swift */,
 			);
 			name = SVAPI;
@@ -353,6 +356,7 @@
 				96DA5A1D1AF28AD20003E506 /* MenuServerAPI.swift in Sources */,
 				96DA5A111AF274670003E506 /* LocationService.swift in Sources */,
 				96DA5A121AF274670003E506 /* ImageCache.swift in Sources */,
+				21AF14871B05FA0B00108190 /* RestaurantServerAPI.swift in Sources */,
 				9656ADA11AECC62800933A8E /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
