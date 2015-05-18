@@ -11,13 +11,76 @@ import UIKit
 import SwiftyJSON
 
 class Menu {
-    var menuName: String   = "name"
-    var storeName: String  = "res_name"
-    var imgURL: NSURL      = NSURL(string: "http://someurl.com")!
-    var imgUI: UIImage     = UIImage(named: "nilImage")!//UIImage(contentsOfFile: "nilImage")!
-    var imgIsSet:Bool      = false
+    var _menuName:String   = "menu_name"
+    var menuName: String {
+        get {
+            return _menuName
+        }
+        set(newName) {
+            if count(newName) > 0 {
+               _menuName = newName
+            }
+            else {
+                println("Error menu name can't be empty")
+            }
+            
+        }
+    }
+    var _storeName: String  = "res_name"
+    var storeName: String {
+        get {
+            return _storeName
+        }
+        set(newStoreName) {
+            if count(newStoreName) > 0 {
+                _storeName = newStoreName
+            }
+            else {
+                println("Error Rstaurantname can't be empty")
+            }
+        }
+    }
     
-    var distanceVal:Double  = 1.0
+    var _imgURL: NSURL      = NSURL(string: "http://someurl.com")!
+    var imgURL:NSURL {
+        get {
+            return _imgURL
+        }
+        set(newURL) {
+            _imgURL = newURL
+        }
+    }
+    
+    var _imgUI: UIImage     = UIImage(named: "nilImage")!
+    var imgUI:UIImage {
+        get {
+            return _imgUI
+        }
+        set(newImage) {
+            _imgUI = newImage
+        }
+    }
+    
+    var _imgIsSet:Bool      = false
+    var imgIsSet:Bool {
+        get {
+            return _imgIsSet
+        }
+        set(isSet){
+            _imgIsSet = isSet
+        }
+    }
+    
+    var _distanceVal:Double  = 1.0
+    var distanceVal:Double {
+        get {
+            return _distanceVal
+        }
+        set(newDistance) {
+            _distanceVal = newDistance
+        }
+    }
+    
     var pointVal:Int        = 1
     var price:Float         = 800
     var address:String      = "roppongi"
@@ -91,7 +154,7 @@ class Menu {
             self.storeID = storeID
         }
     }
-    
+    /*
     func setMenuName(menuName:String) {
         self.menuName = menuName
     }
@@ -179,5 +242,5 @@ class Menu {
     
     func getStoreID()->String {
         return self.storeID
-    }
+    }*/
 }

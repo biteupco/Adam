@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		21AF14871B05FA0B00108190 /* RestaurantServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AF14861B05FA0B00108190 /* RestaurantServerAPI.swift */; };
 		21AF14891B0601C800108190 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AF14881B0601C800108190 /* Restaurant.swift */; };
+		21BF4D171B099714001CDBC3 /* RestaurantCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF4D161B099714001CDBC3 /* RestaurantCache.swift */; };
 		9656AD9F1AECC62800933A8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656AD9E1AECC62800933A8E /* AppDelegate.swift */; };
 		9656ADA11AECC62800933A8E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656ADA01AECC62800933A8E /* FirstViewController.swift */; };
 		9656ADA31AECC62800933A8E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656ADA21AECC62800933A8E /* SecondViewController.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		21AF14861B05FA0B00108190 /* RestaurantServerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantServerAPI.swift; sourceTree = "<group>"; };
 		21AF14881B0601C800108190 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		21BF4D161B099714001CDBC3 /* RestaurantCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCache.swift; sourceTree = "<group>"; };
 		5BD10A0AA37B5DD5EB928422 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9656AD991AECC62800933A8E /* benri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = benri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9656AD9D1AECC62800933A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				96DA5A0C1AF274670003E506 /* HorizontalPicker.swift */,
 				96DA5A0D1AF274670003E506 /* LocationService.swift */,
 				96DA5A0E1AF274670003E506 /* ImageCache.swift */,
+				21BF4D161B099714001CDBC3 /* RestaurantCache.swift */,
 			);
 			name = Lib;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				21AF14891B0601C800108190 /* Restaurant.swift in Sources */,
 				9656ADA31AECC62800933A8E /* SecondViewController.swift in Sources */,
 				96DA5A0F1AF274670003E506 /* Const.swift in Sources */,
+				21BF4D171B099714001CDBC3 /* RestaurantCache.swift in Sources */,
 				96DA5A171AF2850E0003E506 /* MenuCell.swift in Sources */,
 				96DA5A151AF284BB0003E506 /* Menu.swift in Sources */,
 				9656AD9F1AECC62800933A8E /* AppDelegate.swift in Sources */,

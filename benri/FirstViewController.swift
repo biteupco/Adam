@@ -23,6 +23,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     
     var const:Const         = Const.sharedInstance
     var locationService:LocationService = LocationService.sharedInstance
+    var restaurantCache:RestaurantCache = RestaurantCache.sharedInstance
     
     let locationManager     = CLLocationManager()
     var populateLength      = 3
@@ -128,6 +129,19 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         println("Error while updating location" + error.localizedDescription)
     }
     
+    func loadRestaurantCache(restaurantList:[String]) -> [String] {
+        var _newList:[String] = []
+        for restaurantID in restaurantList {
+            if let restuarant = restaurantCache.loadRestaurant(restaurantID) as Restaurant! {
+                self.restuarantList.setValue(restuarant, forKey: restaurantID)
+            }
+            else {
+                _newList.append(restaurantID)
+            }
+        }
+        return _newList
+    }
+    
     func loadRestuarantInfo(restaurantList:[String], resetFlag:Bool) {
         var restaurantSVAPI:RestaurantSVAPI = RestaurantSVAPI()
         for restaurantID in restaurantList {
@@ -136,18 +150,18 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                 successCallback: {(somejson)-> Void in
                     if let json: AnyObject = somejson{
                         let myJSON = JSON(json)
-                        var restuarant = Restaurant()
-                        restuarant.initByJSON(myJSON)
-                        self.restuarantList.setValue(restuarant, forKey: restuarant.getID())
+                        var restaurant = Restaurant()
+                        restaurant.initByJSON(myJSON)
+                        self.restuarantList.setValue(restaurant, forKey: restaurant.id)
+                        self.restaurantCache.cacheRestaurant(restaurant.id, restaurant: restaurant)
                     }
                     self.isPopulating = false
-            
+                    
                 }, errorCallback: {()->Void in
                     println("Error")
                     self.isPopulating = false
             })
         }
-        
     }
     
     func populateMenu(isReset:Bool, tags: String?) -> Void {
@@ -175,22 +189,27 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                         for (index: String, itemJSON: JSON) in myJSON["items"] {
                             var menu:Menu = Menu()
                             menu.initByJSON(myJSON)
-                            resIDList.append(menu.getStoreID())
+                            resIDList.append(menu.storeID)
                             self.menuArray.addObject(menu)
                         }
-                        self.loadRestuarantInfo(resIDList, resetFlag: isReset)
-                        /*
-                        if isReset {
-                            dispatch_async(dispatch_get_main_queue()) {
-                                self.menuTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Bottom)
+                        
+                        var needLoadIDList:[String] = self.loadRestaurantCache(resIDList)
+                        if needLoadIDList.count > 0 {
+                            self.loadRestuarantInfo(needLoadIDList, resetFlag: isReset)
+                        }
+                        else {
+                            if isReset {
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    self.menuTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Bottom)
+                                }
+                            } else {
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    self.menuTableView.reloadData()
+                                }
                             }
-                        } else {
-                            dispatch_async(dispatch_get_main_queue()) {
-                                self.menuTableView.reloadData()
-                            }
-                        }*/
-                        //self.isPopulating = false
-                        //activityView.stopAnimating()
+                            self.isPopulating = false
+                            //activityView.stopAnimating()
+                        }
                     }
                 },
                 errorCallback: {()->Void in
