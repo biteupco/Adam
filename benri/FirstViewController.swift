@@ -189,7 +189,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                         for (index: String, itemJSON: JSON) in myJSON["items"] {
                             var menu:Menu = Menu()
                             menu.initByJSON(myJSON)
-                            resIDList.append(menu.storeID)
+                            resIDList.append(menu.restaurantID)
                             self.menuArray.addObject(menu)
                         }
                         
@@ -221,63 +221,35 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                 limit: self.populateLength,
                 successCallback: {(somejson) -> Void in
                     if let json: AnyObject = somejson{
+                        var resIDList = [String]()
                         self.currentLoadedIndex += self.populateLength
                         let lastItem = self.menuArray.count
                         
                         let myJSON = JSON(json)
                         for (index: String, itemJSON: JSON) in myJSON["items"] {
-                            
-                            
-                            if let storeName:String = itemJSON["name"].rawString() {
-                                if let storeLocationStr = itemJSON["geolocation"].rawString()  {
-                                    let longitudeDbl = 35.66 //itemJSON["geolocation"]["lon"].double!
-                                    let latitudeDbl  = 139.733//itemJSON["geolocation"]["lat"].double!
-                                    let storeLocation = CLLocation(latitude: latitudeDbl, longitude: longitudeDbl)
-                                    let storeDistance = self.locationService.getDistanceFrom(storeLocation)
-                                    let storeAddress  = "Roppongi"//itemJSON["address"].string!
-                                    
-                                    for (index: String, menuJSON: JSON) in itemJSON["menus"] {
-                                        var imgURLString:String = menuJSON["images"][0].string!
-                                        
-                                        imgURLString = imgURLString.stringByReplacingOccurrencesOfString("\"", withString: "", options:  NSStringCompareOptions.LiteralSearch, range: nil)
-                                        
-                                        if let menuName = menuJSON["name"].rawString() {
-                                            if let imgURL = NSURL(string: imgURLString) {
-                                                if let pointVal = menuJSON["rating"].int {
-                                                    if let price    = menuJSON["price"].float {
-                                                        var menu = Menu(menuName: menuName,
-                                                            storeName: storeName,
-                                                            imgURL: imgURL,
-                                                            distanceVal: storeDistance,
-                                                            pointVal: pointVal,
-                                                            price: price,
-                                                            address: storeAddress,
-                                                            latitude: latitudeDbl,
-                                                            longitude: longitudeDbl)
-                                                        self.menuArray.addObject(menu)
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
+                            var menu:Menu = Menu()
+                            menu.initByJSON(myJSON)
+                            resIDList.append(menu.restaurantID)
+                            self.menuArray.addObject(menu)
+                        }
+                        
+                        var needLoadIDList:[String] = self.loadRestaurantCache(resIDList)
+                        if needLoadIDList.count > 0 {
+                            self.loadRestuarantInfo(needLoadIDList, resetFlag: isReset)
+                        }
+                        else {
+                            if isReset {
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    self.menuTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Bottom)
+                                }
+                            } else {
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    self.menuTableView.reloadData()
                                 }
                             }
-                            
+                            self.isPopulating = false
+                            //activityView.stopAnimating()
                         }
-                        if isReset {
-                            dispatch_async(dispatch_get_main_queue()) {
-                                self.menuTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Bottom)
-                            }
-                            
-                        } else {
-                            dispatch_async(dispatch_get_main_queue()) {
-                                self.menuTableView.reloadData()
-                                
-                                //self.menuTableView.
-                                //self.menuTableView.reloadSections(NSIndexSet(index: lastItem), withRowAnimation: UITableViewRowAnimation.Bottom)
-                            }
-                        }
-                        self.isPopulating = false
                     }
                 },
                 errorCallback: {()->Void in
@@ -318,9 +290,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
             cell.setImageByURL(menu.imgURL)
         }
         
-        let storeDistance = self.locationService.getDistanceFrom(CLLocation(latitude: menu.latitude, longitude: menu.longitude))
+        //let storeDistance = self.locationService.getDistanceFrom(CLLocation(latitude: menu.latitude, longitude: menu.longitude))
         
-        cell.setMenuCell(menu.menuName, storeName: menu.storeName, distanceVal: storeDistance, pointVal: menu.pointVal, price: menu.price, address: menu.address)
+        let storeDistance = self.locationService.getDistanceFrom(CLLocation(latitude: 20.0, longitude: 20.0))
+        let address = "Temp address"
+        let restaurantName = "Temp restaurant"
+        cell.setMenuCell(menu.menuName, retaurantName: restaurantName, distanceVal: storeDistance, pointVal: menu.pointVal, price: menu.price, address: address)
         
         return cell
         

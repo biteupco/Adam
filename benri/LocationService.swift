@@ -19,7 +19,7 @@ class LocationService: NSObject {
         currentLocality = "Minato"
     }
     
-    func getLocation() ->CLLocation {
+    func getLocation() -> CLLocation {
         return currentLocation
     }
     

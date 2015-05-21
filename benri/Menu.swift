@@ -26,22 +26,8 @@ class Menu {
             
         }
     }
-    var _storeName: String  = "res_name"
-    var storeName: String {
-        get {
-            return _storeName
-        }
-        set(newStoreName) {
-            if count(newStoreName) > 0 {
-                _storeName = newStoreName
-            }
-            else {
-                println("Error Rstaurantname can't be empty")
-            }
-        }
-    }
     
-    var _imgURL: NSURL      = NSURL(string: "http://someurl.com")!
+    var _imgURL: NSURL = NSURL(string: "http://someurl.com")!
     var imgURL:NSURL {
         get {
             return _imgURL
@@ -51,7 +37,7 @@ class Menu {
         }
     }
     
-    var _imgUI: UIImage     = UIImage(named: "nilImage")!
+    var _imgUI: UIImage = UIImage(named: "nilImage")!
     var imgUI:UIImage {
         get {
             return _imgUI
@@ -61,7 +47,7 @@ class Menu {
         }
     }
     
-    var _imgIsSet:Bool      = false
+    var _imgIsSet:Bool = false
     var imgIsSet:Bool {
         get {
             return _imgIsSet
@@ -71,41 +57,53 @@ class Menu {
         }
     }
     
-    var _distanceVal:Double  = 1.0
-    var distanceVal:Double {
+    var pointVal:Int = 0
+    
+    var _price:Float = 0
+    var price:Float {
         get {
-            return _distanceVal
+            return _price
         }
-        set(newDistance) {
-            _distanceVal = newDistance
+        set(newPrice) {
+            _price = newPrice
+        }
+    }
+    var _menuID:String = "1234ID"
+    var menuID:String {
+        get {
+            return _menuID
+        }
+        set(newMenuID) {
+            if count(newMenuID) > 0 {
+                _menuID = newMenuID
+            }
+        }
+    }
+    var _restaurantID:String = "1234ID"
+    var restaurantID:String {
+        get {
+            return _restaurantID
+        }
+        set(newrestaurantID) {
+            _restaurantID = newrestaurantID
         }
     }
     
-    var pointVal:Int        = 1
-    var price:Float         = 800
-    var address:String      = "roppongi"
-    var latitude:Double     = 0.0
-    var longitude:Double    = 0.0
     var currency:String     = "JPY"
     var currencySign:String = "¥"
     var tags:NSMutableArray = []
-    var menuID:String       = "1234ID"
-    var storeID:String      = "1234ID"
     
     init() {
     
     }
     
-    init(menuName: String, storeName: String, imgURL: NSURL, distanceVal: Double, pointVal: Int, price: Float, address: String, latitude:Double, longitude:Double) {
+    init(menuName: String, menuID: String, restaurantID: String, imgURL: NSURL, pointVal: Int, price: Float) {
         self.menuName       = menuName
-        self.storeName      = storeName
+        self.menuID         = menuID
+        self.restaurantID   = restaurantID
         self.imgURL         = imgURL
-        self.distanceVal    = distanceVal
         self.pointVal       = pointVal
         self.price          = price
-        self.address        = address
-        self.latitude       = latitude
-        self.longitude      = longitude
     }
     
     func initByJSON(itemJSON:JSON) {
@@ -150,97 +148,8 @@ class Menu {
         }
         
         /**** Restuarant ID ****/
-        if let storeID:String = itemJSON["restaurant"]["$id"]["$oid"].string {
-            self.storeID = storeID
+        if let restaurantID:String = itemJSON["restaurant"]["$id"]["$oid"].string {
+            self.restaurantID = restaurantID
         }
     }
-    /*
-    func setMenuName(menuName:String) {
-        self.menuName = menuName
-    }
-    
-    func getMenuName() -> String {
-        return self.menuName
-    }
-    
-    func setStoreName(storeName:String) {
-        self.storeName = storeName
-    }
-    
-    func getStoreName()->String {
-        return self.storeName
-    }
-    
-    func setImgURL(imgURL:NSURL) {
-        self.imgURL = imgURL
-    }
-    
-    func getImgURL()->NSURL {
-        return self.imgURL
-    }
-    
-    func setDistanceVal(distanceVal:Double) {
-        self.distanceVal = distanceVal
-    }
-    
-    func getDistanceVal()->Double {
-        return self.distanceVal
-    }
-    
-    func setPointVal(pointVal:Int) {
-        self.pointVal = pointVal
-    }
-    
-    func getPointVal()->Int{
-        return self.pointVal
-    }
-    
-    func setPrice(price:Float){
-        self.price = price
-    }
-    
-    func getPrice()->Float {
-        return self.price
-    }
-    
-    func setAddress(address:String) {
-        self.address = address
-    }
-    
-    func getAddress()->String {
-        return self.address
-    }
-    
-    func setLatitude(latitude:Double){
-        self.latitude = latitude
-    }
-    
-    func getLatitude()->Double {
-        return self.latitude
-    }
-    
-    func setLongitude(longitude:Double) {
-        self.longitude = longitude
-    }
-    
-    func getLongitude()-> Double {
-        return self.longitude
-    }
-    
-    func setMenuImage(menuImage:UIImage) {
-        self.imgIsSet = true
-        self.imgUI = menuImage
-    }
-    
-    func getMenuImage() -> UIImage {
-        return self.imgUI
-    }
-    
-    func setStoreID(storeID:String) {
-        self.storeID = storeID
-    }
-    
-    func getStoreID()->String {
-        return self.storeID
-    }*/
 }
