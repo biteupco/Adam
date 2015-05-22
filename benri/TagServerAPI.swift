@@ -21,7 +21,7 @@ class TagSVAPI {
     func getTags(limit:Int, successCallback:(json:AnyObject?)->Void, errorCallback:()->Void){
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        let my_response = Alamofire.request(.GET, apiBaseURL + apiEndPoint,parameters: ["limit": limit])
+        Alamofire.request(.GET, apiBaseURL + apiEndPoint,parameters: ["limit": limit])
             .responseJSON{ (req, res, json, error) in
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 if(error != nil) {

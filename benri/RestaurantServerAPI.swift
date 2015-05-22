@@ -21,7 +21,7 @@ class RestaurantSVAPI {
     func getRestaurantAll(limit:Int, successCallback:(json:AnyObject?)->Void, errorCallback:()->Void){
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        let my_response = Alamofire.request(.GET, apiBaseURL + apiEndPoint)
+        Alamofire.request(.GET, apiBaseURL + apiEndPoint)
             .responseJSON{ (req, res, json, error) in
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 if(error != nil) {
@@ -44,7 +44,7 @@ class RestaurantSVAPI {
         ]
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        let my_response = Alamofire.request(.GET, apiBaseURL + apiEndPoint, parameters: params)
+        Alamofire.request(.GET, apiBaseURL + apiEndPoint, parameters: params)
             .responseJSON{ (req, res, json, error) in
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 if(error != nil) {
@@ -54,6 +54,28 @@ class RestaurantSVAPI {
                     errorCallback()
                 }
                 else {
+                    successCallback(json: json)
+                }
+        }
+    }
+    func getRestaurantByIDs(ids:[String], successCallback:(json:AnyObject?)->Void, errorCallback:()->Void){
+        
+        let params:[String:AnyObject] = [
+            "id"  : "5528df73b1fbf50009c1285e"
+        ]
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+        Alamofire.request(.GET, apiBaseURL + apiEndPoint, parameters: params, encoding: .URL)
+            .responseJSON{ (req, res, json, error) in
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                if(error != nil) {
+                    NSLog("Error: \(error)")
+                    println(req)
+                    println(res)
+                    errorCallback()
+                }
+                else {
+                    println(req)
                     successCallback(json: json)
                 }
         }
