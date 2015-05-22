@@ -135,7 +135,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
             if let restuarant = restaurantCache.loadRestaurant(restaurantID) as Restaurant! {
                 self.restuarantList.setValue(restuarant, forKey: restaurantID)
             }
-            else {
+            else if !contains(_newList, restaurantID) {
                 _newList.append(restaurantID)
             }
         }
@@ -144,24 +144,23 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     
     func loadRestuarantInfo(restaurantList:[String], resetFlag:Bool) {
         var restaurantSVAPI:RestaurantSVAPI = RestaurantSVAPI()
-        for restaurantID in restaurantList {
-            restaurantSVAPI.getRestaurantByID(restaurantID,
-                limit: 1,
-                successCallback: {(somejson)-> Void in
-                    if let json: AnyObject = somejson{
-                        let myJSON = JSON(json)
-                        var restaurant = Restaurant()
-                        restaurant.initByJSON(myJSON)
-                        self.restuarantList.setValue(restaurant, forKey: restaurant.id)
-                        self.restaurantCache.cacheRestaurant(restaurant.id, restaurant: restaurant)
-                    }
-                    self.isPopulating = false
-                    
-                }, errorCallback: {()->Void in
-                    println("Error")
-                    self.isPopulating = false
-            })
-        }
+        
+        println(restaurantList)
+        restaurantSVAPI.getRestaurantByIDs(restaurantList,
+            successCallback: {(somejson)-> Void in
+                if let json: AnyObject = somejson{
+                    let myJSON = JSON(json)
+                    var restaurant = Restaurant()
+                    restaurant.initByJSON(myJSON)
+                    self.restuarantList.setValue(restaurant, forKey: restaurant.id)
+                    self.restaurantCache.cacheRestaurant(restaurant.id, restaurant: restaurant)
+                }
+                self.isPopulating = false
+                
+            }, errorCallback: {()->Void in
+                println("Error")
+                self.isPopulating = false
+        })
     }
     
     func populateMenu(isReset:Bool, tags: String?) -> Void {
@@ -188,11 +187,10 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
    
                         for (index: String, itemJSON: JSON) in myJSON["items"] {
                             var menu:Menu = Menu()
-                            menu.initByJSON(myJSON)
+                            menu.initByJSON(itemJSON)
                             resIDList.append(menu.restaurantID)
                             self.menuArray.addObject(menu)
                         }
-                        
                         var needLoadIDList:[String] = self.loadRestaurantCache(resIDList)
                         if needLoadIDList.count > 0 {
                             self.loadRestuarantInfo(needLoadIDList, resetFlag: isReset)
@@ -228,7 +226,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                         let myJSON = JSON(json)
                         for (index: String, itemJSON: JSON) in myJSON["items"] {
                             var menu:Menu = Menu()
-                            menu.initByJSON(myJSON)
+                            menu.initByJSON(itemJSON)
                             resIDList.append(menu.restaurantID)
                             self.menuArray.addObject(menu)
                         }
