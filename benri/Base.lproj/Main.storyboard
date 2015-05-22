@@ -192,7 +192,7 @@
         <!--Profile-->
         <scene sceneID="6e0-zj-DLu">
             <objects>
-                <viewController title="Profile" id="g64-ZQ-no8" sceneMemberID="viewController">
+                <viewController title="Profile" id="g64-ZQ-no8" customClass="ProfileViewController" customModule="benri" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nkH-7y-RlU"/>
                         <viewControllerLayoutGuide type="bottom" id="N5w-LN-3Kq"/>
@@ -200,7 +200,19 @@
                     <view key="view" contentMode="scaleToFill" id="XV9-2Q-Kx7">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fo7-I3-UxM" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="277" y="285" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Fo7-I3-UxM" secondAttribute="centerX" id="Xyy-yI-bpR"/>
+                            <constraint firstAttribute="centerY" secondItem="Fo7-I3-UxM" secondAttribute="centerY" id="prz-fr-rLh"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Profile" id="QXE-6N-9v4"/>
                 </viewController>
