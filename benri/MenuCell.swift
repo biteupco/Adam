@@ -187,9 +187,9 @@ class MenuCell: UITableViewCell {
         return self.address
     }
     
-    func setMenuCell(inMenuName: String, retaurantName: String, distanceVal:Double, pointVal: Int, price:Float, address: String) {
-        self._setMenuNameLabel(inMenuName)
-        self._setStoreNameLabel(storeName)
+    func setMenuCell(menuName: String, retaurantName: String, distanceVal:Double, pointVal: Int, price:Float, address: String) {
+        self._setMenuNameLabel(menuName)
+        self._setStoreNameLabel(retaurantName)
         self._setPriceLabel(price)
         self._setDistantLabel(distanceVal)
         self._setAddress(address)
