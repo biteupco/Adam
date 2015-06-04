@@ -14,7 +14,7 @@ class RestaurantSVAPI {
     
     let apiBaseURL:String   = "http://snakebite.herokuapp.com"
     let apiEndPoint:String  = "/restaurants"
-    
+    let batchApiEndPoint:String = "/batch/restaurants"
     init(){
         
     }
@@ -61,11 +61,11 @@ class RestaurantSVAPI {
     func getRestaurantByIDs(ids:[String], successCallback:(json:AnyObject?)->Void, errorCallback:()->Void){
         
         let params:[String:AnyObject] = [
-            "id"  : "5528df73b1fbf50009c1285e"
+            "ids"  : ids,
         ]
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        Alamofire.request(.GET, apiBaseURL + apiEndPoint, parameters: params, encoding: .URL)
+        Alamofire.request(.GET, apiBaseURL + batchApiEndPoint, parameters: params, encoding: .URL)
             .responseJSON{ (req, res, json, error) in
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 if(error != nil) {
