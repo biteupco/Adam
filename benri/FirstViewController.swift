@@ -14,10 +14,9 @@ import CoreLocation
 let discoverCloseNotificationKey = "me.gobbl.adam.discoverCloseNotificationKey"
 let discoverSearchNotificationKey = "me.gobbl.adam.discoverSearchNotificationKey"
 
-class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var menuTableView: UITableView!
-    
     var menuArray : NSMutableArray = []
     var restuarantList:NSMutableDictionary = NSMutableDictionary()
     
@@ -142,18 +141,28 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         return _newList
     }
     
-    func loadRestuarantInfo(restaurantList:[String], resetFlag:Bool) {
+    func loadRestuarantInfo(restaurantList:[String], isReset:Bool) {
         var restaurantSVAPI:RestaurantSVAPI = RestaurantSVAPI()
         
-        println(restaurantList)
         restaurantSVAPI.getRestaurantByIDs(restaurantList,
             successCallback: {(somejson)-> Void in
                 if let json: AnyObject = somejson{
                     let myJSON = JSON(json)
-                    var restaurant = Restaurant()
-                    restaurant.initByJSON(myJSON)
-                    self.restuarantList.setValue(restaurant, forKey: restaurant.id)
-                    self.restaurantCache.cacheRestaurant(restaurant.id, restaurant: restaurant)
+                    for (index: String, itemJSON: JSON) in myJSON["items"] {
+                        var restaurant = Restaurant()
+                        restaurant.initByJSON(itemJSON)
+                        self.restuarantList.setValue(restaurant, forKey: restaurant.id)
+                        self.restaurantCache.cacheRestaurant(restaurant.id, restaurant: restaurant)
+                    }
+                    if isReset {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.menuTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Bottom)
+                        }
+                    } else {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.menuTableView.reloadData()
+                        }
+                    }
                 }
                 self.isPopulating = false
                 
@@ -193,7 +202,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                         }
                         var needLoadIDList:[String] = self.loadRestaurantCache(resIDList)
                         if needLoadIDList.count > 0 {
-                            self.loadRestuarantInfo(needLoadIDList, resetFlag: isReset)
+                            self.loadRestuarantInfo(needLoadIDList, isReset: isReset)
                         }
                         else {
                             if isReset {
@@ -233,7 +242,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                         
                         var needLoadIDList:[String] = self.loadRestaurantCache(resIDList)
                         if needLoadIDList.count > 0 {
-                            self.loadRestuarantInfo(needLoadIDList, resetFlag: isReset)
+                            self.loadRestuarantInfo(needLoadIDList, isReset: isReset)
                         }
                         else {
                             if isReset {
@@ -270,62 +279,32 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
             }
         }
     }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell:MenuCell = self.menuTableView.dequeueReusableCellWithIdentifier("menuCell") as! MenuCell
         
-        let cell:MenuCell = tableView.dequeueReusableCellWithIdentifier("menuCell", forIndexPath: indexPath) as! MenuCell
-        if menuArray.count <= 0 {
+        if menuArray.count < 0 {
             return cell
         }
-        let menu = menuArray.objectAtIndex(indexPath.row) as! Menu
         
+        let menu = menuArray.objectAtIndex(indexPath.row) as! Menu
+        let restuarant = restuarantList.objectForKey(menu.restaurantID) as! Restaurant
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)){
             println(menu.imgURL)
             cell.setImageByURL(menu.imgURL)
         }
         
-        //let storeDistance = self.locationService.getDistanceFrom(CLLocation(latitude: menu.latitude, longitude: menu.longitude))
-        
-        let storeDistance = self.locationService.getDistanceFrom(CLLocation(latitude: 20.0, longitude: 20.0))
-        let address = "Temp address"
-        let restaurantName = "Temp restaurant"
-        cell.setMenuCell(menu.menuName, retaurantName: restaurantName, distanceVal: storeDistance, pointVal: menu.pointVal, price: menu.price, address: address)
-        
-        return cell
-        
-    }
-    /*
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuArray.count
-    }*/
-/*
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        println("#############################")
-        let cell:MenuCell = tableView.dequeueReusableCellWithIdentifier("menuCell", forIndexPath: indexPath) as! MenuCell
-        
-        if menuArray.count <= 0 {
-            return cell
-        }
-        
-        let menu = menuArray.objectAtIndex(indexPath.row) as! Menu
-        
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)){
-            println(menu.imgURL)
-            cell.setImageByURL(menu.imgURL)
-        }
-        
-        let storeDistance = self.locationService.getDistanceFrom(CLLocation(latitude: menu.latitude, longitude: menu.longitude))
-        
-        cell.setMenuCell(menu.menuName, storeName: menu.storeName, distanceVal: storeDistance, pointVal: menu.pointVal, price: menu.price, address: menu.address)
-        
+        cell.setMenuCell(menu.menuName, retaurantName: restuarant.name, distanceVal: 1.2, pointVal: 1, price: menu.price, address: restuarant.address)
         return cell
     }
-
-*/
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
 }
 
