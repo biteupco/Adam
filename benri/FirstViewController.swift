@@ -14,6 +14,30 @@ import CoreLocation
 let discoverCloseNotificationKey = "me.gobbl.adam.discoverCloseNotificationKey"
 let discoverSearchNotificationKey = "me.gobbl.adam.discoverSearchNotificationKey"
 
+enum ScreenSize {
+    case UNDEFINED,
+    IPHONE_3_5_INCH,
+    IPHONE_4_INCH,
+    IPHONE_4_7_INCH,
+    IPHONE_5_5_INCH
+}
+func getDeviceSize()->ScreenSize {
+    let screenSize: CGRect = UIScreen.mainScreen().bounds
+
+    if screenSize.width == 320.0 {
+        if screenSize.height == 480.0 {
+            return ScreenSize.IPHONE_3_5_INCH
+        } else {
+            return ScreenSize.IPHONE_4_INCH
+        }
+    } else if screenSize.width == 375.0 {
+        return ScreenSize.IPHONE_4_7_INCH
+    } else if screenSize.width == 414.0 {
+        return ScreenSize.IPHONE_5_5_INCH
+    }
+    return ScreenSize.UNDEFINED
+}
+
 class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var menuTableView: UITableView!
@@ -29,6 +53,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
     var currentLoadedIndex  = 0
     var isPopulating        = false
     var isInitiated         = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -303,6 +328,17 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         return cell
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let deviceSize = getDeviceSize()
+        if deviceSize == ScreenSize.IPHONE_3_5_INCH || deviceSize == ScreenSize.IPHONE_4_INCH {
+            return 295.0;
+        } else if deviceSize == ScreenSize.IPHONE_4_7_INCH {
+            return 340.0;
+        } else if deviceSize == ScreenSize.IPHONE_5_5_INCH {
+            return 370.0;
+        }
+        return 400.0;
+    }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
     }
