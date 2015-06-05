@@ -11,6 +11,9 @@
 		21AF14871B05FA0B00108190 /* RestaurantServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AF14861B05FA0B00108190 /* RestaurantServerAPI.swift */; };
 		21AF14891B0601C800108190 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AF14881B0601C800108190 /* Restaurant.swift */; };
 		21BF4D171B099714001CDBC3 /* RestaurantCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF4D161B099714001CDBC3 /* RestaurantCache.swift */; };
+		21D741281B21A9A9008A8EB5 /* DiscoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D741271B21A9A9008A8EB5 /* DiscoverView.xib */; };
+		21D7412A1B21AA4B008A8EB5 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D741291B21AA4B008A8EB5 /* DiscoverView.swift */; };
+		21D7412C1B21AD36008A8EB5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */; };
 		9656AD9F1AECC62800933A8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656AD9E1AECC62800933A8E /* AppDelegate.swift */; };
 		9656ADA11AECC62800933A8E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656ADA01AECC62800933A8E /* FirstViewController.swift */; };
 		9656ADA31AECC62800933A8E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656ADA21AECC62800933A8E /* SecondViewController.swift */; };
@@ -48,6 +51,9 @@
 		21AF14861B05FA0B00108190 /* RestaurantServerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantServerAPI.swift; sourceTree = "<group>"; };
 		21AF14881B0601C800108190 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		21BF4D161B099714001CDBC3 /* RestaurantCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCache.swift; sourceTree = "<group>"; };
+		21D741271B21A9A9008A8EB5 /* DiscoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverView.xib; sourceTree = "<group>"; };
+		21D741291B21AA4B008A8EB5 /* DiscoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
+		21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		5BD10A0AA37B5DD5EB928422 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9656AD991AECC62800933A8E /* benri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = benri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9656AD9D1AECC62800933A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -140,6 +146,7 @@
 		9656AD9B1AECC62800933A8E /* benri */ = {
 			isa = PBXGroup;
 			children = (
+				21D741271B21A9A9008A8EB5 /* DiscoverView.xib */,
 				96DA5A191AF28AAA0003E506 /* SVAPI */,
 				96DA5A131AF284A80003E506 /* Menu */,
 				96DA5A0A1AF2744F0003E506 /* Lib */,
@@ -147,6 +154,8 @@
 				9656ADA01AECC62800933A8E /* FirstViewController.swift */,
 				9656ADA21AECC62800933A8E /* SecondViewController.swift */,
 				2150F5001B0EFEE200AFDF5E /* ProfileViewController.swift */,
+				21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */,
+				21D741291B21AA4B008A8EB5 /* DiscoverView.swift */,
 				9656ADA41AECC62800933A8E /* Main.storyboard */,
 				9656ADA71AECC62800933A8E /* Images.xcassets */,
 				9656ADA91AECC62800933A8E /* LaunchScreen.xib */,
@@ -300,6 +309,7 @@
 				9656ADA61AECC62800933A8E /* Main.storyboard in Resources */,
 				9656ADAB1AECC62800933A8E /* LaunchScreen.xib in Resources */,
 				9656ADA81AECC62800933A8E /* Images.xcassets in Resources */,
+				21D741281B21A9A9008A8EB5 /* DiscoverView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,9 +382,11 @@
 				96DA5A171AF2850E0003E506 /* MenuCell.swift in Sources */,
 				96DA5A151AF284BB0003E506 /* Menu.swift in Sources */,
 				9656AD9F1AECC62800933A8E /* AppDelegate.swift in Sources */,
+				21D7412A1B21AA4B008A8EB5 /* DiscoverView.swift in Sources */,
 				96DA5A1F1AF28AE90003E506 /* TagServerAPI.swift in Sources */,
 				96DA5A101AF274670003E506 /* HorizontalPicker.swift in Sources */,
 				96DA5A1D1AF28AD20003E506 /* MenuServerAPI.swift in Sources */,
+				21D7412C1B21AD36008A8EB5 /* DiscoverViewController.swift in Sources */,
 				96DA5A111AF274670003E506 /* LocationService.swift in Sources */,
 				96DA5A121AF274670003E506 /* ImageCache.swift in Sources */,
 				2150F5011B0EFEE200AFDF5E /* ProfileViewController.swift in Sources */,

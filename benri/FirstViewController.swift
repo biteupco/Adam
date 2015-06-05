@@ -41,6 +41,21 @@ func getDeviceSize()->ScreenSize {
 class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var menuTableView: UITableView!
+    @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var searchButton: UIButton!
+    
+    @IBAction func onSearchClick(sender: AnyObject) {
+        self.menuTableView.userInteractionEnabled = false
+        self.searchButton.enabled = false
+        self.requestGeo()
+        var discoverVC: DiscoverViewConroller = DiscoverViewConroller(nibName: "DiscoverView", bundle: nil)
+        var discoverView = discoverVC.view
+        self.tabBarController?.addChildViewController(discoverVC)
+        self.tabBarController?.view.addSubview(discoverVC.view)
+    }
+    
+    
+    
     var menuArray : NSMutableArray = []
     var restuarantList:NSMutableDictionary = NSMutableDictionary()
     
@@ -53,11 +68,14 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
     var currentLoadedIndex  = 0
     var isPopulating        = false
     var isInitiated         = false
-    
+    var lastContentOffset:CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNotificationDiscoverClose", name: discoverCloseNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNotificationDiscoverSearch", name: discoverSearchNotificationKey, object: nil)
         
         self.currentLoadedIndex = 0
         self.populateLength     = 3
@@ -291,10 +309,26 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         }
         
     }
+    func setVisibleNavigationBar(isVisible:Bool) {
+        // TODO use variable for magic number 72 , 28
+        if isVisible {
+            self.navBar.hidden = false
+            UIView.animateWithDuration(0.3, animations: {
+                self.menuTableView.frame = CGRectMake(self.menuTableView.frame.origin.x, 72, self.menuTableView.frame.size.width, self.menuTableView.frame.size.height)
+            })
+        } else {
+            self.navBar.hidden = true
+            UIView.animateWithDuration(0.3, animations: {
+                self.menuTableView.frame = CGRectMake(self.menuTableView.frame.origin.x, 28, self.menuTableView.frame.size.width, self.menuTableView.frame.size.height)
+            })
+        }
+    }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        
         if !isInitiated {
             return
+            
         }
         if scrollView.contentOffset.y + view.frame.size.height > scrollView.contentSize.height * 0.8 {
             if let searchTag = const.getConst("search", key: "tag") {
@@ -302,6 +336,13 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
             } else {
                 self.populateMenu(false, tags: nil)
             }
+        }
+        let translation = scrollView.panGestureRecognizer.translationInView(scrollView.superview!)
+        if translation.y > 0 {
+            setVisibleNavigationBar(true)
+        
+        } else {
+            setVisibleNavigationBar(false)
         }
     }
     
@@ -341,6 +382,30 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+    }
+    
+    func updateNotificationDiscoverClose() {
+        // reload here
+        self.navigationController?.view.resignFirstResponder()
+        self.menuTableView.userInteractionEnabled = true
+        self.searchButton.enabled = true
+        const.deleteConst("search", key: "picker")
+    }
+    
+    func updateNotificationDiscoverSearch() {
+        // Mixapanel Track
+        //var mixPanelInstance:Mixpanel = Mixpanel.sharedInstance()
+        
+        // reload here
+        self.navigationController?.view.resignFirstResponder()
+        self.menuTableView.userInteractionEnabled = true
+        self.searchButton.enabled = true
+        if let searchTag = const.getConst("search", key: "picker") {
+            //mixPanelInstance.track("Simulate Search Tag", properties: ["Tag" : searchTag])
+            const.setConst("search", key: "tag", value: searchTag)
+            self.populateMenu(true, tags: searchTag)
+        }
+        const.deleteConst("search", key: "picker")
     }
 }
 
