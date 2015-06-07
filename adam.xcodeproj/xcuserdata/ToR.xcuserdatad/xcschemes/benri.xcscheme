@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9656AD981AECC62800933A8E"
-               BuildableName = "benri.app"
-               BlueprintName = "benri"
-               ReferencedContainer = "container:benri.xcodeproj">
+               BuildableName = "adam.app"
+               BlueprintName = "adam"
+               ReferencedContainer = "container:adam.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9656ADAF1AECC62900933A8E"
-               BuildableName = "benriTests.xctest"
-               BlueprintName = "benriTests"
-               ReferencedContainer = "container:benri.xcodeproj">
+               BuildableName = "adamTests.xctest"
+               BlueprintName = "adamTests"
+               ReferencedContainer = "container:adam.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9656ADAF1AECC62900933A8E"
-               BuildableName = "benriTests.xctest"
-               BlueprintName = "benriTests"
-               ReferencedContainer = "container:benri.xcodeproj">
+               BuildableName = "adamTests.xctest"
+               BlueprintName = "adamTests"
+               ReferencedContainer = "container:adam.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9656AD981AECC62800933A8E"
-            BuildableName = "benri.app"
-            BlueprintName = "benri"
-            ReferencedContainer = "container:benri.xcodeproj">
+            BuildableName = "adam.app"
+            BlueprintName = "adam"
+            ReferencedContainer = "container:adam.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9656AD981AECC62800933A8E"
-            BuildableName = "benri.app"
-            BlueprintName = "benri"
-            ReferencedContainer = "container:benri.xcodeproj">
+            BuildableName = "adam.app"
+            BlueprintName = "adam"
+            ReferencedContainer = "container:adam.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9656AD981AECC62800933A8E"
-            BuildableName = "benri.app"
-            BlueprintName = "benri"
-            ReferencedContainer = "container:benri.xcodeproj">
+            BuildableName = "adam.app"
+            BlueprintName = "adam"
+            ReferencedContainer = "container:adam.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

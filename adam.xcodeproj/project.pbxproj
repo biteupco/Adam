@@ -55,7 +55,7 @@
 		21D741291B21AA4B008A8EB5 /* DiscoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		5BD10A0AA37B5DD5EB928422 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		9656AD991AECC62800933A8E /* benri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = benri.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9656AD991AECC62800933A8E /* adam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = adam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9656AD9D1AECC62800933A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9656AD9E1AECC62800933A8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9656ADA01AECC62800933A8E /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		9656ADA51AECC62800933A8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9656ADA71AECC62800933A8E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9656ADAA1AECC62800933A8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		9656ADB01AECC62900933A8E /* benriTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = benriTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9656ADB01AECC62900933A8E /* adamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = adamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9656ADB51AECC62900933A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9656ADB61AECC62900933A8E /* benriTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = benriTests.swift; sourceTree = "<group>"; };
 		969FB14D1B1AB32300439BDC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -137,8 +137,8 @@
 		9656AD9A1AECC62800933A8E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9656AD991AECC62800933A8E /* benri.app */,
-				9656ADB01AECC62900933A8E /* benriTests.xctest */,
+				9656AD991AECC62800933A8E /* adam.app */,
+				9656ADB01AECC62900933A8E /* adamTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,9 +225,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9656AD981AECC62800933A8E /* benri */ = {
+		9656AD981AECC62800933A8E /* adam */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9656ADBA1AECC62900933A8E /* Build configuration list for PBXNativeTarget "benri" */;
+			buildConfigurationList = 9656ADBA1AECC62900933A8E /* Build configuration list for PBXNativeTarget "adam" */;
 			buildPhases = (
 				6AEFCD83B2802D834190DA7E /* Check Pods Manifest.lock */,
 				9656AD951AECC62800933A8E /* Sources */,
@@ -240,14 +240,14 @@
 			);
 			dependencies = (
 			);
-			name = benri;
+			name = adam;
 			productName = benri;
-			productReference = 9656AD991AECC62800933A8E /* benri.app */;
+			productReference = 9656AD991AECC62800933A8E /* adam.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9656ADAF1AECC62900933A8E /* benriTests */ = {
+		9656ADAF1AECC62900933A8E /* adamTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9656ADBD1AECC62900933A8E /* Build configuration list for PBXNativeTarget "benriTests" */;
+			buildConfigurationList = 9656ADBD1AECC62900933A8E /* Build configuration list for PBXNativeTarget "adamTests" */;
 			buildPhases = (
 				9656ADAC1AECC62900933A8E /* Sources */,
 				9656ADAD1AECC62900933A8E /* Frameworks */,
@@ -258,9 +258,9 @@
 			dependencies = (
 				9656ADB21AECC62900933A8E /* PBXTargetDependency */,
 			);
-			name = benriTests;
+			name = adamTests;
 			productName = benriTests;
-			productReference = 9656ADB01AECC62900933A8E /* benriTests.xctest */;
+			productReference = 9656ADB01AECC62900933A8E /* adamTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -282,7 +282,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9656AD941AECC62800933A8E /* Build configuration list for PBXProject "benri" */;
+			buildConfigurationList = 9656AD941AECC62800933A8E /* Build configuration list for PBXProject "adam" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -295,8 +295,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9656AD981AECC62800933A8E /* benri */,
-				9656ADAF1AECC62900933A8E /* benriTests */,
+				9656AD981AECC62800933A8E /* adam */,
+				9656ADAF1AECC62900933A8E /* adamTests */,
 			);
 		};
 /* End PBXProject section */
@@ -408,7 +408,7 @@
 /* Begin PBXTargetDependency section */
 		9656ADB21AECC62900933A8E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9656AD981AECC62800933A8E /* benri */;
+			target = 9656AD981AECC62800933A8E /* adam */;
 			targetProxy = 9656ADB11AECC62900933A8E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -530,7 +530,7 @@
 				INFOPLIST_FILE = benri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = adam;
 				SWIFT_OBJC_BRIDGING_HEADER = "benri/Bridging-Header.h";
 			};
 			name = Debug;
@@ -549,7 +549,7 @@
 				INFOPLIST_FILE = benri/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = adam;
 				SWIFT_OBJC_BRIDGING_HEADER = "benri/Bridging-Header.h";
 			};
 			name = Release;
@@ -568,7 +568,7 @@
 				);
 				INFOPLIST_FILE = benriTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = adamTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/benri.app/benri";
 			};
 			name = Debug;
@@ -583,7 +583,7 @@
 				);
 				INFOPLIST_FILE = benriTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = adamTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/benri.app/benri";
 			};
 			name = Release;
@@ -591,7 +591,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9656AD941AECC62800933A8E /* Build configuration list for PBXProject "benri" */ = {
+		9656AD941AECC62800933A8E /* Build configuration list for PBXProject "adam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9656ADB81AECC62900933A8E /* Debug */,
@@ -600,7 +600,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9656ADBA1AECC62900933A8E /* Build configuration list for PBXNativeTarget "benri" */ = {
+		9656ADBA1AECC62900933A8E /* Build configuration list for PBXNativeTarget "adam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9656ADBB1AECC62900933A8E /* Debug */,
@@ -609,7 +609,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9656ADBD1AECC62900933A8E /* Build configuration list for PBXNativeTarget "benriTests" */ = {
+		9656ADBD1AECC62900933A8E /* Build configuration list for PBXNativeTarget "adamTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9656ADBE1AECC62900933A8E /* Debug */,
