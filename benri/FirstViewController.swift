@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import CoreLocation
+import Mixpanel
 
 let discoverCloseNotificationKey = "me.gobbl.adam.discoverCloseNotificationKey"
 let discoverSearchNotificationKey = "me.gobbl.adam.discoverSearchNotificationKey"
@@ -391,23 +392,15 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
     }
     
     func updateNotificationDiscoverClose() {
-        // reload here
-        self.navigationController?.view.resignFirstResponder()
-        self.menuTableView.userInteractionEnabled = true
-        self.searchButton.enabled = true
         const.deleteConst("search", key: "picker")
     }
     
     func updateNotificationDiscoverSearch() {
         // Mixapanel Track
-        //var mixPanelInstance:Mixpanel = Mixpanel.sharedInstance()
-        
-        // reload here
-        self.navigationController?.view.resignFirstResponder()
-        self.menuTableView.userInteractionEnabled = true
-        self.searchButton.enabled = true
         if let searchTag = const.getConst("search", key: "picker") {
-            //mixPanelInstance.track("Simulate Search Tag", properties: ["Tag" : searchTag])
+            var mixPanelInstance:Mixpanel = Mixpanel.sharedInstance()
+            mixPanelInstance.track("Simulate Search Tag", properties: ["Tag" : searchTag])
+            
             const.setConst("search", key: "tag", value: searchTag)
             self.populateMenu(true, tags: searchTag)
         }
