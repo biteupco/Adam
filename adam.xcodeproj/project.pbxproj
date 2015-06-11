@@ -23,6 +23,7 @@
 		9656ADB71AECC62900933A8E /* benriTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656ADB61AECC62900933A8E /* benriTests.swift */; };
 		969FB14E1B1AB32300439BDC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969FB14D1B1AB32300439BDC /* FBSDKLoginKit.framework */; };
 		969FB1501B1AB35700439BDC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969FB14F1B1AB35700439BDC /* FBSDKCoreKit.framework */; };
+		96C24E901B244527006C5806 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C24E8F1B244527006C5806 /* SearchViewController.swift */; };
 		96DA5A0F1AF274670003E506 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA5A0B1AF274670003E506 /* Const.swift */; };
 		96DA5A101AF274670003E506 /* HorizontalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA5A0C1AF274670003E506 /* HorizontalPicker.swift */; };
 		96DA5A111AF274670003E506 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA5A0D1AF274670003E506 /* LocationService.swift */; };
@@ -68,6 +69,7 @@
 		9656ADB61AECC62900933A8E /* benriTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = benriTests.swift; sourceTree = "<group>"; };
 		969FB14D1B1AB32300439BDC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		969FB14F1B1AB35700439BDC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		96C24E8F1B244527006C5806 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		96DA5A0B1AF274670003E506 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		96DA5A0C1AF274670003E506 /* HorizontalPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalPicker.swift; sourceTree = "<group>"; };
 		96DA5A0D1AF274670003E506 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				96DA5A0A1AF2744F0003E506 /* Lib */,
 				9656AD9E1AECC62800933A8E /* AppDelegate.swift */,
 				9656ADA01AECC62800933A8E /* FirstViewController.swift */,
+				96C24E8F1B244527006C5806 /* SearchViewController.swift */,
 				9656ADA21AECC62800933A8E /* SecondViewController.swift */,
 				2150F5001B0EFEE200AFDF5E /* ProfileViewController.swift */,
 				21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */,
@@ -389,6 +392,7 @@
 				21D7412C1B21AD36008A8EB5 /* DiscoverViewController.swift in Sources */,
 				96DA5A111AF274670003E506 /* LocationService.swift in Sources */,
 				96DA5A121AF274670003E506 /* ImageCache.swift in Sources */,
+				96C24E901B244527006C5806 /* SearchViewController.swift in Sources */,
 				2150F5011B0EFEE200AFDF5E /* ProfileViewController.swift in Sources */,
 				21AF14871B05FA0B00108190 /* RestaurantServerAPI.swift in Sources */,
 				9656ADA11AECC62800933A8E /* FirstViewController.swift in Sources */,
