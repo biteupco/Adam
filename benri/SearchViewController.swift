@@ -16,7 +16,18 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var surpriseButton: UIButton!
     
+    @IBAction func cancelSearch(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName(discoverCloseNotificationKey, object: self)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    @IBAction func confirmSearch(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName(discoverSearchNotificationKey, object: self)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
     let PICKER_TEXT_HEIGHT:CGFloat = 44.0
+    let PICKER_TEXT_SIZE:CGFloat = 22.0
     let BUTTON_HEIGHT:CGFloat = 76.0
     let screenSize: CGRect = UIScreen.mainScreen().bounds
     
@@ -74,7 +85,8 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     func addBlurPage() {
         self.view.backgroundColor = UIColor.clearColor()
         
-        let blurEffect:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        let blurEffect:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark
+        )
         let bluredEffectView = UIVisualEffectView(effect: blurEffect)
         let screenFrame = UIScreen.mainScreen().bounds
         
@@ -123,6 +135,8 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             var rect:CGRect = CGRectMake(0, 0, labelWidth, labelHeight)
             var label:UILabel = UILabel(frame: rect)
             label.text = pickerData[row]
+            label.font = UIFont(name: label.font.fontName, size: PICKER_TEXT_SIZE)
+            
             label.adjustsFontSizeToFitWidth = true
             label.opaque = false
             label.textAlignment = NSTextAlignment.Center
