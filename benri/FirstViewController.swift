@@ -62,6 +62,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
     var const:Const         = Const.sharedInstance
     var locationService:LocationService = LocationService.sharedInstance
     var restaurantCache:RestaurantCache = RestaurantCache.sharedInstance
+    var imgCache:ImageCache = ImageCache.sharedInstance
     
     let locationManager     = CLLocationManager()
     var populateLength      = 3
@@ -309,6 +310,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         }
         
     }
+    
     func setVisibleNavigationBar(isVisible:Bool) {
         // TODO use variable for magic number 72 , 28
         if isVisible {
@@ -360,11 +362,15 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         let menu = menuArray.objectAtIndex(indexPath.row) as! Menu
         let restuarant = restuarantList.objectForKey(menu.restaurantID) as! Restaurant
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)){
-            println(menu.imgURL)
+        /*
+        if let image = self.imgCache.loadImage(menu.imgURL){
             cell.setImageByURL(menu.imgURL)
-        }
-        
+        } else {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)){
+                cell.setImageByURL(menu.imgURL)
+            }
+        }*/
+        cell.setImageByURL(menu.imgURL)
         cell.setMenuCell(menu.menuName, retaurantName: restuarant.name, distanceVal: 1.2, pointVal: 1, price: menu.price, address: restuarant.address)
         return cell
     }
@@ -406,6 +412,14 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
             self.populateMenu(true, tags: searchTag)
         }
         const.deleteConst("search", key: "picker")
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
+        if let mysegue = segue {
+            println(mysegue.identifier)
+            
+        }
+        
     }
 }
 
