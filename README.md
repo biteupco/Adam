@@ -1,14 +1,23 @@
-# Benri
+# Adam
+(New) Client for gobbl
+Old one is here https://github.com/gobbl/adam-deprecated
 
-(New) Client for gobbl 
+##Gobbl
+Food Next Door
+
 
 ### Dependencies
 1. Facebook SDK
-2. Alamofire SDK
-3. SwifttyJSON SDK
+2. [Alamofire](https://github.com/Alamofire/Alamofire)
+3. [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
 4. (optional)Mixpanel SDK
 
 #### Before Run
+Pod install.
+We manage [Alamofire](https://github.com/Alamofire/Alamofire) and [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) by [Cocoapods](https://github.com/cocoapods/cocoapods). So before we bagan we mus run
+
+`pod install` or `pod update` if you already installed it.
+
 To able to work with current version of server side we have to midify some of the Alamofire library: in order to meet the server's request prameter format.
 
 1. We add this function.
