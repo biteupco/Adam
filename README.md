@@ -2,7 +2,7 @@
 (New) Client for gobbl
 Old one is here https://github.com/gobbl/adam-deprecated
 
-##Gobbl
+##[Gobbl](http://gobbl.me/)
 Food Next Door
 
 
