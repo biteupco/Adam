@@ -54,6 +54,8 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        placesClient = GMSPlacesClient()
+        
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
         
@@ -66,7 +68,6 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         self.addBlurPage()
         
         self.showTags()
-        placesClient = GMSPlacesClient()
     }
     
     override func didReceiveMemoryWarning() {
