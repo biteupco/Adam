@@ -15,6 +15,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var surpriseButton: UIButton!
+    @IBOutlet weak var locationLabel: UILabel!
     
     @IBAction func cancelSearch(sender: AnyObject) {
         NSNotificationCenter.defaultCenter().postNotificationName(discoverCloseNotificationKey, object: self)
@@ -25,15 +26,30 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func returnFromLocationSearchSegueActions(sender: UIStoryboardSegue){
+        println("return")
+        println(self.searchLocation)
+        println(sender.identifier)
+        println(searchLocationCoordinate.coordinate.latitude)
+        if sender.identifier == "selectLocationFromSearchSegueUnwind" {
+            // update location
+            locationLabel.text = searchLocation
+        }
+    }
     
-    let PICKER_TEXT_HEIGHT:CGFloat = 44.0
-    let PICKER_TEXT_SIZE:CGFloat = 22.0
-    let BUTTON_HEIGHT:CGFloat = 76.0
+    private let PICKER_TEXT_HEIGHT:CGFloat = 44.0
+    private let PICKER_TEXT_SIZE:CGFloat = 22.0
+    private let BUTTON_HEIGHT:CGFloat = 76.0
+    private var activityView: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+    
     let screenSize: CGRect = UIScreen.mainScreen().bounds
-    
-    var pickerData:[String] = []
     var const:Const         = Const.sharedInstance
-    var activityView: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+    var locationService:LocationService = LocationService.sharedInstance
+    
+    var placesClient: GMSPlacesClient?
+    private var pickerData:[String] = []
+    var searchLocation:String = ""
+    var searchLocationCoordinate:CLLocation = LocationService.sharedInstance.getCurrentLocation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +66,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         self.addBlurPage()
         
         self.showTags()
+        placesClient = GMSPlacesClient()
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,7 +74,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         // Dispose of any resources that can be recreated.
     }
     
-    func onSuccess(json:AnyObject?) {
+    private func onSuccess(json:AnyObject?) {
         if let json: AnyObject = json {
             let tagJSON = JSON(json)
             for (index: String, itemJSON: JSON) in tagJSON["items"] {
@@ -69,7 +86,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         }
     }
     
-    func showTags() {
+    private func showTags() {
         let tagSVAPI:TagSVAPI = TagSVAPI()
         
         activityView.center = self.view.center
@@ -82,7 +99,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         })
     }
     
-    func addBlurPage() {
+    private func addBlurPage() {
         self.view.backgroundColor = UIColor.clearColor()
         
         let blurEffect:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark
