@@ -19,6 +19,9 @@ class MenuCell: UITableViewCell {
     @IBOutlet weak var imgProgressView: UIProgressView!
     
     
+    var locationService = LocationService.sharedInstance
+    var imgCache:ImageCache = ImageCache.sharedInstance
+   
     var menuName: String = ""
     var storeName: String = ""
     var menuImageURL: NSURL = NSURL(string: "http://upload.wikimedia.org/wikipedia/commons/a/ad/Kyaraben_panda.jpg")!
@@ -26,7 +29,6 @@ class MenuCell: UITableViewCell {
     var distant: String = ""
     var address: String = ""
     var isImageSet:Bool = false
-    var imgCache:ImageCache = ImageCache.sharedInstance
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -76,7 +78,7 @@ class MenuCell: UITableViewCell {
         
     }
     
-    func _setPriceLabel(price: Float){
+    func _setPriceLabel(price: Float, currencyCode:String){
         var const:Const = Const.sharedInstance
         var priceText = ""
         if price % 1 == 0 {
@@ -86,11 +88,8 @@ class MenuCell: UITableViewCell {
             priceText = String(format: "%.2f", price)
         }
         
-        if let currency = const.getConst("setting", key: "CURRENCY") {
-            if let currencySign = const.getConst("currencySign", key: currency) {
-                priceText = " " + currencySign + " " + priceText + "  "
-            }
-        }
+        let currencySymbol = CurrencyConverter.codeToSymbol(currencyCode)
+        priceText = " " + currencySymbol + " " + priceText + "  "
         resizePriceLabelFrame(priceText)
     }
     
@@ -189,13 +188,14 @@ class MenuCell: UITableViewCell {
     func _getAddress() -> String?{
         return self.address
     }
-    
-    func setMenuCell(menuName: String, retaurantName: String, distanceVal:Double, pointVal: Int, price:Float, address: String) {
-        self._setMenuNameLabel(menuName)
-        self._setStoreNameLabel(retaurantName)
-        self._setPriceLabel(price)
-        self._setDistantLabel(distanceVal)
-        self._setAddress(address)
+    func setMenu(menu:Menu, restaurant:Restaurant) {
+        let storeDistance = self.locationService.getDistanceFrom(restaurant.location)
+        
+        self._setDistantLabel(storeDistance)
+        self._setMenuNameLabel(menu.menuName)
+        self._setStoreNameLabel(restaurant.name)
+        self._setPriceLabel(menu.price, currencyCode: menu.currency)
+        self._setAddress(restaurant.address)
     }
 
 }
