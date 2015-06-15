@@ -15,12 +15,16 @@ class LocationService: NSObject {
     private var currentLocality:String
     
     override init() {
-        currentLocation = CLLocation(latitude: 35.6895, longitude: 139.6917)
+        currentLocation = CLLocation(latitude: 35.664122, longitude: 139.729426)
         currentLocality = "Minato"
     }
     
     func getCurrentLocation() -> CLLocation {
         return currentLocation
+    }
+    
+    func locationToLonLat(location:CLLocation) -> [CGFloat] {
+        return [CGFloat(location.coordinate.longitude), CGFloat(location.coordinate.latitude)]
     }
     
     func getDistanceFrom(targetLocation:CLLocation) -> Double {

@@ -34,6 +34,9 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         if sender.identifier == "selectLocationFromSearchSegueUnwind" {
             // update location
             locationLabel.text = searchLocation
+            let lonlatSearch = String(stringInterpolationSegment: searchLocationCoordinate.coordinate.longitude) + "," + String(stringInterpolationSegment: searchLocationCoordinate.coordinate.latitude)
+            println(lonlatSearch)
+            const.setConst("search", key: "location", value: lonlatSearch)
         }
     }
     
