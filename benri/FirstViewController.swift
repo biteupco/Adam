@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import CoreLocation
+import Mixpanel
 
 let discoverCloseNotificationKey = "me.gobbl.adam.discoverCloseNotificationKey"
 let discoverSearchNotificationKey = "me.gobbl.adam.discoverSearchNotificationKey"
@@ -91,7 +92,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
             self.locationManager.requestAlwaysAuthorization()
         } else {
             isInitiated = true
-            self.populateMenu(true, tags: nil)
+            self.populateMenu(true, tags: nil, location:locationService.locationToLonLat(locationService.getCurrentLocation()))
         }
     }
 
@@ -105,7 +106,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
             static var onceToken : dispatch_once_t = 0
         }
         dispatch_once(&Static.onceToken) {
-            self.populateMenu(false, tags: nil)
+            self.populateMenu(false, tags: nil, location:self.locationService.locationToLonLat(self.locationService.getCurrentLocation()))
         }
     }
     
@@ -216,7 +217,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         })
     }
     
-    func populateMenu(isReset:Bool, tags: String?) -> Void {
+    func populateMenu(isReset:Bool, tags: String?, location: [CGFloat]?) -> Void {
         if self.isPopulating {
             return
         }
@@ -224,11 +225,13 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
             self.currentLoadedIndex = 0
             self.menuArray = []
         }
-        
+        println("location")
+        println(location)
         isPopulating = true
         var menuSVAPI:MenuSVAPI = MenuSVAPI()
         if let searchTag = tags {
             menuSVAPI.getMenuByTags(searchTag,
+                location:location,
                 start: self.currentLoadedIndex,
                 limit: self.populateLength,
                 successCallback: {(somejson) -> Void in
@@ -268,7 +271,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
                     self.isPopulating = false
             })
         } else {
-            menuSVAPI.getMenu(self.currentLoadedIndex,
+            menuSVAPI.getMenu(location,
+                start:self.currentLoadedIndex,
                 limit: self.populateLength,
                 successCallback: {(somejson) -> Void in
                     if let json: AnyObject = somejson{
@@ -326,18 +330,43 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         }
     }
     
+    func castCGFloat()->(String)->CGFloat {
+        return { (invalue:String) -> CGFloat in
+            if let n = NSNumberFormatter().numberFromString(invalue) {
+                let result = CGFloat(n)
+                return result
+            }
+            return 0.0
+        }
+    }
+    
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
         if !isInitiated {
             return
             
         }
+        
         if scrollView.contentOffset.y + view.frame.size.height > scrollView.contentSize.height * 0.8 {
-            if let searchTag = const.getConst("search", key: "tag") {
-                self.populateMenu(false, tags: searchTag)
+            if let locationSearch = const.getConst("search", key: "location"){
+                let location:[CGFloat] = (split(locationSearch) {$0 == ","}).map(castCGFloat())
+                if let searchTag = const.getConst("search", key: "tag") {
+                    self.populateMenu(false, tags: searchTag, location:location)
+                } else {
+                    self.populateMenu(false, tags: nil, location:location)
+                }
+            
             } else {
-                self.populateMenu(false, tags: nil)
+                if let searchTag = const.getConst("search", key: "tag") {
+                    self.populateMenu(false, tags: searchTag, location:nil)
+                } else {
+                    self.populateMenu(false, tags: nil, location:nil)
+                }
+            
             }
+            
+            
+            
         }
         let translation = scrollView.panGestureRecognizer.translationInView(scrollView.superview!)
         if translation.y > 0 {
@@ -371,7 +400,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
             }
         }*/
         cell.setImageByURL(menu.imgURL)
-        cell.setMenuCell(menu.menuName, retaurantName: restuarant.name, distanceVal: 1.2, pointVal: 1, price: menu.price, address: restuarant.address)
+        let storeDistance = self.locationService.getDistanceFrom(restuarant.location)
+        
+        cell.setMenuCell(menu.menuName, retaurantName: restuarant.name, distanceVal: storeDistance, pointVal: 1, price: menu.price, address: restuarant.address)
         return cell
     }
     
@@ -391,26 +422,30 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
     }
     
     func updateNotificationDiscoverClose() {
-        // reload here
-        self.navigationController?.view.resignFirstResponder()
-        self.menuTableView.userInteractionEnabled = true
-        self.searchButton.enabled = true
         const.deleteConst("search", key: "picker")
     }
     
     func updateNotificationDiscoverSearch() {
         // Mixapanel Track
-        //var mixPanelInstance:Mixpanel = Mixpanel.sharedInstance()
-        
-        // reload here
-        self.navigationController?.view.resignFirstResponder()
-        self.menuTableView.userInteractionEnabled = true
-        self.searchButton.enabled = true
-        if let searchTag = const.getConst("search", key: "picker") {
-            //mixPanelInstance.track("Simulate Search Tag", properties: ["Tag" : searchTag])
-            const.setConst("search", key: "tag", value: searchTag)
-            self.populateMenu(true, tags: searchTag)
+        if let locationSearch = const.getConst("search", key: "location"){
+            let location:[CGFloat] = (split(locationSearch) {$0 == ","}).map(castCGFloat())
+            if let searchTag = const.getConst("search", key: "picker") {
+                var mixPanelInstance:Mixpanel = Mixpanel.sharedInstance()
+                mixPanelInstance.track("Simulate Search Tag", properties: ["Tag" : searchTag])
+                
+                const.setConst("search", key: "tag", value: searchTag)
+                self.populateMenu(true, tags: searchTag, location:location)
+            }
+        } else {
+            if let searchTag = const.getConst("search", key: "picker") {
+                var mixPanelInstance:Mixpanel = Mixpanel.sharedInstance()
+                mixPanelInstance.track("Simulate Search Tag", properties: ["Tag" : searchTag])
+                
+                const.setConst("search", key: "tag", value: searchTag)
+                self.populateMenu(true, tags: searchTag, location:nil)
+            }
         }
+        
         const.deleteConst("search", key: "picker")
     }
     

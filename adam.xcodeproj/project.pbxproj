@@ -14,6 +14,7 @@
 		21D741281B21A9A9008A8EB5 /* DiscoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D741271B21A9A9008A8EB5 /* DiscoverView.xib */; };
 		21D7412A1B21AA4B008A8EB5 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D741291B21AA4B008A8EB5 /* DiscoverView.swift */; };
 		21D7412C1B21AD36008A8EB5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */; };
+		9616799B1B2C72BA00A43AD3 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9616799A1B2C72BA00A43AD3 /* LocationSearchViewController.swift */; };
 		9656AD9F1AECC62800933A8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656AD9E1AECC62800933A8E /* AppDelegate.swift */; };
 		9656ADA11AECC62800933A8E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656ADA01AECC62800933A8E /* FirstViewController.swift */; };
 		9656ADA31AECC62800933A8E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656ADA21AECC62800933A8E /* SecondViewController.swift */; };
@@ -21,8 +22,10 @@
 		9656ADA81AECC62800933A8E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9656ADA71AECC62800933A8E /* Images.xcassets */; };
 		9656ADAB1AECC62800933A8E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9656ADA91AECC62800933A8E /* LaunchScreen.xib */; };
 		9656ADB71AECC62900933A8E /* benriTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656ADB61AECC62900933A8E /* benriTests.swift */; };
+		967867701B2C9A7F0047C7BB /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9678676F1B2C9A7F0047C7BB /* SearchCell.swift */; };
 		969FB14E1B1AB32300439BDC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969FB14D1B1AB32300439BDC /* FBSDKLoginKit.framework */; };
 		969FB1501B1AB35700439BDC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969FB14F1B1AB35700439BDC /* FBSDKCoreKit.framework */; };
+		96C24E901B244527006C5806 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C24E8F1B244527006C5806 /* SearchViewController.swift */; };
 		96DA5A0F1AF274670003E506 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA5A0B1AF274670003E506 /* Const.swift */; };
 		96DA5A101AF274670003E506 /* HorizontalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA5A0C1AF274670003E506 /* HorizontalPicker.swift */; };
 		96DA5A111AF274670003E506 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA5A0D1AF274670003E506 /* LocationService.swift */; };
@@ -55,6 +58,7 @@
 		21D741291B21AA4B008A8EB5 /* DiscoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		5BD10A0AA37B5DD5EB928422 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9616799A1B2C72BA00A43AD3 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		9656AD991AECC62800933A8E /* adam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = adam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9656AD9D1AECC62800933A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9656AD9E1AECC62800933A8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,8 +70,10 @@
 		9656ADB01AECC62900933A8E /* adamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = adamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9656ADB51AECC62900933A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9656ADB61AECC62900933A8E /* benriTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = benriTests.swift; sourceTree = "<group>"; };
+		9678676F1B2C9A7F0047C7BB /* SearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		969FB14D1B1AB32300439BDC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		969FB14F1B1AB35700439BDC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		96C24E8F1B244527006C5806 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		96DA5A0B1AF274670003E506 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		96DA5A0C1AF274670003E506 /* HorizontalPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalPicker.swift; sourceTree = "<group>"; };
 		96DA5A0D1AF274670003E506 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
@@ -152,11 +158,14 @@
 				96DA5A0A1AF2744F0003E506 /* Lib */,
 				9656AD9E1AECC62800933A8E /* AppDelegate.swift */,
 				9656ADA01AECC62800933A8E /* FirstViewController.swift */,
+				96C24E8F1B244527006C5806 /* SearchViewController.swift */,
+				9616799A1B2C72BA00A43AD3 /* LocationSearchViewController.swift */,
 				9656ADA21AECC62800933A8E /* SecondViewController.swift */,
 				2150F5001B0EFEE200AFDF5E /* ProfileViewController.swift */,
 				21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */,
 				21D741291B21AA4B008A8EB5 /* DiscoverView.swift */,
 				9656ADA41AECC62800933A8E /* Main.storyboard */,
+				9678676F1B2C9A7F0047C7BB /* SearchCell.swift */,
 				9656ADA71AECC62800933A8E /* Images.xcassets */,
 				9656ADA91AECC62800933A8E /* LaunchScreen.xib */,
 				9656AD9C1AECC62800933A8E /* Supporting Files */,
@@ -376,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21AF14891B0601C800108190 /* Restaurant.swift in Sources */,
+				967867701B2C9A7F0047C7BB /* SearchCell.swift in Sources */,
 				9656ADA31AECC62800933A8E /* SecondViewController.swift in Sources */,
 				96DA5A0F1AF274670003E506 /* Const.swift in Sources */,
 				21BF4D171B099714001CDBC3 /* RestaurantCache.swift in Sources */,
@@ -388,7 +398,9 @@
 				96DA5A1D1AF28AD20003E506 /* MenuServerAPI.swift in Sources */,
 				21D7412C1B21AD36008A8EB5 /* DiscoverViewController.swift in Sources */,
 				96DA5A111AF274670003E506 /* LocationService.swift in Sources */,
+				9616799B1B2C72BA00A43AD3 /* LocationSearchViewController.swift in Sources */,
 				96DA5A121AF274670003E506 /* ImageCache.swift in Sources */,
+				96C24E901B244527006C5806 /* SearchViewController.swift in Sources */,
 				2150F5011B0EFEE200AFDF5E /* ProfileViewController.swift in Sources */,
 				21AF14871B05FA0B00108190 /* RestaurantServerAPI.swift in Sources */,
 				9656ADA11AECC62800933A8E /* FirstViewController.swift in Sources */,

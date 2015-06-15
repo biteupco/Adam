@@ -36,12 +36,16 @@ class MenuSVAPI {
             }
     }
     
-    func getMenu(start:Int, limit:Int, successCallback:(json:AnyObject?)->Void, errorCallback:()->Void){
+    func getMenu(location:[CGFloat]?, start:Int, limit:Int, successCallback:(json:AnyObject?)->Void, errorCallback:()->Void){
         
-        let params = [
+        var params:[String:AnyObject] = [
             "start": String(start),
             "limit": String(limit)
         ]
+        if let location = location {
+            params["geolocation"] = location
+        }
+        
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
         Alamofire.request(.GET, apiBaseURL + apiEndPoint, parameters: params)
@@ -59,13 +63,16 @@ class MenuSVAPI {
             }
     }
     
-    func getMenuByTags(tags:String, start:Int, limit:Int, successCallback:(json:AnyObject?)->Void, errorCallback:()->Void){
+    func getMenuByTags(tags:String, location:[CGFloat]?,start:Int, limit:Int, successCallback:(json:AnyObject?)->Void, errorCallback:()->Void){
         
-        let params = [
+        var params:[String:AnyObject] = [
             "tags"  : tags,
             "start": String(start),
             "limit": String(limit)
         ]
+        if let location = location {
+            params["geolocation"] = location
+        }
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
         Alamofire.request(.GET, apiBaseURL + apiEndPoint, parameters: params)
