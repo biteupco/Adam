@@ -106,7 +106,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     private func addBlurPage() {
         self.view.backgroundColor = UIColor.clearColor()
         
-        let blurEffect:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark
+        let blurEffect:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light
         )
         let bluredEffectView = UIVisualEffectView(effect: blurEffect)
         let screenFrame = UIScreen.mainScreen().bounds
@@ -161,7 +161,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             label.adjustsFontSizeToFitWidth = true
             label.opaque = false
             label.textAlignment = NSTextAlignment.Center
-            label.textColor = UIColor.whiteColor()
+            label.textColor = UIColor.blackColor()
             label.clipsToBounds = false
             
             return label
