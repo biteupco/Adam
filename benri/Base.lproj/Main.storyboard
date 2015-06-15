@@ -46,12 +46,9 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="363" sectionHeaderHeight="10" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="V9q-mp-oQo">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="363" sectionHeaderHeight="10" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="V9q-mp-oQo">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="V9q-mp-oQo" secondAttribute="height" multiplier="400:679" id="2Zi-YO-aW0"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuCell" rowHeight="370" id="NrS-Yw-x3d" customClass="MenuCell" customModule="adam" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="65" width="320" height="280"/>
@@ -195,16 +192,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="2Zi-YO-aW0"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="2Zi-YO-aW0"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="9pv-A4-QxB" id="o1h-Jf-Gpv"/>
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="VBa-w1-iLK"/>
@@ -214,17 +201,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="tl7-Lj-Y8u" secondAttribute="trailing" id="DzS-oG-Gtx"/>
+                            <constraint firstAttribute="trailing" secondItem="V9q-mp-oQo" secondAttribute="trailing" id="SCP-5G-wKL"/>
                             <constraint firstItem="tl7-Lj-Y8u" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="X7b-JG-TBl"/>
-                            <constraint firstItem="V9q-mp-oQo" firstAttribute="top" secondItem="tl7-Lj-Y8u" secondAttribute="bottom" id="aQX-uE-qcu">
-                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
-                            </constraint>
-                            <constraint firstItem="V9q-mp-oQo" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="cEJ-vG-1o6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tl7-Lj-Y8u" secondAttribute="trailing" id="dxo-sp-sB6"/>
+                            <constraint firstItem="V9q-mp-oQo" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="dzh-b4-F5E"/>
                             <constraint firstItem="tl7-Lj-Y8u" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="ewk-b8-NPH"/>
                             <constraint firstItem="tl7-Lj-Y8u" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" id="fYV-iF-Y08">
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
-                            <constraint firstAttribute="trailing" secondItem="V9q-mp-oQo" secondAttribute="trailing" id="wqZ-GG-qsL"/>
+                            <constraint firstItem="V9q-mp-oQo" firstAttribute="top" secondItem="tl7-Lj-Y8u" secondAttribute="bottom" id="nJh-Aq-ydN"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="V9q-mp-oQo" secondAttribute="bottom" id="pGI-Fg-S0e"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -237,9 +223,10 @@
                                 <exclude reference="dxo-sp-sB6"/>
                                 <exclude reference="ewk-b8-NPH"/>
                                 <exclude reference="fYV-iF-Y08"/>
-                                <exclude reference="aQX-uE-qcu"/>
-                                <exclude reference="cEJ-vG-1o6"/>
-                                <exclude reference="wqZ-GG-qsL"/>
+                                <exclude reference="SCP-5G-wKL"/>
+                                <exclude reference="dzh-b4-F5E"/>
+                                <exclude reference="nJh-Aq-ydN"/>
+                                <exclude reference="pGI-Fg-S0e"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -253,9 +240,10 @@
                                 <exclude reference="dxo-sp-sB6"/>
                                 <include reference="ewk-b8-NPH"/>
                                 <include reference="fYV-iF-Y08"/>
-                                <include reference="aQX-uE-qcu"/>
-                                <include reference="cEJ-vG-1o6"/>
-                                <include reference="wqZ-GG-qsL"/>
+                                <include reference="SCP-5G-wKL"/>
+                                <include reference="dzh-b4-F5E"/>
+                                <include reference="nJh-Aq-ydN"/>
+                                <include reference="pGI-Fg-S0e"/>
                             </mask>
                         </variation>
                     </view>
@@ -339,7 +327,6 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's eat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uP4-Lj-SxH">
                                             <rect key="frame" x="66" y="81" width="219" height="37"/>
                                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="33"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -369,7 +356,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="9QR-kB-egy"/>
                                 </constraints>
-                                <blurEffect style="dark"/>
+                                <blurEffect style="light"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="9QR-kB-egy"/>
@@ -463,9 +450,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="0Zn-uN-xA6"/>
                                 </constraints>
-                                <vibrancyEffect>
-                                    <blurEffect style="light"/>
-                                </vibrancyEffect>
+                                <blurEffect style="light"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="0Zn-uN-xA6"/>
@@ -638,6 +623,9 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="18" y="13" width="284" height="18"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
