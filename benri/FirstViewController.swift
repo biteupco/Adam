@@ -22,6 +22,7 @@ enum ScreenSize {
     IPHONE_4_7_INCH,
     IPHONE_5_5_INCH
 }
+
 func getDeviceSize()->ScreenSize {
     let screenSize: CGRect = UIScreen.mainScreen().bounds
 
@@ -71,7 +72,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
     var isPopulating        = false
     var isInitiated         = false
     var lastContentOffset:CGFloat = 0.0
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -316,17 +317,31 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
     }
     
     func setVisibleNavigationBar(isVisible:Bool) {
-        // TODO use variable for magic number 72 , 28
+        // TODO use variable for magic number 64 , 20
         if isVisible {
             self.navBar.hidden = false
-            UIView.animateWithDuration(0.3, animations: {
-                self.menuTableView.frame = CGRectMake(self.menuTableView.frame.origin.x, 72, self.menuTableView.frame.size.width, self.menuTableView.frame.size.height)
-            })
+            if self.menuTableView.frame.origin.y == 20 {
+                UIView.animateWithDuration(0.3, animations: {
+                    self.menuTableView.frame = CGRectMake(self.menuTableView.frame.origin.x, 64, self.menuTableView.frame.size.width, self.menuTableView.frame.size.height - 44)
+                })
+            } else {
+                UIView.animateWithDuration(0.3, animations: {
+                    self.menuTableView.frame = CGRectMake(self.menuTableView.frame.origin.x, 64, self.menuTableView.frame.size.width, self.menuTableView.frame.size.height)
+                })
+            }
+            
         } else {
             self.navBar.hidden = true
-            UIView.animateWithDuration(0.3, animations: {
-                self.menuTableView.frame = CGRectMake(self.menuTableView.frame.origin.x, 28, self.menuTableView.frame.size.width, self.menuTableView.frame.size.height)
-            })
+            if self.menuTableView.frame.origin.y == 64 {
+                UIView.animateWithDuration(0.3, animations: {
+                    self.menuTableView.frame = CGRectMake(self.menuTableView.frame.origin.x, 20, self.menuTableView.frame.size.width, self.menuTableView.frame.size.height + 44)
+                })
+            
+            } else {
+                UIView.animateWithDuration(0.3, animations: {
+                    self.menuTableView.frame = CGRectMake(self.menuTableView.frame.origin.x, 20, self.menuTableView.frame.size.width, self.menuTableView.frame.size.height)
+                })
+            }
         }
     }
     
@@ -389,20 +404,11 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         }
         
         let menu = menuArray.objectAtIndex(indexPath.row) as! Menu
-        let restuarant = restuarantList.objectForKey(menu.restaurantID) as! Restaurant
+        let restaurant = restuarantList.objectForKey(menu.restaurantID) as! Restaurant
         
-        /*
-        if let image = self.imgCache.loadImage(menu.imgURL){
-            cell.setImageByURL(menu.imgURL)
-        } else {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)){
-                cell.setImageByURL(menu.imgURL)
-            }
-        }*/
         cell.setImageByURL(menu.imgURL)
-        let storeDistance = self.locationService.getDistanceFrom(restuarant.location)
+        cell.setMenu(menu, restaurant: restaurant)
         
-        cell.setMenuCell(menu.menuName, retaurantName: restuarant.name, distanceVal: storeDistance, pointVal: 1, price: menu.price, address: restuarant.address)
         return cell
     }
     
@@ -417,6 +423,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         }
         return 400.0;
     }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
     }
