@@ -67,7 +67,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
     var imgCache:ImageCache = ImageCache.sharedInstance
     
     let locationManager     = CLLocationManager()
-    var populateLength      = 3
+    var populateLength      = 5
     var currentLoadedIndex  = 0
     var isPopulating        = false
     var isInitiated         = false
@@ -81,7 +81,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNotificationDiscoverSearch", name: discoverSearchNotificationKey, object: nil)
         
         self.currentLoadedIndex = 0
-        self.populateLength     = 3
+        self.populateLength     = 5
         
         self.menuTableView.delegate = self
         self.menuTableView.dataSource = self
@@ -406,6 +406,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         let menu = menuArray.objectAtIndex(indexPath.row) as! Menu
         let restaurant = restuarantList.objectForKey(menu.restaurantID) as! Restaurant
         
+        cell.request?.cancel()
         cell.setImageByURL(menu.imgURL)
         cell.setMenu(menu, restaurant: restaurant)
         

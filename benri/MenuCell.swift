@@ -9,6 +9,26 @@
 import UIKit
 import Alamofire
 
+extension Alamofire.Request {
+    class func imageResponseSerializer() -> Serializer {
+        return { request, response, data in
+            if data == nil {
+                return (nil, nil)
+            }
+            
+            let image = UIImage(data: data!, scale: UIScreen.mainScreen().scale)
+            
+            return (image, nil)
+        }
+    }
+    
+    func responseImage(completionHandler: (NSURLRequest, NSHTTPURLResponse?, UIImage?, NSError?) -> Void) -> Self {
+        return response(serializer: Request.imageResponseSerializer(), completionHandler: { (request, response, image, error) in
+            completionHandler(request, response, image as? UIImage, error)
+        })
+    }
+}
+
 class MenuCell: UITableViewCell {
     
     @IBOutlet weak var menuImageView: UIImageView!
@@ -30,6 +50,8 @@ class MenuCell: UITableViewCell {
     var address: String = ""
     var isImageSet:Bool = false
     
+    var request: Alamofire.Request?
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -145,33 +167,21 @@ class MenuCell: UITableViewCell {
     }
     
     func setImageByURL(imgURL: NSURL) {
-        self.menuImageURL = imgURL
+        self.menuImageView.image = nil
         
         if let image = self.imgCache.loadImage(imgURL) {
-            //self.imgNotFoundLabel.alpha = 0.0
+            
             self.menuImageView.image = image
             self.imgProgressView.hidden = true
         } else {
+            
             self.menuImageView.image = UIImage(named: "placeholder")
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)){
-                Alamofire.request(.GET, imgURL).progress{ (bytesRead, totalBytesRead, totalBytesExpectedToRead) in
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.imgProgressView.setProgress(Float(totalBytesRead) / Float(totalBytesExpectedToRead), animated: true)
-                    }
-                    if totalBytesRead == totalBytesExpectedToRead {
-                        self.imgProgressView.removeFromSuperview()
-                    }
-                    }
-                    .response() {
-                        (request, response, data, error) in
-                        if let image = UIImage(data: data! as! NSData) {
-                            dispatch_async(dispatch_get_main_queue()){
-                                self.menuImageView.image = image
-                                self.imgCache.cacheImage(request.URL, image: image)
-                            }
-                        } else {
-                            
-                        }
+            self.request = Alamofire.request(.GET, imgURL).validate(contentType: ["image/*"]).responseImage() {
+                (request, _, image, error) in
+                if error == nil && image != nil {
+                    self.imgCache.cacheImage(request.URL, image: image!)
+                    self.menuImageView.image = image
+                } else {
                 }
             }
         }
