@@ -218,6 +218,7 @@
                                 <exclude reference="V9q-mp-oQo"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="pGI-Fg-S0e"/>
                                 <exclude reference="DzS-oG-Gtx"/>
                                 <exclude reference="X7b-JG-TBl"/>
                                 <exclude reference="dxo-sp-sB6"/>
@@ -226,7 +227,6 @@
                                 <exclude reference="SCP-5G-wKL"/>
                                 <exclude reference="dzh-b4-F5E"/>
                                 <exclude reference="nJh-Aq-ydN"/>
-                                <exclude reference="pGI-Fg-S0e"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -235,6 +235,7 @@
                                 <include reference="V9q-mp-oQo"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="pGI-Fg-S0e"/>
                                 <include reference="DzS-oG-Gtx"/>
                                 <exclude reference="X7b-JG-TBl"/>
                                 <exclude reference="dxo-sp-sB6"/>
@@ -243,7 +244,6 @@
                                 <include reference="SCP-5G-wKL"/>
                                 <include reference="dzh-b4-F5E"/>
                                 <include reference="nJh-Aq-ydN"/>
-                                <include reference="pGI-Fg-S0e"/>
                             </mask>
                         </variation>
                     </view>
