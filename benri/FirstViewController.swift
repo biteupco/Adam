@@ -73,9 +73,21 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
     var isInitiated         = false
     var lastContentOffset:CGFloat = 0.0
 
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        var userDefault = NSUserDefaults.standardUserDefaults()
+        
+        var vc = self.storyboard?.instantiateViewControllerWithIdentifier("TutorialViewController") as! TutorialViewController
+        vc.modalPresentationStyle = UIModalPresentationStyle.FullScreen
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNotificationDiscoverClose", name: discoverCloseNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNotificationDiscoverSearch", name: discoverSearchNotificationKey, object: nil)
@@ -95,6 +107,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
             isInitiated = true
             self.populateMenu(true, tags: nil, location:locationService.locationToLonLat(locationService.getCurrentLocation()))
         }
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
