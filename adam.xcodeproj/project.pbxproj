@@ -39,6 +39,7 @@
 		96DA5A1D1AF28AD20003E506 /* MenuServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA5A1C1AF28AD20003E506 /* MenuServerAPI.swift */; };
 		96DA5A1F1AF28AE90003E506 /* TagServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA5A1E1AF28AE90003E506 /* TagServerAPI.swift */; };
 		96E377171B35981100229684 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96E377191B35981100229684 /* Localizable.strings */; };
+		96E3771D1B36784000229684 /* APISetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96E3771C1B36784000229684 /* APISetting.plist */; };
 		96F0CF791AF136E2004E616D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F0CF781AF136E2004E616D /* CoreLocation.framework */; };
 		B60416A3C37CC1146EA0DAC9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 988DEB37F68751845480352C /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -97,6 +98,7 @@
 		96E377141B3597E300229684 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		96E377181B35981100229684 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		96E3771A1B35981500229684 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		96E3771C1B36784000229684 /* APISetting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APISetting.plist; sourceTree = "<group>"; };
 		96F0CF781AF136E2004E616D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		988DEB37F68751845480352C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D653A08C2BE7A9497AF35975 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				96DA5A131AF284A80003E506 /* Menu */,
 				96DA5A0A1AF2744F0003E506 /* Lib */,
 				9656AD9E1AECC62800933A8E /* AppDelegate.swift */,
+				964690851B3308D800DB187D /* TutorialViewController.swift */,
 				9656ADA01AECC62800933A8E /* FirstViewController.swift */,
 				96C24E8F1B244527006C5806 /* SearchViewController.swift */,
 				9616799A1B2C72BA00A43AD3 /* LocationSearchViewController.swift */,
@@ -181,10 +184,10 @@
 				2150F5001B0EFEE200AFDF5E /* ProfileViewController.swift */,
 				21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */,
 				21D741291B21AA4B008A8EB5 /* DiscoverView.swift */,
-				964690851B3308D800DB187D /* TutorialViewController.swift */,
 				9678676F1B2C9A7F0047C7BB /* SearchCell.swift */,
 				9656ADA71AECC62800933A8E /* Images.xcassets */,
 				9656ADA41AECC62800933A8E /* Main.storyboard */,
+				96E3771C1B36784000229684 /* APISetting.plist */,
 				9656ADA91AECC62800933A8E /* LaunchScreen.xib */,
 				9656AD9C1AECC62800933A8E /* Supporting Files */,
 				2150F4FB1B0ED81C00AFDF5E /* Bridging-Header.h */,
@@ -345,6 +348,7 @@
 			files = (
 				9656ADA61AECC62800933A8E /* Main.storyboard in Resources */,
 				96E377171B35981100229684 /* Localizable.strings in Resources */,
+				96E3771D1B36784000229684 /* APISetting.plist in Resources */,
 				9656ADAB1AECC62800933A8E /* LaunchScreen.xib in Resources */,
 				9656ADA81AECC62800933A8E /* Images.xcassets in Resources */,
 				21577E081B2E87DB00D4218F /* CurrencyList.plist in Resources */,
