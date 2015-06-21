@@ -8,17 +8,44 @@
 
 import UIKit
 
-class TutorialViewController:UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+protocol TutorialDelegate {
+    func didLoginFacebook(email:String?, token:String?, id:String?, userName:String?)
+    func didSkipSignIn()
+}
+
+class TutorialViewController:UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, TutorialDelegate{
     
     var pageViewController: UIPageViewController!
     var pageTitles: [String]!
     var pageImages: [String]!
     var pageDetail: [String]!
+    var currentIndex: Int!
+    var userDefault:NSUserDefaults!
     
+    @IBOutlet weak var button: UIButton!
+    @IBAction func onClicked(sender: AnyObject) {
+        
+        var targetVC = self.viewControllerAtIndex(5) as PageContentViewController
+        self.currentIndex = 5
+        
+        var viewControllers: NSArray = [targetVC]
+        self.pageViewController.setViewControllers(viewControllers as [AnyObject], direction: .Forward, animated: true) { (finished) -> Void in
+        }
+        self.pageViewController.didMoveToParentViewController(self)
+        
+    }
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // init
+        userDefault = NSUserDefaults.standardUserDefaults()
+        
+        
         // Go to Tutorial
+        var pageControllerAP = UIPageControl.appearance()
+        pageControllerAP.pageIndicatorTintColor = UIColor.lightGrayColor()
+        pageControllerAP.currentPageIndicatorTintColor = UIColor.blackColor()
         self.view.backgroundColor = UIColor(red: 252.0/255.0, green: 119.0/255.0, blue: 7.0/255.0, alpha: 1.0)
         
         self.pageTitles = ["Gobbl", "Food Search", "Store Locate", "Collect & Pay", "Eat & Log", "Login"]
@@ -29,6 +56,7 @@ class TutorialViewController:UIViewController, UIPageViewControllerDataSource, U
         self.pageViewController.dataSource = self
         
         var startVC = self.viewControllerAtIndex(0) as PageContentViewController
+        self.currentIndex  = 0
         var viewControllers: [UIViewController] = [startVC]
         
         self.pageViewController.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: nil)
@@ -61,6 +89,7 @@ class TutorialViewController:UIViewController, UIPageViewControllerDataSource, U
         pageContentVC.titleText = self.pageTitles[index]
         pageContentVC.detailText = self.pageDetail[index]
         pageContentVC.pageIndex = index
+        pageContentVC.delegate = self
         return pageContentVC
         
     }
@@ -76,6 +105,7 @@ class TutorialViewController:UIViewController, UIPageViewControllerDataSource, U
         }
         
         index--
+        self.currentIndex = index
         return self.viewControllerAtIndex(index)
     }
     
@@ -88,6 +118,7 @@ class TutorialViewController:UIViewController, UIPageViewControllerDataSource, U
         }
         
         index++
+        self.currentIndex = index
         return self.viewControllerAtIndex(index)
         
     }
@@ -97,6 +128,22 @@ class TutorialViewController:UIViewController, UIPageViewControllerDataSource, U
     }
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return 0
+        return currentIndex
     }
+    
+    // MARK: - Tutorial Delegate
+    func didLoginFacebook(email:String?,token: String?, id: String?, userName:String?) {
+        userDefault.setBool(true, forKey: "didFinishedTutorial")
+        userDefault.setObject(email, forKey: "email")
+        userDefault.setObject(userName, forKey: "userName")
+        userDefault.synchronize()
+        self.performSegueWithIdentifier("tutorialSegueUnwind", sender: self)
+    }
+    
+    func didSkipSignIn() {
+        userDefault.setBool(true, forKey: "didFinishedTutorial")
+        userDefault.synchronize()
+        self.performSegueWithIdentifier("tutorialSegueUnwind", sender: self)
+    }
+    
 }
