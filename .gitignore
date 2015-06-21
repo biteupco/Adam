@@ -450,6 +450,9 @@ I suggest adding these lines, for those who currently use CocoaPods:
 Pods/
 Podfile.lock
 
+APISetting.plist
+info.plist
+
 Owner
 adamgit commented on Feb 8, 2013
 @marzapower thanks, updated with your comments from the SO answer
