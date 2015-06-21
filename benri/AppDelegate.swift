@@ -20,9 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var mixPanelInstance:Mixpanel = Mixpanel.sharedInstanceWithToken("38c30d15d147f74c302b5162f3a2ed65")
         GMSServices.provideAPIKey("AIzaSyBr0bS6ifn640dNqi9lfYk4k7YzkkSN348")
         
-        var statusView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 20))
+        /*var statusView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 20))
         statusView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 1.0)
-        self.window?.rootViewController?.view.addSubview(statusView)
+        self.window?.rootViewController?.view.addSubview(statusView)*/
+        
+        var pageControllerAP = UIPageControl.appearance()
+        pageControllerAP.pageIndicatorTintColor = UIColor.lightGrayColor()
+        pageControllerAP.currentPageIndicatorTintColor = UIColor.blackColor()
+        pageControllerAP.backgroundColor = UIColor(red: 252.0/255.0, green: 119.0/255.0, blue: 7.0/255.0, alpha: 1.0)
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }

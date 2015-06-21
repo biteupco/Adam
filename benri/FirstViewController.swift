@@ -56,7 +56,11 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         self.tabBarController?.view.addSubview(discoverVC.view)
     }
     
-    
+    @IBAction func returnFromTutorialSegueActions(sender: UIStoryboardSegue) {
+        if sender.identifier == "tutorialSegueUnwind" {
+            println("tutorialSegueUnwind")
+        }
+    }
     
     var menuArray : NSMutableArray = []
     var restuarantList:NSMutableDictionary = NSMutableDictionary()
@@ -73,9 +77,31 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
     var isInitiated         = false
     var lastContentOffset:CGFloat = 0.0
 
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        var userDefault = NSUserDefaults.standardUserDefaults()
+        if !(userDefault.boolForKey("didFinishedTutorial")) {
+            var vc = self.storyboard?.instantiateViewControllerWithIdentifier("TutorialViewController") as! TutorialViewController
+            vc.modalPresentationStyle = UIModalPresentationStyle.FullScreen
+            self.presentViewController(vc, animated: true, completion: nil)
+        } else {
+            struct Static {
+                static var token: dispatch_once_t = 0;
+            }
+            dispatch_once(&Static.token) {
+                var statusView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 20))
+                statusView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 1.0)
+                self.view.addSubview(statusView)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNotificationDiscoverClose", name: discoverCloseNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNotificationDiscoverSearch", name: discoverSearchNotificationKey, object: nil)

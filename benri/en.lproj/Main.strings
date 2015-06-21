@@ -1,0 +1,66 @@
+
+/* Class = "UINavigationItem"; title = "Gobbl"; ObjectID = "0Er-kF-b2b"; */
+"0Er-kF-b2b.title" = "Gobbl";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "4WD-0y-uLU"; */
+"4WD-0y-uLU.normalTitle" = "CANCEL";
+
+/* Class = "UIViewController"; title = "Cart"; ObjectID = "8rJ-Kc-sve"; */
+"8rJ-Kc-sve.title" = "Cart";
+
+/* Class = "UIViewController"; title = "Home"; ObjectID = "9pv-A4-QxB"; */
+"9pv-A4-QxB.title" = "Home";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex "; ObjectID = "DVV-UC-OYE"; */
+"DVV-UC-OYE.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ";
+
+/* Class = "UINavigationItem"; title = "Gobbl"; ObjectID = "EjZ-7o-dnP"; */
+"EjZ-7o-dnP.title" = "Gobbl";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Fo7-I3-UxM"; */
+"Fo7-I3-UxM.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Current Location"; ObjectID = "GZX-Qy-Jvk"; */
+"GZX-Qy-Jvk.text" = "Current Location";
+
+/* Class = "UILabel"; text = "Loaded by SecondViewController"; ObjectID = "NDk-cv-Gan"; */
+"NDk-cv-Gan.text" = "Loaded by SecondViewController";
+
+/* Class = "UISearchBar"; placeholder = "Where do you want to eat?"; ObjectID = "Zge-YU-hEv"; */
+"Zge-YU-hEv.placeholder" = "Where do you want to eat?";
+
+/* Class = "UIButton"; normalTitle = "Surprise ME!"; ObjectID = "Zqi-rL-cJx"; */
+"Zqi-rL-cJx.normalTitle" = "Surprise ME!";
+
+/* Class = "UILabel"; text = "Distant Label"; ObjectID = "boH-Dg-g4S"; */
+"boH-Dg-g4S.text" = "Distant Label";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "dJa-U2-gi8"; */
+"dJa-U2-gi8.text" = "Title";
+
+/* Class = "UIViewController"; title = "Profile"; ObjectID = "g64-ZQ-no8"; */
+"g64-ZQ-no8.title" = "Profile";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "hEm-Uz-E8C"; */
+"hEm-Uz-E8C.normalTitle" = "OK";
+
+/* Class = "UILabel"; text = " ¥ 8000 "; ObjectID = "hxA-Jd-51W"; */
+"hxA-Jd-51W.text" = " ¥ 8000 ";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "kg9-96-YJO"; */
+"kg9-96-YJO.text" = "Label";
+
+/* Class = "UILabel"; text = "Mene Name Label"; ObjectID = "sRZ-Wl-gjC"; */
+"sRZ-Wl-gjC.text" = "Mene Name Label";
+
+/* Class = "UILabel"; text = "Let's eat"; ObjectID = "uP4-Lj-SxH"; */
+"uP4-Lj-SxH.text" = "Let's eat";
+
+/* Class = "UIButton"; normalTitle = "Login Now"; ObjectID = "wfO-Xf-u4r"; */
+"wfO-Xf-u4r.normalTitle" = "Login Now";
+
+/* Class = "UILabel"; text = "Restaurant Name Label"; ObjectID = "z9z-c8-4DE"; */
+"z9z-c8-4DE.text" = "Restaurant Name Label";
+
+/* Class = "UILabel"; text = "Second View"; ObjectID = "zEq-FU-wV5"; */
+"zEq-FU-wV5.text" = "Second View";
