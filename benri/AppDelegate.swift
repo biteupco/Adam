@@ -17,17 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        var mixPanelInstance:Mixpanel = Mixpanel.sharedInstanceWithToken("38c30d15d147f74c302b5162f3a2ed65")
-        GMSServices.provideAPIKey("AIzaSyBr0bS6ifn640dNqi9lfYk4k7YzkkSN348")
         
-        /*var statusView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 20))
-        statusView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 1.0)
-        self.window?.rootViewController?.view.addSubview(statusView)*/
-        
-        var pageControllerAP = UIPageControl.appearance()
-        pageControllerAP.pageIndicatorTintColor = UIColor.lightGrayColor()
-        pageControllerAP.currentPageIndicatorTintColor = UIColor.blackColor()
-        pageControllerAP.backgroundColor = UIColor(red: 252.0/255.0, green: 119.0/255.0, blue: 7.0/255.0, alpha: 1.0)
+        if let path = NSBundle.mainBundle().pathForResource("APISetting", ofType: "plist") {
+            if let dict = NSDictionary(contentsOfFile: path) as? Dictionary<String, AnyObject> {
+                if let mixPanel = dict["Mixpanel"] as? String {
+                    var mixPanelInstance:Mixpanel = Mixpanel.sharedInstanceWithToken(mixPanel)
+                }
+                if let googleMapAPI = dict["GoogleMap"] as? String{
+                    GMSServices.provideAPIKey(googleMapAPI)
+                }
+            }
+        }
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
