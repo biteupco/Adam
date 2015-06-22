@@ -27,6 +27,7 @@
 		9656ADAB1AECC62800933A8E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9656ADA91AECC62800933A8E /* LaunchScreen.xib */; };
 		9656ADB71AECC62900933A8E /* benriTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656ADB61AECC62900933A8E /* benriTests.swift */; };
 		967867701B2C9A7F0047C7BB /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9678676F1B2C9A7F0047C7BB /* SearchCell.swift */; };
+		969AB5B21B36FC9100E92A9F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969AB5B11B36FC9100E92A9F /* User.swift */; };
 		969FB14E1B1AB32300439BDC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969FB14D1B1AB32300439BDC /* FBSDKLoginKit.framework */; };
 		969FB1501B1AB35700439BDC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969FB14F1B1AB35700439BDC /* FBSDKCoreKit.framework */; };
 		96C24E901B244527006C5806 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C24E8F1B244527006C5806 /* SearchViewController.swift */; };
@@ -81,6 +82,7 @@
 		9656ADB51AECC62900933A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9656ADB61AECC62900933A8E /* benriTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = benriTests.swift; sourceTree = "<group>"; };
 		9678676F1B2C9A7F0047C7BB /* SearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		969AB5B11B36FC9100E92A9F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		969FB14D1B1AB32300439BDC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		969FB14F1B1AB35700439BDC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		96C24E8F1B244527006C5806 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -175,13 +177,12 @@
 				96E3771B1B359C1F00229684 /* Tutorial */,
 				96DA5A131AF284A80003E506 /* Menu */,
 				96DA5A0A1AF2744F0003E506 /* Lib */,
+				969AB5B01B36F52700E92A9F /* Profile */,
 				9656AD9E1AECC62800933A8E /* AppDelegate.swift */,
-				964690851B3308D800DB187D /* TutorialViewController.swift */,
 				9656ADA01AECC62800933A8E /* FirstViewController.swift */,
 				96C24E8F1B244527006C5806 /* SearchViewController.swift */,
 				9616799A1B2C72BA00A43AD3 /* LocationSearchViewController.swift */,
 				9656ADA21AECC62800933A8E /* SecondViewController.swift */,
-				2150F5001B0EFEE200AFDF5E /* ProfileViewController.swift */,
 				21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */,
 				21D741291B21AA4B008A8EB5 /* DiscoverView.swift */,
 				9678676F1B2C9A7F0047C7BB /* SearchCell.swift */,
@@ -218,6 +219,15 @@
 				9656ADB51AECC62900933A8E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		969AB5B01B36F52700E92A9F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2150F5001B0EFEE200AFDF5E /* ProfileViewController.swift */,
+				969AB5B11B36FC9100E92A9F /* User.swift */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		96DA5A0A1AF2744F0003E506 /* Lib */ = {
@@ -258,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				964690891B3392F600DB187D /* PageContentViewController.swift */,
+				964690851B3308D800DB187D /* TutorialViewController.swift */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -438,6 +449,7 @@
 				21577E061B2E875000D4218F /* CurrencyConverter.swift in Sources */,
 				96DA5A121AF274670003E506 /* ImageCache.swift in Sources */,
 				96C24E901B244527006C5806 /* SearchViewController.swift in Sources */,
+				969AB5B21B36FC9100E92A9F /* User.swift in Sources */,
 				2150F5011B0EFEE200AFDF5E /* ProfileViewController.swift in Sources */,
 				21AF14871B05FA0B00108190 /* RestaurantServerAPI.swift in Sources */,
 				9656ADA11AECC62800933A8E /* FirstViewController.swift in Sources */,
