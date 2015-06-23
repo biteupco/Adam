@@ -20,13 +20,27 @@ class MenuDetailViewController: UIViewController {
     
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var navItem: UINavigationItem!
+
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var placementView: UIView!
+    
+    @IBOutlet weak var mapView: UIView!
     @IBOutlet weak var restaurantLabel: UILabel!
+    @IBAction func backToFirstPage(sender: AnyObject) {
+        self.performSegueWithIdentifier("backFromMenuDetail", sender: self)
+    }
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.restaurantLabel.text = restaurant.name
+        let screenWidth = UIScreen.mainScreen().bounds.width
+        
+        self.placementView.frame = CGRectMake(0, 0, screenWidth, placementView.frame.size.height)
+        
         
         self.request?.cancel()
         if let image = imageCache.loadImage(menu.imgURL) {
@@ -45,10 +59,16 @@ class MenuDetailViewController: UIViewController {
         
         var camera = GMSCameraPosition.cameraWithLatitude(-33.86,
             longitude: 151.20, zoom: 6)
-        var mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
-        let mapSnapshot = mapView.snapshotViewAfterScreenUpdates(true)
-        self.view.addSubview(mapView)
+        var myMap = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
+        let mapSnapshot = myMap.snapshotViewAfterScreenUpdates(true)
+        self.view = myMap
         
+        /*UIGraphicsBeginImageContext(myMap.frame.size)
+        myMap.layer.renderInContext(UIGraphicsGetCurrentContext())
+        var screenShotImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        self.imageView.image = screenShotImage*/
         
     }
 

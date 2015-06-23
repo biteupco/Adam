@@ -62,6 +62,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         }
     }
     
+    @IBAction func returnFromMenuDetailSegueActions(sender: UIStoryboardSegue) {
+        if sender.identifier == "backFromMenuDetail" {
+            println("backFromMenuDetail")
+        }
+    }
+    
     var menuArray : NSMutableArray = []
     var restuarantList:NSMutableDictionary = NSMutableDictionary()
     
