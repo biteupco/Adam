@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 gobbl. All rights reserved.
 //
 
+import MapKit
 import UIKit
 import Alamofire
 
@@ -18,14 +19,14 @@ class MenuDetailViewController: UIViewController {
     
     var request: Alamofire.Request?
     
+    @IBOutlet weak var mapView: UIView!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var navItem: UINavigationItem!
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var placementView: UIView!
-    
-    @IBOutlet weak var mapView: UIView!
     @IBOutlet weak var restaurantLabel: UILabel!
+
     @IBAction func backToFirstPage(sender: AnyObject) {
         self.performSegueWithIdentifier("backFromMenuDetail", sender: self)
     }
@@ -39,7 +40,7 @@ class MenuDetailViewController: UIViewController {
         self.restaurantLabel.text = restaurant.name
         let screenWidth = UIScreen.mainScreen().bounds.width
         
-        self.placementView.frame = CGRectMake(0, 0, screenWidth, placementView.frame.size.height)
+        self.imageView.frame = CGRectMake(0, 0, screenWidth, imageView.frame.size.height * screenWidth/imageView.frame.size.width)
         
         
         self.request?.cancel()
@@ -59,9 +60,9 @@ class MenuDetailViewController: UIViewController {
         
         var camera = GMSCameraPosition.cameraWithLatitude(-33.86,
             longitude: 151.20, zoom: 6)
-        var myMap = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
-        let mapSnapshot = myMap.snapshotViewAfterScreenUpdates(true)
-        self.view = myMap
+        var myMap = GMSMapView.mapWithFrame(CGRect(x: 0, y: 0, width: self.mapView.bounds.width, height: self.mapView.bounds.height), camera: camera)
+        self.mapView.addSubview(myMap)
+        //let mapSnapshot = myMap.snapshotViewAfterScreenUpdates(true)
         
         /*UIGraphicsBeginImageContext(myMap.frame.size)
         myMap.layer.renderInContext(UIGraphicsGetCurrentContext())
