@@ -33,7 +33,7 @@ class MenuDetailViewController: UIViewController {
 
     
     @IBAction func orderNow(sender: AnyObject) {
-        println(orderNow)
+        println("orderNow")
     }
     @IBAction func backToFirstPage(sender: AnyObject) {
         self.performSegueWithIdentifier("backFromMenuDetail", sender: self)
@@ -41,6 +41,7 @@ class MenuDetailViewController: UIViewController {
     
     func showMap() {
         println("Show map")
+        self.performSegueWithIdentifier("showMap", sender: self)
     }
     
     override func viewDidLoad() {
@@ -82,8 +83,8 @@ class MenuDetailViewController: UIViewController {
         
       
         self.addressTextView.text = restaurant.address
-        self.addressTextView.contentInset = UIEdgeInsetsMake(15, 15,
-            10, 10)
+        self.addressTextView.contentInset = UIEdgeInsetsMake(5, 5,
+            5, 5)
         
         var singleTap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "showMap")
         self.mapView.addGestureRecognizer(singleTap)
@@ -136,5 +137,13 @@ class MenuDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // MARK: - PrepareForSegue
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showMap" {
+            var vc:MapViewController = segue.destinationViewController as! MapViewController
+            vc.restaurant = self.restaurant
+        }
+    }
 }
