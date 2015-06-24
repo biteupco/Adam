@@ -27,9 +27,14 @@ class MenuDetailViewController: UIViewController {
     @IBOutlet weak var placementView: UIView!
     @IBOutlet weak var restaurantLabel: UILabel!
     @IBOutlet weak var addressTextView: UITextView!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     
 
     
+    @IBAction func orderNow(sender: AnyObject) {
+        println(orderNow)
+    }
     @IBAction func backToFirstPage(sender: AnyObject) {
         self.performSegueWithIdentifier("backFromMenuDetail", sender: self)
     }
