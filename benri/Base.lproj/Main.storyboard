@@ -789,9 +789,11 @@
                     <connections>
                         <outlet property="addressTextView" destination="efg-de-lZx" id="G7z-OW-M2w"/>
                         <outlet property="mapView" destination="w1j-dF-iFW" id="kLp-iT-uYw"/>
+                        <segue destination="57N-nI-LSc" kind="unwind" identifier="backFromMapView" unwindAction="returnFromMapView:" id="FeH-Q8-rFi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mWd-qQ-n3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="57N-nI-LSc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2230.5" y="-915.75"/>
         </scene>

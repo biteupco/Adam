@@ -39,6 +39,12 @@ class MenuDetailViewController: UIViewController {
         self.performSegueWithIdentifier("backFromMenuDetail", sender: self)
     }
     
+    @IBAction func returnFromMapView(sender: UIStoryboardSegue) {
+        if sender.identifier == "backFromMapView" {
+            println("backFromMapView")
+        }
+    }
+    
     func showMap() {
         println("Show map")
         self.performSegueWithIdentifier("showMap", sender: self)

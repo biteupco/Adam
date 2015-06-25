@@ -12,7 +12,7 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var addressTextView: UITextView!
     @IBAction func backToDetail(sender: AnyObject) {
-    
+        self.performSegueWithIdentifier("backFromMapView", sender: self)
     }
     
     @IBOutlet weak var mapView: UIView!
