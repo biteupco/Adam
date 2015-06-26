@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, GMSMapViewDelegate {
 
     @IBOutlet weak var addressTextView: UITextView!
     @IBAction func backToDetail(sender: AnyObject) {
@@ -23,9 +23,11 @@ class MapViewController: UIViewController {
     var gMap:GMSMapView!
     var gCamera:GMSCameraPosition!
     var destinationMarker:GMSMarker!
+    var steps:Array<JSON>!
+    var polyline:GMSPolyline!
     
     var apiKey:String!
-
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.gMap.myLocationEnabled = true
@@ -63,6 +65,7 @@ class MapViewController: UIViewController {
             self.gMap.myLocationEnabled = true
             self.gMap.settings.myLocationButton = true
             self.gMap.settings.compassButton = true
+            self.gMap.delegate = self
             
             self.destinationMarker = GMSMarker()
             self.destinationMarker.position = self.gCamera.target
@@ -81,7 +84,17 @@ class MapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    // MARK: - Google Maps Delegate
+    func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+        print(marker.position.latitude)
+        print(",")
+        print(marker.position.longitude)
+        
+        return true
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 
@@ -109,6 +122,7 @@ class MapViewController: UIViewController {
         }
     }
     
+    
     func fetchDirectionsFrom(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D, completion: ((String?) -> Void)) -> ()
     {
         let urlString = "https://maps.googleapis.com/maps/api/directions/json"//?key=\(self.apiKey)&origin=\(from.latitude),\(from.longitude)&destination=\(to.latitude),\(to.longitude)&mode=walking"
@@ -127,15 +141,44 @@ class MapViewController: UIViewController {
             (req, res, json, error) in
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             if error != nil {
-            
+                println("Error")
             } else {
                 print(req)
                 let myJSON = JSON(json!)
-                println(myJSON)
-                let routes = myJSON["routes"]
-                if routes != nil {
+                self.steps = myJSON["routes"][0]["legs"][0]["steps"].arrayValue
                 
-                }
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                    if let encodePath = myJSON["routes"][0]["overview_polyline"]["points"].string {
+                        var path:GMSPath = GMSPath(fromEncodedPath: encodePath)
+                        self.polyline = GMSPolyline(path: path)
+                        self.polyline.strokeWidth = 5
+                        self.polyline.strokeColor = UIColor.blueColor()
+                        self.polyline.map = self.gMap
+                    }
+                })
+                println(myJSON["routes"][0]["legs"][0]["steps"])
+                
+                //self.steps = myJSON["routes"][0]["legs"][0]["steps"]
+                
+               /* [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                
+                self.directionsButton.alpha = 1.0;
+                
+                GMSPath *path =
+                
+                [GMSPath pathFromEncodedPath:
+                
+                json[@"routes"][0][@"overview_polyline"][@"points"]];
+                
+                self.polyline = [GMSPolyline polylineWithPath:path];
+                
+                self.polyline.strokeWidth = 7; 
+                
+                self.polyline.strokeColor = [UIColor greenColor];
+                
+                self.polyline.map = self.mapView;
+                
+                }];*/
                 
             }
             /*if let routes = myJSON["routes"] as? [AnyObject] {
