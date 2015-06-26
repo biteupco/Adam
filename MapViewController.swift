@@ -73,7 +73,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             self.destinationMarker.appearAnimation = kGMSMarkerAnimationPop
             self.destinationMarker.map = self.gMap
             
-            //self.mapView.insertSubview(myMap, aboveSubview: addressTextView)
             self.mapView.addSubview(self.gMap)
             
         }

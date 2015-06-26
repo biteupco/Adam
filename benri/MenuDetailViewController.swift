@@ -100,35 +100,7 @@ class MenuDetailViewController: UIViewController {
         let storeDistance = self.locationService.getDistanceFrom(restaurant.location)
         _setDistanceLabel(storeDistance)
         
-        //CGRect(x: currentFrame.origin.x - 20, y: currentFrame.origin.y, width: currentFrame.size.width + 40, height: currentFrame.size.height)
-        //self.addressLabel.text = restaurant.address
-        /*var addressLabel = UILabel(frame: CGRect(x: 0, y: -600, width: 200, height: 50))
-        addressLabel.center = self.mapView.center
-        
-        addressLabel.font = UIFont(name: "Helvetica", size: 12)
-        addressLabel.adjustsFontSizeToFitWidth = true
-        addressLabel.numberOfLines = 0
-        addressLabel.textAlignment = NSTextAlignment.Center
-        addressLabel.backgroundColor = UIColor.whiteColor()
-        addressLabel.text = restaurant.address
-        */
-        
-        //self.view.insertSubview(myMap, aboveSubview: imageView)
-        //self.mapView.insertSubview(addressLabel, atIndex: 0)
-        self.mapView.addSubview(myMap)
-        //self.mapView.addSubview(addressLabel)
-        
-        //self.mapView.insertSubview(myMap, belowSubview: addressLabel)
-        
-        //let mapSnapshot = myMap.snapshotViewAfterScreenUpdates(true)
-        
-        /*UIGraphicsBeginImageContext(myMap.frame.size)
-        myMap.layer.renderInContext(UIGraphicsGetCurrentContext())
-        var screenShotImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        self.imageView.image = screenShotImage*/
-        
+        self.mapView.addSubview(myMap)        
     }
 
     override func didReceiveMemoryWarning() {
