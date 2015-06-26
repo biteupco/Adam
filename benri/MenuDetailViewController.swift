@@ -78,7 +78,7 @@ class MenuDetailViewController: UIViewController {
         var camera = GMSCameraPosition.cameraWithLatitude(restaurant.location.coordinate.latitude,
             longitude: restaurant.location.coordinate.longitude, zoom: 16)
         
-        var myMap:GMSMapView = GMSMapView.mapWithFrame(CGRect(x: 0, y: 0, width: self.mapView.bounds.width, height: self.mapView.bounds.width * 3 / 4), camera: camera)
+        var myMap:GMSMapView = GMSMapView.mapWithFrame(CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth * 3 / 4), camera: camera)
         myMap.settings.setAllGesturesEnabled(false)
         
         
