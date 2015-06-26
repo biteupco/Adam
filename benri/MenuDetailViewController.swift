@@ -16,6 +16,7 @@ class MenuDetailViewController: UIViewController {
     var restaurant:Restaurant!
     
     var imageCache:ImageCache = ImageCache.sharedInstance
+    var locationService:LocationService = LocationService.sharedInstance
     
     var request: Alamofire.Request?
     
@@ -96,6 +97,8 @@ class MenuDetailViewController: UIViewController {
         self.mapView.addGestureRecognizer(singleTap)
         
         
+        let storeDistance = self.locationService.getDistanceFrom(restaurant.location)
+        _setDistanceLabel(storeDistance)
         
         //CGRect(x: currentFrame.origin.x - 20, y: currentFrame.origin.y, width: currentFrame.size.width + 40, height: currentFrame.size.height)
         //self.addressLabel.text = restaurant.address
@@ -151,5 +154,19 @@ class MenuDetailViewController: UIViewController {
             var vc:MapViewController = segue.destinationViewController as! MapViewController
             vc.restaurant = self.restaurant
         }
+    }
+    
+    func updateDistantLabelVisible() {
+        if let isLocationEnable:AnyObject = NSUserDefaults.standardUserDefaults().valueForKey("isLocationEnable") {
+            self.distanceLabel.hidden = !(isLocationEnable as! Bool)
+        } else {
+            self.distanceLabel.hidden = false
+        }
+    }
+    
+    func _setDistanceLabel(distance: Double) {
+        var formatter : String = String(format: "%.02f km", distance)
+        self.distanceLabel.text = formatter
+        self.updateDistantLabelVisible()
     }
 }
