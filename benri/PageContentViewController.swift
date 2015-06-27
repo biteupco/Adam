@@ -41,8 +41,9 @@ class PageContentViewController: UIViewController, FBSDKLoginButtonDelegate {
         if self.pageIndex == 5 {
             self.textView.hidden = true
             self.loginTextView.text = NSLocalizedString(detailText, comment: "Tutorial text")
+            let facebookLoginButton: FBSDKLoginButton = FBSDKLoginButton()
             
-            self.loginButton = FBSDKLoginButton()
+            self.loginButton = facebookLoginButton
             self.loginButton.readPermissions = ["public_profile", "email", "user_friends"]
             self.loginButton.delegate = self
             
@@ -111,6 +112,7 @@ class PageContentViewController: UIViewController, FBSDKLoginButtonDelegate {
             var email:String!
             var fbID:String!
             var userName:String!
+            var profileImgURL:NSURL!
             
             if ((error) != nil) {
                 // Process error
@@ -121,8 +123,10 @@ class PageContentViewController: UIViewController, FBSDKLoginButtonDelegate {
                 email = result.valueForKey("email") as! String
                 token = FBSDKAccessToken.currentAccessToken().tokenString
                 userName = result.valueForKey("name") as! String
+                profileImgURL = NSURL(fileURLWithPath: String(format: "https://graph.facebook.com/%@/picture?type=large", fbID))
             }
-            self.delegate.didLoginFacebook(email, token:token, id: fbID, userName: userName)
+            println(profileImgURL)
+            self.delegate.didLoginFacebook(email, token:token, profileImgURL: profileImgURL, userName: userName)
         })
     }
 }
