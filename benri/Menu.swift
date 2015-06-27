@@ -89,6 +89,26 @@ class Menu {
         }
     }
     
+    var _ratingCount:Int = 0
+    var ratingCount:Int {
+        get {
+            return _ratingCount
+        }
+        set(newRatingCount) {
+            _ratingCount = newRatingCount
+        }
+    }
+    
+    var _ratingTotal:Int = 1
+    var ratingTotal:Int {
+        get {
+            return _ratingTotal
+        }
+        set(newRatingTotal) {
+            _ratingTotal = newRatingTotal
+        }
+    }
+    
     var currency:String     = "JPY"
     var currencySign:String = "¥"
     var tags:NSMutableArray = []
@@ -150,6 +170,16 @@ class Menu {
         /**** Restuarant ID ****/
         if let restaurantID:String = itemJSON["restaurant"]["$id"]["$oid"].string {
             self.restaurantID = restaurantID
+        }
+        
+        /**** Rating count ****/
+        if let ratingCount:Int = itemJSON["ratingCount"].int {
+            self.ratingCount = ratingCount
+        }
+        
+        /**** Rating total ****/
+        if let ratingTotal:Int = itemJSON["ratingTotal"].int {
+            self.ratingTotal = ratingTotal
         }
     }
 }
