@@ -62,6 +62,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         }
     }
     
+    @IBAction func returnFromMenuDetailSegueActions(sender: UIStoryboardSegue) {
+        if sender.identifier == "backFromMenuDetail" {
+            println("backFromMenuDetail")
+        }
+    }
+    
     var menuArray : NSMutableArray = []
     var restuarantList:NSMutableDictionary = NSMutableDictionary()
     
@@ -485,7 +491,15 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
     
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
         if let mysegue = segue {
-            println(mysegue.identifier)
+            if (mysegue.identifier == "showDetailSegue") {
+                // pass data to next view
+                let viewController:MenuDetailViewController = segue!.destinationViewController as! MenuDetailViewController
+                
+                if let indexPath = self.menuTableView.indexPathForSelectedRow(){
+                    viewController.menu = menuArray.objectAtIndex(indexPath.row) as! Menu
+                    viewController.restaurant = self.restuarantList.objectForKey(viewController.menu.restaurantID) as! Restaurant
+                }
+            }
             
         }
         

@@ -83,20 +83,21 @@ class MenuCell: UITableViewCell {
     
     func resizePriceLabelFrame(priceText: String){
         //Calculate the expected size based on the font and linebreak mode of your label
-        var maximumLabelSize: CGSize = CGSizeMake(320, 50)
+        var maximumLabelSize: CGSize = CGSizeMake(320, 60)
         let myPriceText: NSString = priceText as NSString
         let expectedLabelSize: CGSize = myPriceText.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(17.0)])
         
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         let screenWidth = screenSize.width
         
-        var newFrame: CGRect = priceLabel.frame
+        var newFrame: CGRect = self.priceLabel.frame
         newFrame.size.width = round(expectedLabelSize.width)
         newFrame.origin.x   = screenWidth - newFrame.size.width
+        newFrame.size.height = round(expectedLabelSize.height) + 500
         
-        priceLabel.text = priceText
-        priceLabel.frame = newFrame
-        priceLabel.textAlignment = NSTextAlignment.Center
+        self.priceLabel.text = priceText
+        self.priceLabel.frame = newFrame
+        self.priceLabel.textAlignment = NSTextAlignment.Center
         
     }
     
@@ -112,7 +113,7 @@ class MenuCell: UITableViewCell {
         
         let currencySymbol = CurrencyConverter.codeToSymbol(currencyCode)
         priceText = " " + currencySymbol + " " + priceText + "  "
-        resizePriceLabelFrame(priceText)
+        self.priceLabel.text = priceText
     }
     
     func _getPriceLabel() -> String? {
