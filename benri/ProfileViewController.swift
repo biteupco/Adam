@@ -135,10 +135,6 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UIAlert
                 self.view.setNeedsDisplay()
                 
                 println("fetched user: \(result)")
-                let userName : NSString = result.valueForKey("name") as! NSString
-                println("User Name is: \(userName)")
-                let userEmail : NSString = result.valueForKey("email") as! NSString
-                println("User Email is: \(userEmail)")
                 
                 if FBSDKAccessToken.currentAccessToken() != nil {
                     println(FBSDKAccessToken.currentAccessToken().tokenString)
@@ -211,10 +207,16 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UIAlert
             let loginManager = FBSDKLoginManager()
             loginManager.logOut()
             
+            self.userDefault = NSUserDefaults.standardUserDefaults()
+            
+            self.userDefault.removeObjectForKey("email")
+            self.userDefault.removeObjectForKey("userName")
+            self.userDefault.removeObjectForKey("profileImgURL")
+            self.userDefault.synchronize()
+            
             self.loginView.hidden = false
             self.hideProfilePage()
             self.view.setNeedsDisplay()
-
         }
 
     }
