@@ -79,9 +79,6 @@
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="10" y="248" width="164" height="24"/>
-                                                    </variation>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R7G-Ey-MZA">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="214"/>
@@ -93,8 +90,7 @@
                                                             <exclude reference="R0B-Ks-7lR"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="R0B-Ks-7lR"/>
                                                         </mask>
@@ -116,8 +112,7 @@
                                                             <exclude reference="dFO-bI-msn"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="258" y="193" width="62" height="27"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="dFO-bI-msn"/>
                                                         </mask>
@@ -128,18 +123,12 @@
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="232" y="270" width="83" height="17"/>
-                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Restaurant Name Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9z-c8-4DE">
                                                     <rect key="frame" x="10" y="250" width="200" height="21"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="10" y="276" width="127" height="14"/>
-                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
