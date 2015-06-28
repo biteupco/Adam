@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TutorialDelegate {
-    func didLoginFacebook(email:String?, token:String?, profileImgURL:NSURL?, userName:String?)
+    func didLoginFacebook(email:String?, token:String?, profileImgURL:String?, userName:String?)
     func didSkipSignIn()
 }
 
@@ -132,7 +132,8 @@ class TutorialViewController:UIViewController, UIPageViewControllerDataSource, U
     }
     
     // MARK: - Tutorial Delegate
-    func didLoginFacebook(email:String?, token: String?, profileImgURL:NSURL?, userName:String?) {
+    func didLoginFacebook(email:String?, token: String?, profileImgURL:String?, userName:String?) {
+        println("Did login to facebook")
         userDefault.setBool(true, forKey: "didFinishedTutorial")
         userDefault.setObject(email, forKey: "email")
         userDefault.setObject(userName, forKey: "userName")

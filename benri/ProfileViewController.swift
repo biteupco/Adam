@@ -50,6 +50,9 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UIAlert
         self.userDefault = NSUserDefaults.standardUserDefaults()
         self.imageCache = ImageCache.sharedInstance
         
+        // For now  hide the setting table
+        self.detailTable.hidden = true
+        
         if (FBSDKAccessToken.currentAccessToken() != nil) {
             // User is already logged in, do work such as go to next view controller.
             
