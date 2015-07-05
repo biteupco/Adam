@@ -18,6 +18,7 @@
 		21D741281B21A9A9008A8EB5 /* DiscoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D741271B21A9A9008A8EB5 /* DiscoverView.xib */; };
 		21D7412A1B21AA4B008A8EB5 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D741291B21AA4B008A8EB5 /* DiscoverView.swift */; };
 		21D7412C1B21AD36008A8EB5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */; };
+		96157CD01B41AB240022E3F0 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96157CCF1B41AB240022E3F0 /* LoadingIndicator.swift */; };
 		9616799B1B2C72BA00A43AD3 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9616799A1B2C72BA00A43AD3 /* LocationSearchViewController.swift */; };
 		964690861B3308D800DB187D /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964690851B3308D800DB187D /* TutorialViewController.swift */; };
 		9646908A1B3392F600DB187D /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964690891B3392F600DB187D /* PageContentViewController.swift */; };
@@ -71,6 +72,7 @@
 		21D741291B21AA4B008A8EB5 /* DiscoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		5BD10A0AA37B5DD5EB928422 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		96157CCF1B41AB240022E3F0 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		9616799A1B2C72BA00A43AD3 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		964690851B3308D800DB187D /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		964690891B3392F600DB187D /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		9656AD9B1AECC62800933A8E /* benri */ = {
 			isa = PBXGroup;
 			children = (
+				96157CCF1B41AB240022E3F0 /* LoadingIndicator.swift */,
 				21A29D331B3A6166009E0D0C /* MapViewController.swift */,
 				96E377191B35981100229684 /* Localizable.strings */,
 				21D741271B21A9A9008A8EB5 /* DiscoverView.xib */,
@@ -443,6 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96157CD01B41AB240022E3F0 /* LoadingIndicator.swift in Sources */,
 				213997341B3907580027AB55 /* MenuDetailViewController.swift in Sources */,
 				964690861B3308D800DB187D /* TutorialViewController.swift in Sources */,
 				21AF14891B0601C800108190 /* Restaurant.swift in Sources */,

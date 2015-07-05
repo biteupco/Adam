@@ -75,6 +75,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
     var locationService:LocationService = LocationService.sharedInstance
     var restaurantCache:RestaurantCache = RestaurantCache.sharedInstance
     var imgCache:ImageCache = ImageCache.sharedInstance
+    var ldIndicator:LoadingIndicator = LoadingIndicator.sharedInstance
     
     let locationManager     = CLLocationManager()
     var populateLength      = 5
@@ -113,7 +114,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNotificationDiscoverSearch", name: discoverSearchNotificationKey, object: nil)
         
         self.currentLoadedIndex = 0
-        self.populateLength     = 5
+        self.populateLength     = 10
         
         self.menuTableView.delegate = self
         self.menuTableView.dataSource = self
@@ -127,6 +128,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
             isInitiated = true
             self.populateMenu(true, tags: nil, location:locationService.locationToLonLat(locationService.getCurrentLocation()))
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -139,7 +141,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
             static var onceToken : dispatch_once_t = 0
         }
         dispatch_once(&Static.onceToken) {
-            self.populateMenu(false, tags: nil, location:self.locationService.locationToLonLat(self.locationService.getCurrentLocation()))
+            self.populateMenu(true, tags: nil, location:self.locationService.locationToLonLat(self.locationService.getCurrentLocation()))
         }
     }
     
@@ -167,8 +169,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
             }
             if isUserAnswered {
                 locationManager.startUpdatingLocation()
-                self.initMenu()
                 if !self.isInitiated {
+                    self.initMenu()
                     self.isInitiated = true
                 }
             }
@@ -235,6 +237,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
                     if isReset {
                         dispatch_async(dispatch_get_main_queue()) {
                             self.menuTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Bottom)
+                            self.ldIndicator.activityImageView.stopAnimating()
+                            self.ldIndicator.activityImageView.removeFromSuperview()
                         }
                     } else {
                         dispatch_async(dispatch_get_main_queue()) {
@@ -257,9 +261,10 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         if isReset {
             self.currentLoadedIndex = 0
             self.menuArray = []
+            self.menuTableView.reloadData()
+            self.ldIndicator.activityImageView.startAnimating()
+            self.view.addSubview(self.ldIndicator.activityImageView)
         }
-        println("location")
-        println(location)
         isPopulating = true
         var menuSVAPI:MenuSVAPI = MenuSVAPI()
         if let searchTag = tags {
@@ -288,6 +293,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
                             if isReset {
                                 dispatch_async(dispatch_get_main_queue()) {
                                     self.menuTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Bottom)
+                                    self.ldIndicator.activityImageView.stopAnimating()
+                                    self.ldIndicator.activityImageView.removeFromSuperview()
                                 }
                             } else {
                                 dispatch_async(dispatch_get_main_queue()) {
