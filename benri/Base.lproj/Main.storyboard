@@ -79,6 +79,9 @@
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="10" y="248" width="164" height="24"/>
+                                                    </variation>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R7G-Ey-MZA">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="214"/>
@@ -90,7 +93,8 @@
                                                             <exclude reference="R0B-Ks-7lR"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                                                         <mask key="constraints">
                                                             <include reference="R0B-Ks-7lR"/>
                                                         </mask>
@@ -112,7 +116,8 @@
                                                             <exclude reference="dFO-bI-msn"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="259" y="193" width="62" height="27"/>
                                                         <mask key="constraints">
                                                             <include reference="dFO-bI-msn"/>
                                                         </mask>
@@ -123,12 +128,18 @@
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="233" y="270" width="83" height="17"/>
+                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Restaurant Name Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9z-c8-4DE">
                                                     <rect key="frame" x="10" y="250" width="200" height="21"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="10" y="276" width="127" height="14"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -191,7 +202,7 @@
                                             <outlet property="menuNameLabel" destination="sRZ-Wl-gjC" id="Srt-ix-hbG"/>
                                             <outlet property="priceLabel" destination="hxA-Jd-51W" id="VMx-ld-GYt"/>
                                             <outlet property="storeNameLabel" destination="z9z-c8-4DE" id="S32-8G-HzU"/>
-                                            <segue destination="Vf4-KD-xxl" kind="showDetail" identifier="showDetailSegue" id="EtD-RT-oio"/>
+                                            <segue destination="Vf4-KD-xxl" kind="presentation" identifier="showDetailSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="EtD-RT-oio"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -707,10 +718,23 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Pn-CP-XU8">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.58016989176842193" blue="0.32575906868570037" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="MfQ-0P-wWr"/>
+                                </constraints>
                                 <state key="normal" title="Order Now">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="MfQ-0P-wWr"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="MfQ-0P-wWr"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="orderNow:" destination="Vf4-KD-xxl" eventType="touchUpInside" id="sQd-2F-M37"/>
                                 </connections>
@@ -790,7 +814,7 @@
                         <outlet property="ratingStar5" destination="LHL-xs-R80" id="M64-u3-slY"/>
                         <outlet property="restaurantLabel" destination="1ca-CJ-H0O" id="7DH-26-KFD"/>
                         <segue destination="Gfp-Bs-OPh" kind="unwind" identifier="backFromMenuDetail" unwindAction="returnFromMenuDetailSegueActions:" id="vGR-R7-P9e"/>
-                        <segue destination="CgR-QP-GW8" kind="show" identifier="showMap" id="ryz-i0-ZL3"/>
+                        <segue destination="CgR-QP-GW8" kind="presentation" identifier="showMap" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="ryz-i0-ZL3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fkD-Yz-OPK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1292,6 +1316,9 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="18" y="13" width="284" height="18"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -1951,10 +1978,10 @@
             </objects>
             <point key="canvasLocation" x="-840" y="1365"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="49e-Tb-3d3" customClass="TabBarViewController" customModule="adam" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
