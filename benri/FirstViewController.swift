@@ -126,7 +126,11 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
             self.locationManager.requestAlwaysAuthorization()
         } else {
             isInitiated = true
-            self.populateMenu(true, tags: nil, location:locationService.locationToLonLat(locationService.getCurrentLocation()))
+            // Delay execution for 10 miliseconds.
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(10 * NSEC_PER_MSEC)), dispatch_get_main_queue(), { () -> Void in
+                self.populateMenu(true, tags: nil, location:self.locationService.locationToLonLat(self.locationService.getCurrentLocation()))
+            })
+            
         }
         
     }
