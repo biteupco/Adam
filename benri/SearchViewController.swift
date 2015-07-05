@@ -87,6 +87,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             }
             activityView.stopAnimating()
             self.pickerView.reloadAllComponents()
+            const.setConst("search", key: "picker", value: pickerData[0])
         }
     }
     
