@@ -33,6 +33,9 @@
 		969AB5B21B36FC9100E92A9F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969AB5B11B36FC9100E92A9F /* User.swift */; };
 		969FB14E1B1AB32300439BDC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969FB14D1B1AB32300439BDC /* FBSDKLoginKit.framework */; };
 		969FB1501B1AB35700439BDC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969FB14F1B1AB35700439BDC /* FBSDKCoreKit.framework */; };
+		96B2EECA1B4935950086D322 /* RightCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B2EEC91B4935950086D322 /* RightCustomSegue.swift */; };
+		96B2EECD1B4938F20086D322 /* RightCustomUnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B2EECC1B4938F20086D322 /* RightCustomUnwindSegue.swift */; };
+		96B2EECF1B4953BB0086D322 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B2EECE1B4953BB0086D322 /* TabBarViewController.swift */; };
 		96C24E901B244527006C5806 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C24E8F1B244527006C5806 /* SearchViewController.swift */; };
 		96DA5A0F1AF274670003E506 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA5A0B1AF274670003E506 /* Const.swift */; };
 		96DA5A101AF274670003E506 /* HorizontalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA5A0C1AF274670003E506 /* HorizontalPicker.swift */; };
@@ -91,6 +94,9 @@
 		969AB5B11B36FC9100E92A9F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		969FB14D1B1AB32300439BDC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		969FB14F1B1AB35700439BDC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		96B2EEC91B4935950086D322 /* RightCustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightCustomSegue.swift; sourceTree = "<group>"; };
+		96B2EECC1B4938F20086D322 /* RightCustomUnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightCustomUnwindSegue.swift; sourceTree = "<group>"; };
+		96B2EECE1B4953BB0086D322 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		96C24E8F1B244527006C5806 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		96DA5A0B1AF274670003E506 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		96DA5A0C1AF274670003E506 /* HorizontalPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalPicker.swift; sourceTree = "<group>"; };
@@ -185,6 +191,7 @@
 		9656AD9B1AECC62800933A8E /* benri */ = {
 			isa = PBXGroup;
 			children = (
+				96B2EECB1B4935A40086D322 /* CutomSegue */,
 				96157CCF1B41AB240022E3F0 /* LoadingIndicator.swift */,
 				21A29D331B3A6166009E0D0C /* MapViewController.swift */,
 				96E377191B35981100229684 /* Localizable.strings */,
@@ -195,6 +202,7 @@
 				96DA5A0A1AF2744F0003E506 /* Lib */,
 				969AB5B01B36F52700E92A9F /* Profile */,
 				9656AD9E1AECC62800933A8E /* AppDelegate.swift */,
+				96B2EECE1B4953BB0086D322 /* TabBarViewController.swift */,
 				9656ADA01AECC62800933A8E /* FirstViewController.swift */,
 				96C24E8F1B244527006C5806 /* SearchViewController.swift */,
 				9616799A1B2C72BA00A43AD3 /* LocationSearchViewController.swift */,
@@ -244,6 +252,15 @@
 				969AB5B11B36FC9100E92A9F /* User.swift */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		96B2EECB1B4935A40086D322 /* CutomSegue */ = {
+			isa = PBXGroup;
+			children = (
+				96B2EEC91B4935950086D322 /* RightCustomSegue.swift */,
+				96B2EECC1B4938F20086D322 /* RightCustomUnwindSegue.swift */,
+			);
+			name = CutomSegue;
 			sourceTree = "<group>";
 		};
 		96DA5A0A1AF2744F0003E506 /* Lib */ = {
@@ -464,7 +481,9 @@
 				96DA5A101AF274670003E506 /* HorizontalPicker.swift in Sources */,
 				96DA5A1D1AF28AD20003E506 /* MenuServerAPI.swift in Sources */,
 				21D7412C1B21AD36008A8EB5 /* DiscoverViewController.swift in Sources */,
+				96B2EECD1B4938F20086D322 /* RightCustomUnwindSegue.swift in Sources */,
 				96DA5A111AF274670003E506 /* LocationService.swift in Sources */,
+				96B2EECA1B4935950086D322 /* RightCustomSegue.swift in Sources */,
 				9616799B1B2C72BA00A43AD3 /* LocationSearchViewController.swift in Sources */,
 				21577E061B2E875000D4218F /* CurrencyConverter.swift in Sources */,
 				96DA5A121AF274670003E506 /* ImageCache.swift in Sources */,
@@ -472,6 +491,7 @@
 				969AB5B21B36FC9100E92A9F /* User.swift in Sources */,
 				2150F5011B0EFEE200AFDF5E /* ProfileViewController.swift in Sources */,
 				21AF14871B05FA0B00108190 /* RestaurantServerAPI.swift in Sources */,
+				96B2EECF1B4953BB0086D322 /* TabBarViewController.swift in Sources */,
 				9656ADA11AECC62800933A8E /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,7 +643,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = benri/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = adam;
 				SWIFT_OBJC_BRIDGING_HEADER = "benri/Bridging-Header.h";
@@ -643,7 +663,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = benri/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = adam;
 				SWIFT_OBJC_BRIDGING_HEADER = "benri/Bridging-Header.h";
