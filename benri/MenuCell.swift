@@ -146,7 +146,13 @@ class MenuCell: UITableViewCell {
     }
     
     func _setDistantLabel(distance: Double) {
-        var formatter : String = String(format: "%.02f km", distance)
+        var formatter : String = ""
+        if distance < 1 {
+            let meterD = Int(distance * 1000)
+            formatter = String(format: "%d m", meterD)
+        } else {
+            formatter = String(format: "%.02f km", distance)
+        }
         self.distantLabel.text = formatter
         self.updateDistantLabelVisible()
     }
