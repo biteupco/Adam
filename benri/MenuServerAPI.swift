@@ -21,7 +21,7 @@ class MenuSVAPI {
     func getMenuAll(limit:Int, successCallback:(json:AnyObject?)->Void, errorCallback:()->Void){
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        Alamofire.request(.GET, apiBaseURL + apiEndPoint)
+        Alamofire.request(.GET, apiBaseURL + apiEndPoint, parameters: nil, encoding: .URL)
             .responseJSON{ (req, res, json, error) in
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 if(error != nil) {
@@ -48,7 +48,7 @@ class MenuSVAPI {
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        Alamofire.request(.GET, apiBaseURL + apiEndPoint, parameters: params)
+        Alamofire.request(.GET, apiBaseURL + apiEndPoint, parameters: params, encoding: .URL)
             .responseJSON{ (req, res, json, error) in
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 if(error != nil) {
@@ -75,7 +75,7 @@ class MenuSVAPI {
         }
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        Alamofire.request(.GET, apiBaseURL + apiEndPoint, parameters: params)
+        Alamofire.request(.GET, apiBaseURL + apiEndPoint, parameters: params, encoding: .URL)
             .responseJSON{ (req, res, json, error) in
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 if(error != nil) {
