@@ -202,7 +202,7 @@
                                             <outlet property="menuNameLabel" destination="sRZ-Wl-gjC" id="Srt-ix-hbG"/>
                                             <outlet property="priceLabel" destination="hxA-Jd-51W" id="VMx-ld-GYt"/>
                                             <outlet property="storeNameLabel" destination="z9z-c8-4DE" id="S32-8G-HzU"/>
-                                            <segue destination="Vf4-KD-xxl" kind="presentation" identifier="showDetailSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="EtD-RT-oio"/>
+                                            <segue destination="Vf4-KD-xxl" kind="presentation" identifier="showDetailSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="EtD-RT-oio"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1094,7 +1094,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <segue destination="W37-Fv-zpX" kind="custom" identifier="moveToSearch" id="FNG-cS-Owa"/>
+                                                <segue destination="W37-Fv-zpX" kind="presentation" identifier="moveToSearch" id="FNG-cS-Owa"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Location" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZX-Qy-Jvk">
