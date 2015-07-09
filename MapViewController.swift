@@ -113,9 +113,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         
         if keyPath == "myLocation" && object.isKindOfClass(GMSMapView) {
             
-            /*fetchDirectionsFrom(self.gMap.myLocation.coordinate, to: self.destinationMarker.position, completion: { (optionalRoute) -> Void in
+            fetchDirectionsFrom(self.gMap.myLocation.coordinate, to: self.destinationMarker.position, completion: { (optionalRoute) -> Void in
                 
-            })*/
+            })
             
             
         }
