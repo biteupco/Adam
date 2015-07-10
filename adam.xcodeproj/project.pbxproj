@@ -163,6 +163,59 @@
 			name = "Menu Detail";
 			sourceTree = "<group>";
 		};
+		21C944BC1B4FB91500256F8D /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				96DA5A141AF284BB0003E506 /* Menu.swift */,
+				96E03D071B4EC8CF0060CD3E /* Order.swift */,
+				21AF14881B0601C800108190 /* Restaurant.swift */,
+				969AB5B11B36FC9100E92A9F /* User.swift */,
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
+		21C944BD1B4FB9EE00256F8D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				21C944C01B4FBB3700256F8D /* Map */,
+				21C944BF1B4FBAC800256F8D /* Search */,
+				21C944BE1B4FBA2400256F8D /* Cart */,
+				969AB5B01B36F52700E92A9F /* Profile */,
+				96E3771B1B359C1F00229684 /* Tutorial */,
+				213997321B3907160027AB55 /* Menu Detail */,
+				96DA5A131AF284A80003E506 /* Menu */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		21C944BE1B4FBA2400256F8D /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				9656ADA21AECC62800933A8E /* SecondViewController.swift */,
+			);
+			name = Cart;
+			sourceTree = "<group>";
+		};
+		21C944BF1B4FBAC800256F8D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */,
+				21D741291B21AA4B008A8EB5 /* DiscoverView.swift */,
+				9616799A1B2C72BA00A43AD3 /* LocationSearchViewController.swift */,
+				9678676F1B2C9A7F0047C7BB /* SearchCell.swift */,
+				96C24E8F1B244527006C5806 /* SearchViewController.swift */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		21C944C01B4FBB3700256F8D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				21A29D331B3A6166009E0D0C /* MapViewController.swift */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
 		4730F9DECD23A478A1E3060B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,28 +248,18 @@
 		9656AD9B1AECC62800933A8E /* benri */ = {
 			isa = PBXGroup;
 			children = (
+				21C944BC1B4FB91500256F8D /* Data Model */,
 				96B2EECB1B4935A40086D322 /* CutomSegue */,
-				96157CCF1B41AB240022E3F0 /* LoadingIndicator.swift */,
-				21A29D331B3A6166009E0D0C /* MapViewController.swift */,
 				96E377191B35981100229684 /* Localizable.strings */,
 				21D741271B21A9A9008A8EB5 /* DiscoverView.xib */,
+				21C944BD1B4FB9EE00256F8D /* Views */,
 				96DA5A191AF28AAA0003E506 /* SVAPI */,
-				96E3771B1B359C1F00229684 /* Tutorial */,
-				96DA5A131AF284A80003E506 /* Menu */,
 				96DA5A0A1AF2744F0003E506 /* Lib */,
-				96E03D061B4EC8A90060CD3E /* Order */,
-				969AB5B01B36F52700E92A9F /* Profile */,
 				9656AD9E1AECC62800933A8E /* AppDelegate.swift */,
 				96B2EECE1B4953BB0086D322 /* TabBarViewController.swift */,
-				9656ADA01AECC62800933A8E /* FirstViewController.swift */,
-				96C24E8F1B244527006C5806 /* SearchViewController.swift */,
-				9616799A1B2C72BA00A43AD3 /* LocationSearchViewController.swift */,
-				9656ADA21AECC62800933A8E /* SecondViewController.swift */,
-				21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */,
-				21D741291B21AA4B008A8EB5 /* DiscoverView.swift */,
-				9678676F1B2C9A7F0047C7BB /* SearchCell.swift */,
 				9656ADA71AECC62800933A8E /* Images.xcassets */,
 				9656ADA41AECC62800933A8E /* Main.storyboard */,
+				21577E071B2E87DB00D4218F /* CurrencyList.plist */,
 				96E3771C1B36784000229684 /* APISetting.plist */,
 				9656ADA91AECC62800933A8E /* LaunchScreen.xib */,
 				9656AD9C1AECC62800933A8E /* Supporting Files */,
@@ -254,7 +297,6 @@
 			isa = PBXGroup;
 			children = (
 				2150F5001B0EFEE200AFDF5E /* ProfileViewController.swift */,
-				969AB5B11B36FC9100E92A9F /* User.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -271,6 +313,8 @@
 		96DA5A0A1AF2744F0003E506 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				21577E051B2E875000D4218F /* CurrencyConverter.swift */,
+				96157CCF1B41AB240022E3F0 /* LoadingIndicator.swift */,
 				96DA5A0B1AF274670003E506 /* Const.swift */,
 				96DA5A0C1AF274670003E506 /* HorizontalPicker.swift */,
 				96DA5A0D1AF274670003E506 /* LocationService.swift */,
@@ -283,12 +327,8 @@
 		96DA5A131AF284A80003E506 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				213997321B3907160027AB55 /* Menu Detail */,
-				96DA5A141AF284BB0003E506 /* Menu.swift */,
+				9656ADA01AECC62800933A8E /* FirstViewController.swift */,
 				96DA5A161AF2850E0003E506 /* MenuCell.swift */,
-				21577E051B2E875000D4218F /* CurrencyConverter.swift */,
-				21577E071B2E87DB00D4218F /* CurrencyList.plist */,
-				21AF14881B0601C800108190 /* Restaurant.swift */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -302,14 +342,6 @@
 				968634321B497EA700B2016E /* LoginAPI.swift */,
 			);
 			name = SVAPI;
-			sourceTree = "<group>";
-		};
-		96E03D061B4EC8A90060CD3E /* Order */ = {
-			isa = PBXGroup;
-			children = (
-				96E03D071B4EC8CF0060CD3E /* Order.swift */,
-			);
-			name = Order;
 			sourceTree = "<group>";
 		};
 		96E3771B1B359C1F00229684 /* Tutorial */ = {
