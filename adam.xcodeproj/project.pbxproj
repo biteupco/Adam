@@ -15,6 +15,7 @@
 		21AF14871B05FA0B00108190 /* RestaurantServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AF14861B05FA0B00108190 /* RestaurantServerAPI.swift */; };
 		21AF14891B0601C800108190 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AF14881B0601C800108190 /* Restaurant.swift */; };
 		21BF4D171B099714001CDBC3 /* RestaurantCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF4D161B099714001CDBC3 /* RestaurantCache.swift */; };
+		21C944C21B4FBC6E00256F8D /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C944C11B4FBC6E00256F8D /* CartManager.swift */; };
 		21D741281B21A9A9008A8EB5 /* DiscoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D741271B21A9A9008A8EB5 /* DiscoverView.xib */; };
 		21D7412A1B21AA4B008A8EB5 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D741291B21AA4B008A8EB5 /* DiscoverView.swift */; };
 		21D7412C1B21AD36008A8EB5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */; };
@@ -73,6 +74,7 @@
 		21AF14861B05FA0B00108190 /* RestaurantServerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantServerAPI.swift; sourceTree = "<group>"; };
 		21AF14881B0601C800108190 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		21BF4D161B099714001CDBC3 /* RestaurantCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCache.swift; sourceTree = "<group>"; };
+		21C944C11B4FBC6E00256F8D /* CartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		21D741271B21A9A9008A8EB5 /* DiscoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverView.xib; sourceTree = "<group>"; };
 		21D741291B21AA4B008A8EB5 /* DiscoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				96DA5A0D1AF274670003E506 /* LocationService.swift */,
 				96DA5A0E1AF274670003E506 /* ImageCache.swift */,
 				21BF4D161B099714001CDBC3 /* RestaurantCache.swift */,
+				21C944C11B4FBC6E00256F8D /* CartManager.swift */,
 			);
 			name = Lib;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				9616799B1B2C72BA00A43AD3 /* LocationSearchViewController.swift in Sources */,
 				21577E061B2E875000D4218F /* CurrencyConverter.swift in Sources */,
 				968634331B497EA700B2016E /* LoginAPI.swift in Sources */,
+				21C944C21B4FBC6E00256F8D /* CartManager.swift in Sources */,
 				96DA5A121AF274670003E506 /* ImageCache.swift in Sources */,
 				96C24E901B244527006C5806 /* SearchViewController.swift in Sources */,
 				969AB5B21B36FC9100E92A9F /* User.swift in Sources */,
