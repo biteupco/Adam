@@ -27,6 +27,15 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UIAlert
     @IBOutlet weak var upperView: UIView!
     @IBOutlet weak var detailTable: UITableView!
     
+    
+    @IBAction func TutorialReset(sender: AnyObject) {
+        var userDefault = NSUserDefaults.standardUserDefaults()
+        userDefault.setBool(false, forKey: "didFinishedTutorial")
+        if !self.logOutButton.hidden {
+            self.logOut(self)
+        }
+    }
+    
     var loginView:FBSDKLoginButton!
     
     var userDefault:NSUserDefaults!
