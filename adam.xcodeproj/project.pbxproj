@@ -30,6 +30,7 @@
 		9656ADAB1AECC62800933A8E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9656ADA91AECC62800933A8E /* LaunchScreen.xib */; };
 		9656ADB71AECC62900933A8E /* benriTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656ADB61AECC62900933A8E /* benriTests.swift */; };
 		967867701B2C9A7F0047C7BB /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9678676F1B2C9A7F0047C7BB /* SearchCell.swift */; };
+		968634331B497EA700B2016E /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968634321B497EA700B2016E /* LoginAPI.swift */; };
 		969AB5B21B36FC9100E92A9F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969AB5B11B36FC9100E92A9F /* User.swift */; };
 		969FB14E1B1AB32300439BDC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969FB14D1B1AB32300439BDC /* FBSDKLoginKit.framework */; };
 		969FB1501B1AB35700439BDC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969FB14F1B1AB35700439BDC /* FBSDKCoreKit.framework */; };
@@ -45,6 +46,7 @@
 		96DA5A171AF2850E0003E506 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA5A161AF2850E0003E506 /* MenuCell.swift */; };
 		96DA5A1D1AF28AD20003E506 /* MenuServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA5A1C1AF28AD20003E506 /* MenuServerAPI.swift */; };
 		96DA5A1F1AF28AE90003E506 /* TagServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA5A1E1AF28AE90003E506 /* TagServerAPI.swift */; };
+		96E03D081B4EC8CF0060CD3E /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E03D071B4EC8CF0060CD3E /* Order.swift */; };
 		96E377171B35981100229684 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96E377191B35981100229684 /* Localizable.strings */; };
 		96E3771D1B36784000229684 /* APISetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96E3771C1B36784000229684 /* APISetting.plist */; };
 		96F0CF791AF136E2004E616D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F0CF781AF136E2004E616D /* CoreLocation.framework */; };
@@ -91,6 +93,7 @@
 		9656ADB51AECC62900933A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9656ADB61AECC62900933A8E /* benriTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = benriTests.swift; sourceTree = "<group>"; };
 		9678676F1B2C9A7F0047C7BB /* SearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		968634321B497EA700B2016E /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		969AB5B11B36FC9100E92A9F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		969FB14D1B1AB32300439BDC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		969FB14F1B1AB35700439BDC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -106,6 +109,7 @@
 		96DA5A161AF2850E0003E506 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		96DA5A1C1AF28AD20003E506 /* MenuServerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuServerAPI.swift; sourceTree = "<group>"; };
 		96DA5A1E1AF28AE90003E506 /* TagServerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagServerAPI.swift; sourceTree = "<group>"; };
+		96E03D071B4EC8CF0060CD3E /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		96E377111B3597DA00229684 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		96E377121B3597DA00229684 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		96E377131B3597E300229684 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 				96E3771B1B359C1F00229684 /* Tutorial */,
 				96DA5A131AF284A80003E506 /* Menu */,
 				96DA5A0A1AF2744F0003E506 /* Lib */,
+				96E03D061B4EC8A90060CD3E /* Order */,
 				969AB5B01B36F52700E92A9F /* Profile */,
 				9656AD9E1AECC62800933A8E /* AppDelegate.swift */,
 				96B2EECE1B4953BB0086D322 /* TabBarViewController.swift */,
@@ -294,8 +299,17 @@
 				96DA5A1C1AF28AD20003E506 /* MenuServerAPI.swift */,
 				21AF14861B05FA0B00108190 /* RestaurantServerAPI.swift */,
 				96DA5A1E1AF28AE90003E506 /* TagServerAPI.swift */,
+				968634321B497EA700B2016E /* LoginAPI.swift */,
 			);
 			name = SVAPI;
+			sourceTree = "<group>";
+		};
+		96E03D061B4EC8A90060CD3E /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				96E03D071B4EC8CF0060CD3E /* Order.swift */,
+			);
+			name = Order;
 			sourceTree = "<group>";
 		};
 		96E3771B1B359C1F00229684 /* Tutorial */ = {
@@ -465,6 +479,7 @@
 			files = (
 				96157CD01B41AB240022E3F0 /* LoadingIndicator.swift in Sources */,
 				213997341B3907580027AB55 /* MenuDetailViewController.swift in Sources */,
+				96E03D081B4EC8CF0060CD3E /* Order.swift in Sources */,
 				964690861B3308D800DB187D /* TutorialViewController.swift in Sources */,
 				21AF14891B0601C800108190 /* Restaurant.swift in Sources */,
 				967867701B2C9A7F0047C7BB /* SearchCell.swift in Sources */,
@@ -486,6 +501,7 @@
 				96B2EECA1B4935950086D322 /* RightCustomSegue.swift in Sources */,
 				9616799B1B2C72BA00A43AD3 /* LocationSearchViewController.swift in Sources */,
 				21577E061B2E875000D4218F /* CurrencyConverter.swift in Sources */,
+				968634331B497EA700B2016E /* LoginAPI.swift in Sources */,
 				96DA5A121AF274670003E506 /* ImageCache.swift in Sources */,
 				96C24E901B244527006C5806 /* SearchViewController.swift in Sources */,
 				969AB5B21B36FC9100E92A9F /* User.swift in Sources */,

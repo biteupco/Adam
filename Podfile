@@ -6,3 +6,4 @@ pod "SwiftyJSON", ">= 2.2"
 pod 'Alamofire', '~> 1.2'
 pod 'Mixpanel'
 pod 'GoogleMaps'
+pod 'CryptoSwift'

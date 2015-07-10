@@ -141,6 +141,12 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UIAlert
                 
                 if FBSDKAccessToken.currentAccessToken() != nil {
                     println(FBSDKAccessToken.currentAccessToken().tokenString)
+                    let api:LoginAPI = LoginAPI()
+                    api.loginByFacebook({ (json) -> Void in
+                        
+                    }, errorCallback: { () -> Void in
+                        
+                    })
                 }
             }
         })
