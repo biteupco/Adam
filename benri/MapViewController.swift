@@ -142,7 +142,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                 
                 let myJSON = JSON(json!)
                 self.steps = myJSON["routes"][0]["legs"][0]["steps"].arrayValue
-                
+                self.polyline = nil
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                     if let encodePath = myJSON["routes"][0]["overview_polyline"]["points"].string {
                         var path:GMSPath = GMSPath(fromEncodedPath: encodePath)
