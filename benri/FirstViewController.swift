@@ -114,7 +114,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNotificationDiscoverSearch", name: discoverSearchNotificationKey, object: nil)
         
         self.currentLoadedIndex = 0
-        self.populateLength     = 10
+        self.populateLength     = 5
         
         self.menuTableView.delegate = self
         self.menuTableView.dataSource = self
