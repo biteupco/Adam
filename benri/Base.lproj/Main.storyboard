@@ -1430,7 +1430,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Cart is Empty" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" text="Cart is Empty" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
                                 <rect key="frame" x="195" y="279" width="210" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
@@ -1460,8 +1460,7 @@
                                                             <exclude reference="3c5-EY-5mL"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="8" y="8" width="160" height="120"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="3c5-EY-5mL"/>
                                                         </mask>
@@ -1472,17 +1471,11 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="176" y="16" width="216" height="28"/>
-                                                    </variation>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lWn-yE-kfF">
                                                     <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="236" y="69" width="97" height="30"/>
-                                                    </variation>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jch-3M-ObU">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -1490,9 +1483,6 @@
                                                     <state key="normal" title="-">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="185" y="69" width="30" height="30"/>
-                                                    </variation>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="duL-xI-1I0">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -1500,9 +1490,6 @@
                                                     <state key="normal" title="+">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="354" y="69" width="30" height="30"/>
-                                                    </variation>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1528,18 +1515,18 @@
                                                     <exclude reference="duL-xI-1I0"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="Ro8-Nu-PvB"/>
-                                                    <exclude reference="zMF-TF-Dad"/>
                                                     <exclude reference="0B4-tz-TkU"/>
                                                     <exclude reference="qls-df-6Zg"/>
                                                     <exclude reference="zEQ-Jc-gj4"/>
-                                                    <exclude reference="9bs-8x-6qX"/>
-                                                    <exclude reference="VcV-qF-UIJ"/>
                                                     <exclude reference="NPs-T6-fpQ"/>
                                                     <exclude reference="b3M-D2-dDy"/>
                                                     <exclude reference="87b-lC-xGk"/>
                                                     <exclude reference="8cf-8o-u79"/>
                                                     <exclude reference="o9M-4X-ScT"/>
+                                                    <exclude reference="9bs-8x-6qX"/>
+                                                    <exclude reference="VcV-qF-UIJ"/>
+                                                    <exclude reference="Ro8-Nu-PvB"/>
+                                                    <exclude reference="zMF-TF-Dad"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -1551,18 +1538,18 @@
                                                     <include reference="duL-xI-1I0"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="Ro8-Nu-PvB"/>
-                                                    <include reference="zMF-TF-Dad"/>
                                                     <include reference="0B4-tz-TkU"/>
                                                     <include reference="qls-df-6Zg"/>
                                                     <include reference="zEQ-Jc-gj4"/>
-                                                    <include reference="9bs-8x-6qX"/>
-                                                    <include reference="VcV-qF-UIJ"/>
                                                     <include reference="NPs-T6-fpQ"/>
                                                     <include reference="b3M-D2-dDy"/>
                                                     <include reference="87b-lC-xGk"/>
                                                     <include reference="8cf-8o-u79"/>
                                                     <include reference="o9M-4X-ScT"/>
+                                                    <include reference="9bs-8x-6qX"/>
+                                                    <include reference="VcV-qF-UIJ"/>
+                                                    <include reference="Ro8-Nu-PvB"/>
+                                                    <include reference="zMF-TF-Dad"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>

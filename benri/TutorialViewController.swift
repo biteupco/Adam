@@ -49,7 +49,7 @@ class TutorialViewController:UIViewController, UIPageViewControllerDataSource, U
         self.view.backgroundColor = UIColor(red: 252.0/255.0, green: 119.0/255.0, blue: 7.0/255.0, alpha: 1.0)
         
         self.pageTitles = ["Gobbl", "Food Search", "Store Locate", "Collect & Pay", "Eat & Log", "Login"]
-        self.pageImages = ["GobblTutorial", "Tutorial1", "MapTutorial", "Tutorial1", "Tutorial1", "GobblTutorial"]
+        self.pageImages = ["GobblTutorial", "Tutorial_Search", "Tutorial_Map", "Tutorial_Flow", "Tutorial_Sum", "GobblTutorial"]
         self.pageDetail = ["TutorialString_1", "TutorialString_2", "TutorialString_3", "TutorialString_4", "TutorialString_5", "TutorialString_6", ]
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
