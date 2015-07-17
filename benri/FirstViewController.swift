@@ -489,8 +489,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UIScroll
             }
         } else {
             if let searchTag = const.getConst("search", key: "picker") {
-                var mixPanelInstance:Mixpanel = Mixpanel.sharedInstance()
-                mixPanelInstance.track("Simulate Search Tag", properties: ["Tag" : searchTag])
+                //var mixPanelInstance:Mixpanel = Mixpanel.sharedInstance()
+                //mixPanelInstance.track("Simulate Search Tag", properties: ["Tag" : searchTag])
                 
                 const.setConst("search", key: "tag", value: searchTag)
                 self.populateMenu(true, tags: searchTag, location:nil)
