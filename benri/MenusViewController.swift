@@ -15,31 +15,6 @@ import Mixpanel
 let discoverCloseNotificationKey = "me.gobbl.adam.discoverCloseNotificationKey"
 let discoverSearchNotificationKey = "me.gobbl.adam.discoverSearchNotificationKey"
 
-enum ScreenSize {
-    case UNDEFINED,
-    IPHONE_3_5_INCH,
-    IPHONE_4_INCH,
-    IPHONE_4_7_INCH,
-    IPHONE_5_5_INCH
-}
-
-func getDeviceSize()->ScreenSize {
-    let screenSize: CGRect = UIScreen.mainScreen().bounds
-
-    if screenSize.width == 320.0 {
-        if screenSize.height == 480.0 {
-            return ScreenSize.IPHONE_3_5_INCH
-        } else {
-            return ScreenSize.IPHONE_4_INCH
-        }
-    } else if screenSize.width == 375.0 {
-        return ScreenSize.IPHONE_4_7_INCH
-    } else if screenSize.width == 414.0 {
-        return ScreenSize.IPHONE_5_5_INCH
-    }
-    return ScreenSize.UNDEFINED
-}
-
 class MenusViewController: UIViewController, CLLocationManagerDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var menuTableView: UITableView!

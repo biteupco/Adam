@@ -34,7 +34,13 @@ class TabBarViewController: UITabBarController {
 
     override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
         let segue = RightCustomUnwindSegue(identifier: identifier, source: fromViewController, destination: toViewController)
-        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
+        return segue
+        //return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
+        /*return UIStoryboardSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
+            let fromView = fromViewController.view
+            let toView   = toViewController.view
+            
+        })*/
 
     }
     

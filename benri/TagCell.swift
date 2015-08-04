@@ -55,6 +55,19 @@ class TagCell: UITableViewCell {
         self.tagImageView.image = nil
     }
     
+    func setLocalImage(tagName:String) {
+        if tagName.lowercaseString == "vietnam" {
+            self.tagImageView.image  = UIImage(named: "foodiesfeed.com_pho-ga-take-away.jpg")
+        }
+        else if tagName.lowercaseString == "japanese" {
+            self.tagImageView.image  = UIImage(named: "foodiesfeed.com_colorful-sushi-in-a-black-box3.jpg")
+        }
+        else if tagName.lowercaseString == "italian" {
+            self.tagImageView.image  = UIImage(named: "foodiesfeed.com_fresh-pasta-dill-vegetables.jpg")
+        }
+        
+    }
+    
     func setImageByURL(imgURL: NSURL) {
         self.tagImageView.image = nil
         
@@ -67,6 +80,7 @@ class TagCell: UITableViewCell {
                     self.imgCache.cacheImage(request.URL, image: image!)
                     self.tagImageView.image = image
                 } else {
+                    
                 }
             }
         }
@@ -74,6 +88,7 @@ class TagCell: UITableViewCell {
     
     func setTagInfo(tagObj:Tag) {
         self.tagLabel.text = tagObj.tagName
-        self.setImageByURL(tagObj.tagImageUrl)
+        self.setLocalImage(tagObj.tagName)
+        //self.setImageByURL(tagObj.tagImageUrl)
     }
 }

@@ -16,7 +16,7 @@ class LocationSearchViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBAction func cancelSearch(sender: AnyObject) {
         self.selectedLocationName = ""
-        self.performSegueWithIdentifier("backFromSearchSegueUnwind", sender: self)
+        self.performSegueWithIdentifier("backFromLocationToTag", sender: self)
     }
     
     private var predictData:[GMSAutocompletePrediction] = []
@@ -158,11 +158,11 @@ class LocationSearchViewController: UIViewController, UITableViewDelegate, UITab
       //  let searchViewController = segue.destinationViewController as! searchViewController
        // searchViewController.message = "Hello from the 1st View Controller"
         
-        println("select")
+        /*println("select")
         println(indexPath)
         selectedLocationName = cell.searchText?.text as String!
         selectedCoordinates = cell.coordinates
-        self.performSegueWithIdentifier("selectLocationFromSearchSegueUnwind", sender: self)
+        self.performSegueWithIdentifier("selectLocationFromSearchSegueUnwind", sender: self)*/
         
     }
     
@@ -184,11 +184,13 @@ class LocationSearchViewController: UIViewController, UITableViewDelegate, UITab
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         println("prepareForSegue")
-        if count(selectedLocationName) > 0 {
-            println(selectedLocationName)
-            let searchViewController = segue.destinationViewController as! SearchViewController
-            searchViewController.searchLocation = selectedLocationName
-            searchViewController.searchLocationCoordinate = selectedCoordinates
+        if segue.identifier == "didSelectLocation" {
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
+                let cell: SearchCell = self.tableView.cellForRowAtIndexPath(indexPath) as! SearchCell
+                let tagViewController = segue.destinationViewController as! TagsViewController
+                tagViewController.locationSearchText = cell.searchText?.text as String!
+                tagViewController.locationSearch = cell.coordinates
+            }
         }
     }
 }

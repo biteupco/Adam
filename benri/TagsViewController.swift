@@ -9,9 +9,45 @@
 import UIKit
 import SwiftyJSON
 
+enum ScreenSize {
+    case UNDEFINED,
+    IPHONE_3_5_INCH,
+    IPHONE_4_INCH,
+    IPHONE_4_7_INCH,
+    IPHONE_5_5_INCH
+}
+
+func getDeviceSize()->ScreenSize {
+    let screenSize: CGRect = UIScreen.mainScreen().bounds
+    
+    if screenSize.width == 320.0 {
+        if screenSize.height == 480.0 {
+            return ScreenSize.IPHONE_3_5_INCH
+        } else {
+            return ScreenSize.IPHONE_4_INCH
+        }
+    } else if screenSize.width == 375.0 {
+        return ScreenSize.IPHONE_4_7_INCH
+    } else if screenSize.width == 414.0 {
+        return ScreenSize.IPHONE_5_5_INCH
+    }
+    return ScreenSize.UNDEFINED
+}
+
 class TagsViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tagsTableView: UITableView!
+    @IBOutlet weak var locationButton: UIButton!
+    
+    @IBAction func returnFromLocationSearchToTag(sender: UIStoryboardSegue){
+        if sender.identifier == "didSelectLocation" {
+            // update location
+            self.locationButton.setTitle(locationSearchText + moreLocationText, forState: .Normal)
+            let lonlatSearch = String(stringInterpolationSegment: locationSearch.coordinate.longitude) + "," + String(stringInterpolationSegment: locationSearch.coordinate.latitude)
+            println(lonlatSearch)
+            //const.setConst("search", key: "location", value: lonlatSearch)
+        }
+    }
     
     var tags: NSMutableArray = []
     
@@ -27,6 +63,10 @@ class TagsViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
     var isPopulating        = false
     var isInitiated         = false
     
+    var locationSearch:CLLocation!
+    var locationSearchText  = "Current Location"
+    var moreLocationText    = " ⌄"
+    
     @IBAction func returnFromTutorialSegueActions(sender: UIStoryboardSegue) {
         if sender.identifier == "tutorialSegueUnwind" {
             self.loadTags()
@@ -37,7 +77,6 @@ class TagsViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
         var userDefault = NSUserDefaults.standardUserDefaults()
         if !(userDefault.boolForKey("didFinishedTutorial")) {
             var vc = self.storyboard?.instantiateViewControllerWithIdentifier("TutorialViewController") as! TutorialViewController
@@ -49,9 +88,9 @@ class TagsViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
             }
             dispatch_once(&Static.token) {
                 var statusView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 20))
-                statusView.backgroundColor = UIColor.whiteColor()
-                //statusView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 1.0)
+                statusView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 1.0)
                 self.view.addSubview(statusView)
+                self.locationButton.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 1.0)
             }
         }
     }
@@ -103,7 +142,7 @@ class TagsViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
         }
         
     }
-
+    
     /*
     // MARK: - Navigation
 
@@ -113,6 +152,17 @@ class TagsViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
         // Pass the selected object to the new view controller.
     }
     */
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let deviceSize = getDeviceSize()
+        if deviceSize == ScreenSize.IPHONE_3_5_INCH || deviceSize == ScreenSize.IPHONE_4_INCH {
+            return 295.0;
+        } else if deviceSize == ScreenSize.IPHONE_4_7_INCH {
+            return 340.0;
+        } else if deviceSize == ScreenSize.IPHONE_5_5_INCH {
+            return 370.0;
+        }
+        return 400.0;
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tags.count
@@ -126,8 +176,8 @@ class TagsViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
         }
         
         let tag = tags.objectAtIndex(indexPath.row) as! Tag
+        cell.request?.cancel()
         cell.setTagInfo(tag)
-        //cell.request?.cancel()
         //cell.setImageByURL(menu.imgURL)
         //cell.setMenu(menu, restaurant: restaurant)
         //println(locationService.getCurrentLocation())
@@ -135,7 +185,8 @@ class TagsViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        println("HI")
+        print(locationService.getCurrentLocation())
     }
 
 }

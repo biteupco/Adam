@@ -19,6 +19,8 @@
 		21D741281B21A9A9008A8EB5 /* DiscoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D741271B21A9A9008A8EB5 /* DiscoverView.xib */; };
 		21D7412A1B21AA4B008A8EB5 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D741291B21AA4B008A8EB5 /* DiscoverView.swift */; };
 		21D7412C1B21AD36008A8EB5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */; };
+		21EBA9611B705EDA002ECC54 /* foodiesfeed.com_pho-ga-take-away.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 21EBA9601B705EDA002ECC54 /* foodiesfeed.com_pho-ga-take-away.jpg */; };
+		21EBA9631B706A73002ECC54 /* foodiesfeed.com_fresh-pasta-dill-vegetables.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 21EBA9621B706A73002ECC54 /* foodiesfeed.com_fresh-pasta-dill-vegetables.jpg */; };
 		960E89831B653D18007B0EE5 /* FilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E89821B653D18007B0EE5 /* FilterManager.swift */; };
 		96157CD01B41AB240022E3F0 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96157CCF1B41AB240022E3F0 /* LoadingIndicator.swift */; };
 		9615B8F51B6B7C6400FCABE2 /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9615B8F41B6B7C6400FCABE2 /* KeyChainService.swift */; };
@@ -91,6 +93,8 @@
 		21D741271B21A9A9008A8EB5 /* DiscoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverView.xib; sourceTree = "<group>"; };
 		21D741291B21AA4B008A8EB5 /* DiscoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		21EBA9601B705EDA002ECC54 /* foodiesfeed.com_pho-ga-take-away.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "foodiesfeed.com_pho-ga-take-away.jpg"; sourceTree = "<group>"; };
+		21EBA9621B706A73002ECC54 /* foodiesfeed.com_fresh-pasta-dill-vegetables.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "foodiesfeed.com_fresh-pasta-dill-vegetables.jpg"; sourceTree = "<group>"; };
 		5BD10A0AA37B5DD5EB928422 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		960E89821B653D18007B0EE5 /* FilterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterManager.swift; sourceTree = "<group>"; };
 		96157CCF1B41AB240022E3F0 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
@@ -294,6 +298,8 @@
 				96E3771C1B36784000229684 /* APISetting.plist */,
 				9656ADA91AECC62800933A8E /* LaunchScreen.xib */,
 				961C3FAE1B6E074D008FE19F /* foodiesfeed.com_colorful-sushi-in-a-black-box3.jpg */,
+				21EBA9601B705EDA002ECC54 /* foodiesfeed.com_pho-ga-take-away.jpg */,
+				21EBA9621B706A73002ECC54 /* foodiesfeed.com_fresh-pasta-dill-vegetables.jpg */,
 				9656AD9C1AECC62800933A8E /* Supporting Files */,
 				2150F4FB1B0ED81C00AFDF5E /* Bridging-Header.h */,
 			);
@@ -507,8 +513,10 @@
 				965C95BC1B5CC246003C099E /* Cabin-Regular.ttf in Resources */,
 				965C95BD1B5CC246003C099E /* Cabin-SemiBold.ttf in Resources */,
 				965C95BF1B5CD020003C099E /* Info.plist in Resources */,
+				21EBA9631B706A73002ECC54 /* foodiesfeed.com_fresh-pasta-dill-vegetables.jpg in Resources */,
 				9677EECA1B50BE2700AEBDF7 /* OrderDialogViewController.xib in Resources */,
 				96E377171B35981100229684 /* Localizable.strings in Resources */,
+				21EBA9611B705EDA002ECC54 /* foodiesfeed.com_pho-ga-take-away.jpg in Resources */,
 				96E3771D1B36784000229684 /* APISetting.plist in Resources */,
 				9656ADAB1AECC62800933A8E /* LaunchScreen.xib in Resources */,
 				9656ADA81AECC62800933A8E /* Images.xcassets in Resources */,
