@@ -120,8 +120,17 @@ class PageContentViewController: UIViewController, FBSDKLoginButtonDelegate {
                 token = FBSDKAccessToken.currentAccessToken().tokenString
                 userName = result.valueForKey("name") as! String
                 profileImgURL = String(format: "https://graph.facebook.com/%@/picture?type=large", fbID)
+                
+                let api:LoginAPI = LoginAPI()
+                api.loginByFacebook(token,
+                    fid: fbID,
+                    email: email,
+                    successCallback: { (json) -> Void in
+                        self.delegate.didLoginFacebook(email, token:token, profileImgURL: profileImgURL, userName: userName)
+                    }, errorCallback: { () -> Void in
+                        
+                })
             }
-            self.delegate.didLoginFacebook(email, token:token, profileImgURL: profileImgURL, userName: userName)
         })
     }
 }

@@ -15,8 +15,11 @@ class RestaurantSVAPI {
     let apiBaseURL:String   = "http://snakebite.herokuapp.com"
     let apiEndPoint:String  = "/restaurants"
     let batchApiEndPoint:String = "/batch/restaurants"
+    var token:String!
+    
     init(){
-        
+        var keyChainService = KeyChainService()
+        token = keyChainService.loadToken(.ServerToken)
     }
     func getRestaurantAll(limit:Int, successCallback:(json:AnyObject?)->Void, errorCallback:()->Void){
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -39,7 +42,8 @@ class RestaurantSVAPI {
         
         let params = [
             "id"  : id,
-            "limit": String(limit)
+            "limit": String(limit),
+            "token": self.token
         ]
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
@@ -61,6 +65,7 @@ class RestaurantSVAPI {
         
         let params:[String:AnyObject] = [
             "ids"  : ids,
+            "token": self.token
         ]
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         

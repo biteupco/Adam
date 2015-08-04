@@ -35,7 +35,7 @@ class DiscoverView: UIView {
         activityView.startAnimating()
         self.addSubview(activityView)
         
-        svapi.getTags(10,
+        svapi.getTags(0, limit: 10,
             successCallback: {(somejson)-> Void in
                 if let json: AnyObject = somejson {
                     let myJSON = JSON(json)

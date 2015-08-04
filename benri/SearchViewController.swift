@@ -97,7 +97,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         activityView.center = self.view.center
         activityView.startAnimating()
         self.view.addSubview(activityView)
-        tagSVAPI.getTags(10,
+        tagSVAPI.getTags(0, limit: 10,
             successCallback: onSuccess,
             errorCallback: {() -> Void in
                 

@@ -14,9 +14,11 @@ class MenuSVAPI {
     
     let apiBaseURL:String   = "http://snakebite.herokuapp.com"
     let apiEndPoint:String  = "/menus"
+    var token:String!
     
     init(){
-        
+        var keyChainService = KeyChainService()
+        token = keyChainService.loadToken(.ServerToken)
     }
     func getMenuAll(limit:Int, successCallback:(json:AnyObject?)->Void, errorCallback:()->Void){
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -40,7 +42,8 @@ class MenuSVAPI {
         
         var params:[String:AnyObject] = [
             "start": String(start),
-            "limit": String(limit)
+            "limit": String(limit),
+            "token": self.token
         ]
         if let location = location {
             params["geolocation"] = location
@@ -68,7 +71,8 @@ class MenuSVAPI {
         var params:[String:AnyObject] = [
             "tags"  : tags,
             "start": String(start),
-            "limit": String(limit)
+            "limit": String(limit),
+            "token": self.token
         ]
         if let location = location {
             params["geolocation"] = location

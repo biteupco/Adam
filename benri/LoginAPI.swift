@@ -12,9 +12,12 @@ import Alamofire
 import SwiftyJSON
 
 class LoginAPI: NSObject {
-    let apiBaseURL:String   = "http://snakebite.herokuapp.com"
-    let apiEndPoint:String  = "/login"
+    let apiBaseURL:String   = "https://gobbl-auth.herokuapp.com"
+    let apiEndPoint:String  = "/auth/login/facebook"
+    var keyChainService:KeyChainService = KeyChainService()
+    
     var key:[UInt8]!
+    
     override init(){
         super.init()
         let path = NSBundle.mainBundle().pathForResource("APISetting", ofType: "plist")!
@@ -24,38 +27,43 @@ class LoginAPI: NSObject {
         
     }
     
-    func loginByFacebook(successCallback:(json:AnyObject?)->Void, errorCallback:()->Void){
+    func loginByFacebook(accessToken: String, fid: String, email: String, successCallback:(json:AnyObject?)->Void, errorCallback:()->Void){
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        let token = "TorIsHere"//FBSDKAccessToken.currentAccessToken().tokenString
-        
-        let encrypted = AES(key: self.key, blockMode: .CBC)!.encrypt(stringToByte(token), padding: PKCS7())!
-        println("Facebook Token")
-        println(encrypted)
-        /*if (FBSDKAccessToken.currentAccessToken() != nil) {
-            let encrptedToken = FBSDKAccessToken.currentAccessToken()
-            Alamofire.request(.GET, apiBaseURL + apiEndPoint,parameters: ["token": encrptedToken], encoding: .URL)
-                .responseJSON{ (req, res, json, error) in
-                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                    if(error != nil) {
-                        NSLog("Error: \(error)")
-                        println(req)
-                        println(res)
-                        errorCallback()
+        var userDefault = NSUserDefaults.standardUserDefaults()
+        let parameters = [
+            "access_token" : accessToken,
+            "email" : email,
+            "id" : fid
+        ]
+        Alamofire.request(.POST, apiBaseURL + apiEndPoint, parameters: parameters, encoding: .JSON)
+            .responseJSON{ (req, res, json, error) in
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                if(error != nil) {
+                    NSLog("Error: \(error)")
+                    println(req)
+                    println(res)
+                    errorCallback()
+                }
+                else {
+                    if let json:AnyObject = json {
+                        let tokenJSON = JSON(json)
+                        if let serverToken = tokenJSON["token"].rawString() {
+                            self.keyChainService.saveToken(.ServerToken, token: serverToken)
+                        }
                     }
-                    else {
-                        successCallback(json: json)
-                    }
-            }
-        }*/
+                   
+                    successCallback(json: json)
+                }
+        }
+
     }
     
     func stringToByte(str:String) -> [UInt8] {
         var byteArray = [UInt8]()
         for char in str.utf8{
-            byteArray += [char]
+            byteArray.append(char)
         }
-        println(byteArray)
         return byteArray
     }
     

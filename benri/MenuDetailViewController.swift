@@ -44,6 +44,9 @@ class MenuDetailViewController: UIViewController {
     
     @IBAction func orderNow(sender: AnyObject) {
         println("orderNow")
+        var orderDialogVC: OrderDialogViewController = OrderDialogViewController(nibName: "OrderDialogViewController", bundle: nil)
+        self.addChildViewController(orderDialogVC)
+        self.view.addSubview(orderDialogVC.view)
     }
     @IBAction func backToFirstPage(sender: AnyObject) {
         self.performSegueWithIdentifier("backFromMenuDetail", sender: self)

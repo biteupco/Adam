@@ -17,6 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        let font = UIFont(name: "Lobster-Regular", size: 20)
+        if let font = font {
+            UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : font , NSForegroundColorAttributeName : UIColor(
+                red:  CGFloat(255) / 255.0,
+                green: CGFloat(119) / 255.0,
+                blue: CGFloat(78) / 255.0,
+                alpha: CGFloat(1.0)
+            )]
+        }
         
         if let path = NSBundle.mainBundle().pathForResource("APISetting", ofType: "plist") {
             if let dict = NSDictionary(contentsOfFile: path) as? Dictionary<String, AnyObject> {

@@ -129,16 +129,16 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UIAlert
                 self.userDefault = NSUserDefaults.standardUserDefaults()
                 
                 // Email
-                let myEmail = result.valueForKey("email") as! String
+                let myEmail:String = result.valueForKey("email") as! String
                 self.userDefault.setObject(myEmail, forKey: "email")
                 
                 
                 // Name
-                let myName = result.valueForKey("name") as! String
+                let myName:String = result.valueForKey("name") as! String
                 self.userDefault.setObject(myName, forKey: "userName")
                 
                 // Profile Image
-                let fbID = result.valueForKey("id") as! String
+                let fbID:String = result.valueForKey("id") as! String
                 let profileImgURL = String(format: "https://graph.facebook.com/%@/picture?type=large", fbID)
                 self.userDefault.setObject(profileImgURL, forKey: "profileImgURL")
                 self.userDefault.synchronize()
@@ -149,10 +149,12 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UIAlert
                 println("fetched user: \(result)")
                 
                 if FBSDKAccessToken.currentAccessToken() != nil {
-                    println(FBSDKAccessToken.currentAccessToken().tokenString)
                     let api:LoginAPI = LoginAPI()
-                    api.loginByFacebook({ (json) -> Void in
-                        
+                    api.loginByFacebook(FBSDKAccessToken.currentAccessToken().tokenString,
+                        fid: fbID,
+                        email: myEmail,
+                        successCallback: { (json) -> Void in
+                            
                     }, errorCallback: { () -> Void in
                         
                     })
