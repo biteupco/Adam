@@ -1,15 +1,15 @@
 //
-//  RightCutomSegue.swift
+//  TopCustomSegue.swift
 //  adam
 //
-//  Created by Kittikorn Ariyasuk on 7/5/15.
+//  Created by ariyasuk-k on 8/5/15.
 //  Copyright (c) 2015 gobbl. All rights reserved.
 //
 
 import UIKit
 
-class RightCustomSegue: UIStoryboardSegue {
-   
+class DownCustomSegue: UIStoryboardSegue {
+    
     override func perform() {
         var sourceVCView = self.sourceViewController.view as UIView
         var destinationVCView = self.destinationViewController.view as UIView
@@ -17,11 +17,15 @@ class RightCustomSegue: UIStoryboardSegue {
         if let tabBarController = self.sourceViewController.tabBarController as UITabBarController? {
             sourceVCView = tabBarController.view as UIView
         }
+        println("Tabbar")
+        println(sourceVCView.frame)
+        println(self.sourceViewController.topLayoutGuide)
+        println(self.sourceViewController.topLayoutGuide.length)
         
         let screenWidth = UIScreen.mainScreen().bounds.size.width
         let screenHeight = UIScreen.mainScreen().bounds.size.height
         
-        destinationVCView.frame = CGRectMake(screenWidth, 0.0, screenWidth, screenHeight)
+        destinationVCView.frame = CGRectMake(0.0, -screenHeight, screenWidth, screenHeight)
         
         let window = UIApplication.sharedApplication().keyWindow
         window?.insertSubview(destinationVCView, aboveSubview: sourceVCView)
@@ -29,10 +33,10 @@ class RightCustomSegue: UIStoryboardSegue {
         
         UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut,
             animations: { () -> Void in
-                sourceVCView.frame         = CGRectOffset(sourceVCView.frame, -screenWidth, 0.0)
-                destinationVCView.frame    = CGRectOffset(destinationVCView.frame, -screenWidth, 0.0)
-        }) { (finished) -> Void in
-            self.sourceViewController.presentViewController(self.destinationViewController as! UIViewController, animated:false, completion: nil)
+                sourceVCView.frame         = CGRectOffset(sourceVCView.frame, 0.0, screenHeight)
+                destinationVCView.frame    = CGRectOffset(destinationVCView.frame, 0.0, screenHeight)
+            }) { (finished) -> Void in
+                self.sourceViewController.tabBarController!!.presentViewController(self.destinationViewController as! UIViewController, animated:false, completion: nil)
         }
         
     }

@@ -19,6 +19,8 @@
 		21D741281B21A9A9008A8EB5 /* DiscoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D741271B21A9A9008A8EB5 /* DiscoverView.xib */; };
 		21D7412A1B21AA4B008A8EB5 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D741291B21AA4B008A8EB5 /* DiscoverView.swift */; };
 		21D7412C1B21AD36008A8EB5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */; };
+		21DAB1451B71E25900841021 /* DownCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DAB1441B71E25900841021 /* DownCustomSegue.swift */; };
+		21DAB1471B71E31600841021 /* DownCustomUnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DAB1461B71E31600841021 /* DownCustomUnwindSegue.swift */; };
 		21EBA9611B705EDA002ECC54 /* foodiesfeed.com_pho-ga-take-away.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 21EBA9601B705EDA002ECC54 /* foodiesfeed.com_pho-ga-take-away.jpg */; };
 		21EBA9631B706A73002ECC54 /* foodiesfeed.com_fresh-pasta-dill-vegetables.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 21EBA9621B706A73002ECC54 /* foodiesfeed.com_fresh-pasta-dill-vegetables.jpg */; };
 		960E89831B653D18007B0EE5 /* FilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E89821B653D18007B0EE5 /* FilterManager.swift */; };
@@ -93,6 +95,8 @@
 		21D741271B21A9A9008A8EB5 /* DiscoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverView.xib; sourceTree = "<group>"; };
 		21D741291B21AA4B008A8EB5 /* DiscoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		21D7412B1B21AD36008A8EB5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		21DAB1441B71E25900841021 /* DownCustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownCustomSegue.swift; sourceTree = "<group>"; };
+		21DAB1461B71E31600841021 /* DownCustomUnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownCustomUnwindSegue.swift; sourceTree = "<group>"; };
 		21EBA9601B705EDA002ECC54 /* foodiesfeed.com_pho-ga-take-away.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "foodiesfeed.com_pho-ga-take-away.jpg"; sourceTree = "<group>"; };
 		21EBA9621B706A73002ECC54 /* foodiesfeed.com_fresh-pasta-dill-vegetables.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "foodiesfeed.com_fresh-pasta-dill-vegetables.jpg"; sourceTree = "<group>"; };
 		5BD10A0AA37B5DD5EB928422 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -373,6 +377,8 @@
 			children = (
 				96B2EEC91B4935950086D322 /* RightCustomSegue.swift */,
 				96B2EECC1B4938F20086D322 /* RightCustomUnwindSegue.swift */,
+				21DAB1441B71E25900841021 /* DownCustomSegue.swift */,
+				21DAB1461B71E31600841021 /* DownCustomUnwindSegue.swift */,
 			);
 			name = CutomSegue;
 			sourceTree = "<group>";
@@ -600,6 +606,7 @@
 				21BF4D171B099714001CDBC3 /* RestaurantCache.swift in Sources */,
 				96DA5A171AF2850E0003E506 /* MenuCell.swift in Sources */,
 				21A29D341B3A6166009E0D0C /* MapViewController.swift in Sources */,
+				21DAB1471B71E31600841021 /* DownCustomUnwindSegue.swift in Sources */,
 				96DA5A151AF284BB0003E506 /* Menu.swift in Sources */,
 				9656AD9F1AECC62800933A8E /* AppDelegate.swift in Sources */,
 				9646908A1B3392F600DB187D /* PageContentViewController.swift in Sources */,
@@ -610,6 +617,7 @@
 				96DA5A1D1AF28AD20003E506 /* MenuServerAPI.swift in Sources */,
 				21D7412C1B21AD36008A8EB5 /* DiscoverViewController.swift in Sources */,
 				96B2EECD1B4938F20086D322 /* RightCustomUnwindSegue.swift in Sources */,
+				21DAB1451B71E25900841021 /* DownCustomSegue.swift in Sources */,
 				968AF5F51B5D578200859542 /* TagCell.swift in Sources */,
 				96DA5A111AF274670003E506 /* LocationService.swift in Sources */,
 				96B2EECA1B4935950086D322 /* RightCustomSegue.swift in Sources */,
