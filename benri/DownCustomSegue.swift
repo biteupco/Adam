@@ -17,10 +17,6 @@ class DownCustomSegue: UIStoryboardSegue {
         if let tabBarController = self.sourceViewController.tabBarController as UITabBarController? {
             sourceVCView = tabBarController.view as UIView
         }
-        println("Tabbar")
-        println(sourceVCView.frame)
-        println(self.sourceViewController.topLayoutGuide)
-        println(self.sourceViewController.topLayoutGuide.length)
         
         let screenWidth = UIScreen.mainScreen().bounds.size.width
         let screenHeight = UIScreen.mainScreen().bounds.size.height

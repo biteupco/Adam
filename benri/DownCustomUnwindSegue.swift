@@ -21,22 +21,15 @@ class DownCustomUnwindSegue: UIStoryboardSegue {
         var screenWidth = UIScreen.mainScreen().bounds.size.width
         var screenHeight = UIScreen.mainScreen().bounds.size.height
         
-        
-        println("Tabbar back")
-        println(destinationVCView.frame)
-        println(self.destinationViewController.topLayoutGuide)
-        println(self.destinationViewController.topLayoutGuide.length)
-        
         if let window:UIWindow = UIApplication.sharedApplication().keyWindow {
             window.insertSubview(destinationVCView, aboveSubview: sourceVCView)
         }
         /*
-            FIXME: If possible
-            Currently buggy:
-            Apparently topLayoutGuide went to 0 after animation? Have to change height manually
+        
+        Currently buggy:
+        Apparently topLayoutGuide went to 0 after animation? Have to change height manually
         
         */
-        
         for constraint in self.destinationViewController.view!.constraints() as! [NSLayoutConstraint] {
             
             if constraint.firstItem === self.destinationViewController.topLayoutGuide
@@ -54,9 +47,6 @@ class DownCustomUnwindSegue: UIStoryboardSegue {
             }) { (finished) -> Void in
                 if (finished) {
                    self.sourceViewController.dismissViewControllerAnimated(false, completion: nil)
-                //self.destinationViewController.topLayoutGuide
-                   // self.destinationViewController.topLayoutGuide.length = 20.0
-                    
                 }
         }
     }

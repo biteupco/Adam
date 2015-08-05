@@ -10,6 +10,16 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        // FIXME
+        if self.topLayoutGuide.length == 0.0 {
+            for constraint in self.view!.constraints() as! [NSLayoutConstraint] {
+                constraint.constant = 20.0
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +31,6 @@ class TabBarViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -33,7 +42,7 @@ class TabBarViewController: UITabBarController {
     */
 
     override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
-        if identifier == "backFromLocationToTag" {
+        if identifier == "backFromLocationToTag" || identifier == "didSelectLocation"{
             return DownCustomUnwindSegue(identifier: identifier, source: fromViewController, destination: toViewController)
         } else {
             let segue = RightCustomUnwindSegue(identifier: identifier, source: fromViewController, destination: toViewController)
