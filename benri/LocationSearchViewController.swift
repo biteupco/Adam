@@ -183,7 +183,6 @@ class LocationSearchViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("prepareForSegue")
         if segue.identifier == "didSelectLocation" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let cell: SearchCell = self.tableView.cellForRowAtIndexPath(indexPath) as! SearchCell
