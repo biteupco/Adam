@@ -13,18 +13,18 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     // Default is Tokyo
     private var currentLocation:CLLocation
     private var currentLocality:String
-    var locationManager     = CLLocationManager()
+    let locationManager     = CLLocationManager()
     
     override init() {
-        self.locationManager = CLLocationManager()
         currentLocation = CLLocation(latitude: 35.664122, longitude: 139.729426)
         currentLocality = "Minato"
     }
     func initDelagate() {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.delegate = self
-        if (CLLocationManager.authorizationStatus() == .NotDetermined)  {
-            locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.authorizationStatus() == .NotDetermined {
+            self.locationManager.requestAlwaysAuthorization()
         }
     }
     
@@ -48,13 +48,9 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             case CLAuthorizationStatus.NotDetermined:
                 NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isLocationEnable")
             default:
-                isUserAnswered = true
+                self.locationManager.startUpdatingLocation()
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLocationEnable")
             }
-            if isUserAnswered {
-                self.locationManager.startUpdatingLocation()
-            }
-            
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
@@ -77,10 +73,10 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         if placemark.location != nil {
             //stop updating location to save battery life
             self.locationManager.stopUpdatingLocation()
+            self.currentLocation = placemark.location
             let coordinate:CLLocationCoordinate2D = placemark.location.coordinate
             self.setLocation(placemark.location)
             self.setLocality(placemark.locality)
-            println(coordinate)
         }
     }
     

@@ -234,5 +234,4 @@ class MenuDetailViewController: UIViewController {
             ratingImage.hidden = true
         }
     }
-    
 }

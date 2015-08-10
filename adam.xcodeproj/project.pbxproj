@@ -28,6 +28,7 @@
 		9615B8F51B6B7C6400FCABE2 /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9615B8F41B6B7C6400FCABE2 /* KeyChainService.swift */; };
 		9616799B1B2C72BA00A43AD3 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9616799A1B2C72BA00A43AD3 /* LocationSearchViewController.swift */; };
 		961C3FAF1B6E074D008FE19F /* foodiesfeed.com_colorful-sushi-in-a-black-box3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 961C3FAE1B6E074D008FE19F /* foodiesfeed.com_colorful-sushi-in-a-black-box3.jpg */; };
+		962B791B1B771820004D8365 /* LikeItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B791A1B771820004D8365 /* LikeItemManager.swift */; };
 		964690861B3308D800DB187D /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964690851B3308D800DB187D /* TutorialViewController.swift */; };
 		9646908A1B3392F600DB187D /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964690891B3392F600DB187D /* PageContentViewController.swift */; };
 		9656AD9F1AECC62800933A8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9656AD9E1AECC62800933A8E /* AppDelegate.swift */; };
@@ -105,6 +106,7 @@
 		9615B8F41B6B7C6400FCABE2 /* KeyChainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		9616799A1B2C72BA00A43AD3 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		961C3FAE1B6E074D008FE19F /* foodiesfeed.com_colorful-sushi-in-a-black-box3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "foodiesfeed.com_colorful-sushi-in-a-black-box3.jpg"; sourceTree = "<group>"; };
+		962B791A1B771820004D8365 /* LikeItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeItemManager.swift; sourceTree = "<group>"; };
 		964690851B3308D800DB187D /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		964690891B3392F600DB187D /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 		9656AD991AECC62800933A8E /* adam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = adam.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -396,6 +398,7 @@
 				21C944C11B4FBC6E00256F8D /* CartManager.swift */,
 				960E89821B653D18007B0EE5 /* FilterManager.swift */,
 				9615B8F41B6B7C6400FCABE2 /* KeyChainService.swift */,
+				962B791A1B771820004D8365 /* LikeItemManager.swift */,
 			);
 			name = Lib;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				21D7412A1B21AA4B008A8EB5 /* DiscoverView.swift in Sources */,
 				9677EEC91B50BE2700AEBDF7 /* OrderDialogViewController.swift in Sources */,
 				96DA5A1F1AF28AE90003E506 /* TagServerAPI.swift in Sources */,
+				962B791B1B771820004D8365 /* LikeItemManager.swift in Sources */,
 				96DA5A101AF274670003E506 /* HorizontalPicker.swift in Sources */,
 				96DA5A1D1AF28AD20003E506 /* MenuServerAPI.swift in Sources */,
 				21D7412C1B21AD36008A8EB5 /* DiscoverViewController.swift in Sources */,

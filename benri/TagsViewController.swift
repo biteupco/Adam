@@ -39,20 +39,17 @@ class TagsViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
     @IBOutlet weak var tagsTableView: UITableView!
     @IBOutlet weak var locationButton: UIButton!
     
-    @IBAction func returnFromLocationSearchToTag(sender: UIStoryboardSegue){
+    @IBAction func returnToTag(sender: UIStoryboardSegue){
         if sender.identifier == "didSelectLocation" {
             // update location
             self.locationButton.setTitle(locationSearchText + moreLocationText, forState: .Normal)
-            let lonlatSearch = String(stringInterpolationSegment: locationSearch.coordinate.longitude) + "," + String(stringInterpolationSegment: locationSearch.coordinate.latitude)
-            println(lonlatSearch)
-            //const.setConst("search", key: "location", value: lonlatSearch)
         }
     }
     
     var tags: NSMutableArray = []
     
     var const:Const                         = Const.sharedInstance
-    var locationService:LocationService     = LocationService.sharedInstance
+    var locationService:LocationService!
     var imgCache:ImageCache                 = ImageCache.sharedInstance
     var ldIndicator:LoadingIndicator        = LoadingIndicator.sharedInstance
     var filterManager:FilterManager         = FilterManager.sharedInstance
@@ -69,9 +66,11 @@ class TagsViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
     
     @IBAction func returnFromTutorialSegueActions(sender: UIStoryboardSegue) {
         if sender.identifier == "tutorialSegueUnwind" {
-            self.loadTags()
             self.tagsTableView.delegate = self
             self.tagsTableView.dataSource = self
+            self.locationService = LocationService.sharedInstance
+            
+            self.loadTags()
         }
     }
     
@@ -103,6 +102,7 @@ class TagsViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
         if (userDefault.boolForKey("didFinishedTutorial")){
             self.tagsTableView.delegate = self
             self.tagsTableView.dataSource = self
+            self.locationService = LocationService.sharedInstance
             // Delay execution for 10 miliseconds.
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(10 * NSEC_PER_MSEC)), dispatch_get_main_queue(), { () -> Void in
                 self.loadTags()
@@ -143,15 +143,29 @@ class TagsViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
         
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if (segue.identifier == "ShowMenuSegue") {
+            // pass data to next view
+            let viewController:MenusViewController = segue.destinationViewController as! MenusViewController
+            
+            if let indexPath = self.tagsTableView.indexPathForSelectedRow(){
+                let searchTag =  self.tags.objectAtIndex(indexPath.row) as! Tag
+                viewController.searchTag = searchTag.tagName
+                viewController.searchLocation = self.locationSearch
+            }
+            if self.locationSearch == nil {
+                viewController.searchLocation = self.locationService.getCurrentLocation()
+            }
+        }
     }
-    */
+
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let deviceSize = getDeviceSize()
         if deviceSize == ScreenSize.IPHONE_3_5_INCH || deviceSize == ScreenSize.IPHONE_4_INCH {

@@ -44,9 +44,10 @@ class TabBarViewController: UITabBarController {
     override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
         if identifier == "backFromLocationToTag" || identifier == "didSelectLocation"{
             return DownCustomUnwindSegue(identifier: identifier, source: fromViewController, destination: toViewController)
+        } else if identifier == "returnFromMenu" {
+            return RightCustomUnwindSegue(identifier: identifier, source: fromViewController, destination: toViewController)
         } else {
-            let segue = RightCustomUnwindSegue(identifier: identifier, source: fromViewController, destination: toViewController)
-            return segue
+            return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
         }
     }
     

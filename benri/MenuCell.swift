@@ -17,11 +17,15 @@ class MenuCell: UITableViewCell {
     @IBOutlet weak var distantLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var imgProgressView: UIProgressView!
-    
+    @IBOutlet weak var likeButton: UIButton!
     
     var locationService = LocationService.sharedInstance
     var imgCache:ImageCache = ImageCache.sharedInstance
-   
+    
+    var likeItem:LikeItemManager = LikeItemManager.sharedInstance
+    
+    var menu:Menu!
+    var restaurant:Restaurant!
     var menuName: String = ""
     var storeName: String = ""
     var menuImageURL: NSURL = NSURL(string: "http://upload.wikimedia.org/wikipedia/commons/a/ad/Kyaraben_panda.jpg")!
@@ -32,6 +36,10 @@ class MenuCell: UITableViewCell {
     
     var request: Alamofire.Request?
         
+    @IBAction func onClickLike(sender: AnyObject) {
+        println("Like " + self.menuName)
+        likeItem.addItem(self.menu.menuID, menu: self.menu, resID: self.restaurant.id, restaurant: self.restaurant)
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -187,6 +195,8 @@ class MenuCell: UITableViewCell {
     }
     func setMenu(menu:Menu, restaurant:Restaurant) {
         let storeDistance = self.locationService.getDistanceFrom(restaurant.location)
+        self.menu = menu
+        self.restaurant = restaurant
         
         self._setDistantLabel(storeDistance)
         self._setMenuNameLabel(menu.menuName)
