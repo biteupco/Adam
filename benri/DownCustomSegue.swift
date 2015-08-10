@@ -11,8 +11,8 @@ import UIKit
 class DownCustomSegue: UIStoryboardSegue {
     
     override func perform() {
-        var sourceVCView = self.sourceViewController.view as UIView
-        var destinationVCView = self.destinationViewController.view as UIView
+        var sourceVCView = self.sourceViewController.view as UIView!
+        var destinationVCView = self.destinationViewController.view as UIView!
         
         if let tabBarController = self.sourceViewController.tabBarController as UITabBarController? {
             sourceVCView = tabBarController.view as UIView
