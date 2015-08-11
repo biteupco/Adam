@@ -15,6 +15,10 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
         </mutableArray>
         <mutableArray key="Cabin-SemiBold.ttf">
             <string>Cabin-SemiBold</string>
@@ -287,6 +291,9 @@
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="10" y="248" width="164" height="24"/>
+                                                    </variation>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R7G-Ey-MZA">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="214"/>
@@ -298,7 +305,8 @@
                                                             <exclude reference="R0B-Ks-7lR"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                                                         <mask key="constraints">
                                                             <include reference="R0B-Ks-7lR"/>
                                                         </mask>
@@ -320,7 +328,8 @@
                                                             <exclude reference="dFO-bI-msn"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="258" y="193" width="62" height="27"/>
                                                         <mask key="constraints">
                                                             <include reference="dFO-bI-msn"/>
                                                         </mask>
@@ -331,12 +340,18 @@
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="232" y="270" width="83" height="17"/>
+                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Restaurant Name Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9z-c8-4DE">
                                                     <rect key="frame" x="10" y="250" width="200" height="21"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="10" y="276" width="127" height="14"/>
+                                                    </variation>
                                                 </label>
                                                 <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03C-zM-PXc">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -354,7 +369,8 @@
                                                             <exclude reference="sFi-lk-htU"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="262" y="12" width="50" height="50"/>
                                                         <mask key="constraints">
                                                             <include reference="pEo-XV-w8i"/>
                                                             <include reference="sFi-lk-htU"/>
@@ -1563,9 +1579,6 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="18" y="13" width="284" height="18"/>
-                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -1675,10 +1688,10 @@
             </objects>
             <point key="canvasLocation" x="660" y="-224"/>
         </scene>
-        <!--View Controller-->
+        <!--Fav View Controller-->
         <scene sceneID="AgP-rI-CCR">
             <objects>
-                <viewController id="vNO-Ox-cLK" sceneMemberID="viewController">
+                <viewController id="vNO-Ox-cLK" customClass="FavViewController" customModule="adam" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DPP-xx-YLx"/>
                         <viewControllerLayoutGuide type="bottom" id="QhJ-ef-AMK"/>
@@ -1783,14 +1796,14 @@
                                                     </state>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="oSe-1m-pUT"/>
                                                             <exclude reference="754-d3-25m"/>
+                                                            <exclude reference="oSe-1m-pUT"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
-                                                            <include reference="oSe-1m-pUT"/>
                                                             <include reference="754-d3-25m"/>
+                                                            <include reference="oSe-1m-pUT"/>
                                                         </mask>
                                                     </variation>
                                                     <connections>
@@ -1823,21 +1836,21 @@
                                                     <exclude reference="lal-Wc-IlJ"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="LQk-XB-gaw"/>
                                                     <exclude reference="Ebb-t4-B1b"/>
+                                                    <exclude reference="LQk-XB-gaw"/>
                                                     <exclude reference="OFR-Rt-kuJ"/>
-                                                    <exclude reference="bbq-25-CW6"/>
                                                     <exclude reference="QEB-PH-YWI"/>
+                                                    <exclude reference="bbq-25-CW6"/>
+                                                    <exclude reference="8b3-tu-qyr"/>
                                                     <exclude reference="TG6-pp-7t6"/>
                                                     <exclude reference="bzx-9q-ydh"/>
-                                                    <exclude reference="8b3-tu-qyr"/>
-                                                    <exclude reference="QuO-Zg-dn5"/>
                                                     <exclude reference="1Ud-1d-Ame"/>
+                                                    <exclude reference="QuO-Zg-dn5"/>
                                                     <exclude reference="ACG-2r-ifO"/>
                                                     <exclude reference="XPD-Sj-IdF"/>
                                                     <exclude reference="H2w-yo-36N"/>
-                                                    <exclude reference="KdN-KL-48Q"/>
                                                     <exclude reference="5kL-Fw-Qk2"/>
+                                                    <exclude reference="KdN-KL-48Q"/>
                                                     <exclude reference="OP8-w3-2xM"/>
                                                 </mask>
                                             </variation>
@@ -1846,21 +1859,21 @@
                                                     <include reference="lal-Wc-IlJ"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="LQk-XB-gaw"/>
                                                     <include reference="Ebb-t4-B1b"/>
+                                                    <include reference="LQk-XB-gaw"/>
                                                     <include reference="OFR-Rt-kuJ"/>
-                                                    <include reference="bbq-25-CW6"/>
                                                     <include reference="QEB-PH-YWI"/>
+                                                    <include reference="bbq-25-CW6"/>
+                                                    <include reference="8b3-tu-qyr"/>
                                                     <include reference="TG6-pp-7t6"/>
                                                     <include reference="bzx-9q-ydh"/>
-                                                    <include reference="8b3-tu-qyr"/>
-                                                    <include reference="QuO-Zg-dn5"/>
                                                     <include reference="1Ud-1d-Ame"/>
+                                                    <include reference="QuO-Zg-dn5"/>
                                                     <include reference="ACG-2r-ifO"/>
                                                     <include reference="XPD-Sj-IdF"/>
                                                     <include reference="H2w-yo-36N"/>
-                                                    <include reference="KdN-KL-48Q"/>
                                                     <include reference="5kL-Fw-Qk2"/>
+                                                    <include reference="KdN-KL-48Q"/>
                                                     <include reference="OP8-w3-2xM"/>
                                                 </mask>
                                             </variation>
@@ -1931,6 +1944,9 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" image="LikeIcon" id="iEy-hA-RsF"/>
+                    <connections>
+                        <outlet property="menuTableView" destination="squ-x4-PSg" id="wfd-5W-ier"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJp-2S-AJW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
