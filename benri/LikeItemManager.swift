@@ -11,8 +11,10 @@ import UIKit
 class LikeItemManager: NSObject {
     var menus:NSMutableDictionary!
     var restaurants:NSMutableDictionary!
+    
     override init() {
-        
+        menus = NSMutableDictionary()
+        restaurants = NSMutableDictionary()
     }
     
     func clearOrder() {
@@ -20,15 +22,20 @@ class LikeItemManager: NSObject {
     }
     
     func addItem(menuID:String, menu:Menu, resID:String, restaurant:Restaurant) {
-        if let menu:Menu = menus.objectForKey(menuID) as? Menu{
+        println(menuID, menu, resID, restaurant)
+        if let menu: Menu = menus.objectForKey(menuID) as? Menu {
             return
         }
         menus.setObject(menu, forKey: menuID)
         
-        if let restaurant:Restaurant = restaurants.objectForKey(resID) as? Restaurant{
+        if let restaurant:Restaurant = restaurants.objectForKey(resID) as? Restaurant {
             return
         }
         restaurants.setObject(restaurant, forKey: resID)
+    }
+    
+    func getAllItem() -> (NSMutableDictionary?, NSMutableDictionary?) {
+        return (menus, restaurants)
     }
     
     func getItem(menuID:String, resID:String) -> (Menu?, Restaurant?) {

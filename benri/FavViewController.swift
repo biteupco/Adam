@@ -12,10 +12,35 @@ class FavViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 
     @IBOutlet weak var menuTableView: UITableView!
     
+    var likeItemManager:LikeItemManager = LikeItemManager.sharedInstance
+    
+    var menus:NSMutableDictionary?
+    var restaurants:NSMutableDictionary?
+    
+    var menuArray:NSMutableArray!
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        (menus, restaurants) = likeItemManager.getAllItem()
+        if let menus = menus as NSMutableDictionary? {
+            println(menus)
+            for (menuID, menu) in menus {
+                menuArray.addObject(menu)
+                println(menu)
+            }
+        }
+        self.menuTableView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        menus = NSMutableDictionary()
+        restaurants = NSMutableDictionary()
+        menuArray = NSMutableArray()
+        
+        self.menuTableView.delegate = self
+        self.menuTableView.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,12 +77,15 @@ class FavViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             self.menuTableView.hidden = false
         }
         
-        let menu = menuArray.objectAtIndex(indexPath.row) as! Menu
-        let restaurant = restuarantList.objectForKey(menu.restaurantID) as! Restaurant
-        
         cell.request?.cancel()
-        cell.setImageByURL(menu.imgURL)
-        cell.setMenu(menu, restaurant: restaurant)
+        
+        if let menu = menuArray.objectAtIndex(indexPath.row) as? Menu {
+            if let restaurants = restaurants  {
+                let restaurant = restaurants.objectForKey(menu.restaurantID) as! Restaurant
+                cell.setMenu(menu, restaurant: restaurant)
+                cell.setImageByURL(menu.imgURL)
+            }
+        }
         
         return cell
     }
